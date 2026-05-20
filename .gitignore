@@ -54,3 +54,7 @@ RESEARCH_ACTION_POINTS*
 SECURITY_FINDINGS*
 FOUNDER_ACTIONS*
 V1_LAUNCH_STATUS*
+
+# never commit email exports
+notify-list*.json
+notifications*.json
