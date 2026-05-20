@@ -1,2 +1,2 @@
-# Redirect www to apex
-https://www.tracelane.dev/* https://tracelane.dev/:splat 301!
+﻿# www -> apex redirect handled at Cloudflare DNS / Bulk Redirects level instead.
+# Workers _redirects requires relative paths only.
