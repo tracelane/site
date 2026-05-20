@@ -2,9 +2,7 @@
 // no props
 ---
 
-<header
-  class="border-b border-border bg-bg/80 backdrop-blur sticky top-0 z-50"
->
+<header class="border-b border-border bg-bg/80 backdrop-blur sticky top-0 z-50">
   <div class="container-wide flex h-14 items-center justify-between">
     <a
       href="/"
@@ -13,10 +11,8 @@
     >
       tracelane
     </a>
-    <nav aria-label="Primary">
-      <ul
-        class="flex items-center gap-4 sm:gap-6 text-sm text-fg-muted lowercase"
-      >
+    <nav aria-label="Primary" class="flex items-center gap-3 sm:gap-4">
+      <ul class="flex items-center gap-4 sm:gap-6 text-sm text-fg-muted lowercase">
         <li class="hidden sm:list-item">
           <a href="/#what" class="hover:text-fg transition-colors">what</a>
         </li>
@@ -30,24 +26,42 @@
           <a href="/security" class="hover:text-fg transition-colors">security</a>
         </li>
         <li>
-          <a
-            href="https://docs.tracelane.dev"
-            class="hover:text-fg transition-colors"
-            rel="noopener"
-          >
-            docs
-          </a>
+          <a href="https://docs.tracelane.dev" class="hover:text-fg transition-colors" rel="noopener">docs</a>
         </li>
         <li>
-          <a
-            href="https://github.com/tracelane"
-            class="hover:text-fg transition-colors"
-            rel="me noopener"
-          >
-            github
-          </a>
+          <a href="https://github.com/tracelane" class="hover:text-fg transition-colors" rel="me noopener">github</a>
         </li>
       </ul>
+      <button
+        type="button"
+        class="theme-toggle"
+        id="theme-toggle"
+        aria-label="Toggle color theme"
+        title="Toggle theme"
+      >
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
     </nav>
   </div>
 </header>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var current = document.documentElement.getAttribute("data-theme") || "dark";
+      var next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {}
+    });
+  })();
+</script>

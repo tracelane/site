@@ -3,55 +3,35 @@ import Base from "../layouts/Base.astro";
 ---
 
 <Base
-  title="changelog · tracelane"
-  description="release notes and changelog for tracelane."
+  title="Changelog · Tracelane"
+  description="Release notes and changelog for Tracelane."
 >
   <section class="container-prose py-24">
-    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">
-      changelog
-    </p>
-    <h1
-      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
-    >
-      changelog.
-    </h1>
+    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">changelog</p>
+    <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Changelog.</h1>
     <p class="mt-6 text-lg text-fg-muted leading-relaxed">
-      detailed release notes live at
-      <a
-        href="https://github.com/tracelane/tracelane/releases"
-        class="underline decoration-fg-subtle hover:decoration-fg transition-colors"
-        rel="noopener"
-      >
-        github.com/tracelane/tracelane/releases
-      </a>. each release is Cosign-signed with SLSA Build L3 provenance.
+      Detailed release notes live at
+      <a href="https://github.com/tracelane" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">github.com/tracelane</a>. Each release is Cosign-signed with SLSA Build L3 provenance.
     </p>
 
     <div class="mt-16 space-y-12">
       <article>
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">
-          unreleased
-        </p>
-        <h2
-          class="mt-2 text-xl font-semibold text-fg lowercase"
-        >
-          v1.0.0 — coming tue jun 16, 2026
-        </h2>
-        <ul class="mt-4 space-y-2 text-fg-muted lowercase">
-          <li>— rust gateway across 35 LLM providers</li>
-          <li>— full-fidelity OTel GenAI observability backend</li>
+        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">unreleased</p>
+        <h2 class="mt-2 text-xl font-semibold text-fg">V1.0.0 — coming Tue Jun 16, 2026</h2>
+        <ul class="mt-4 space-y-2 text-fg-muted">
+          <li>— Rust gateway across 35 LLM providers</li>
+          <li>— Full-fidelity OTel GenAI observability backend</li>
           <li>— 12 inline predictive guardrails (sub-50ms p99)</li>
-          <li>— prompt promotion + eval gates + auto-rollback</li>
-          <li>— audit ledger: Ed25519 + merkle + Sigstore Rekor</li>
+          <li>— Prompt promotion + eval gates + auto-rollback</li>
+          <li>— Audit ledger: Ed25519 + Merkle + Sigstore Rekor</li>
           <li>— CLI: tlane import-helicone, tlane import-litellm, tlane verify</li>
         </ul>
       </article>
     </div>
 
-    <p class="mt-16 text-sm text-fg-subtle lowercase">
-      get notified when v1 ships —
-      <a href="/#notify" class="underline decoration-fg-subtle hover:decoration-fg">
-        notify list
-      </a>.
+    <p class="mt-16 text-sm text-fg-subtle">
+      Get notified when V1 ships —
+      <a href="/#notify" class="underline decoration-fg-subtle hover:decoration-fg">notify list</a>.
     </p>
   </section>
 </Base>

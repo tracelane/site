@@ -11,8 +11,8 @@ export interface Props {
 }
 
 const {
-  title = "tracelane · predictive reliability for ai agents",
-  description = "Apache 2.0 rust gateway, full-fidelity OTel observability, sub-50ms predictive guardrails. audit-ledger-first. v1 ships Jun 16.",
+  title = "Tracelane · predictive reliability for AI agents",
+  description = "Apache 2.0 Rust gateway, full-fidelity OTel observability, sub-50ms predictive guardrails. Audit-ledger-first. V1 ships June 16.",
   canonical = Astro.url.pathname,
   ogImage = "/og-default.png",
 } = Astro.props;
@@ -56,14 +56,14 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={fullCanonical} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={fullCanonical} />
     <meta property="og:title" content={title} />
@@ -73,35 +73,32 @@ const jsonLd = {
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Tracelane" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={fullCanonical} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={fullOgImage} />
 
-    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <!-- Font preload -->
-    <link
-      rel="preload"
-      href="/fonts/inter-var-latin.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="/fonts/jetbrains-mono-var-latin.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
+    <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-    <!-- JSON-LD structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+    {/* No-flash theme script — runs before paint */}
+    <script is:inline>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var preferLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+          var theme = saved || (preferLight ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
   </head>
   <body>
     <a href="#main" class="skip-link">skip to content</a>
