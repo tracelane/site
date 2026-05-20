@@ -10,5 +10,5 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "tracelane-notify"
-database_id = "REPLACE_WITH_DATABASE_ID_FROM_WRANGLER"
+database_id = "8a8128d8-451c-43df-ad91-f0a9c7c70a70"
 migrations_dir = "migrations"
