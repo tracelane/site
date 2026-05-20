@@ -1,0 +1,108 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="security · tracelane"
+  description="security posture, release integrity, vulnerability scanning, and compliance roadmap for tracelane."
+>
+  <section class="container-prose py-24">
+    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">
+      security
+    </p>
+    <h1
+      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+    >
+      security posture.
+    </h1>
+    <p class="mt-6 text-lg text-fg-muted leading-relaxed">
+      tracelane is designed for procurement reviews at regulated buyers. this
+      page documents what's verifiable today and what ships at v1.
+    </p>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      release integrity
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— Sigstore Cosign keyless signing on every release artifact.</li>
+      <li>— SLSA Build L3 provenance. action pinned by commit SHA.</li>
+      <li>— Trusted Publishing OIDC for PyPI, npm, crates.io, Docker Hub. no long-lived tokens in CI.</li>
+      <li>— CycloneDX SBOM published with every release, verifiable from GitHub release artifacts.</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      vulnerability management
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— OSV-Scanner + Grype + Syft on every commit. Trivy explicitly banned (CVE-2026-33634).</li>
+      <li>— gitleaks + trufflehog on every commit to block secret leaks.</li>
+      <li>— GitHub Security Advisories enabled for coordinated disclosure.</li>
+      <li>— LiteLLM, arize-phoenix, openssl crate explicitly banned in cargo-deny config.</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      transport + isolation
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— TLS 1.3 minimum.</li>
+      <li>— mTLS via SPIFFE/SPIRE for ingest workers.</li>
+      <li>— SSRF defense — RFC1918, 100.64/10, 169.254/16, ::1, fc00::/7 all denied. file:// and gopher:// schemes blocked. redirect cap 3.</li>
+      <li>— rustls + aws-lc-rs + ring crypto stack. no openssl.</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      tenant isolation
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— BYOK only. provider keys envelope-encrypted at rest. never written to logs or spans.</li>
+      <li>— secrecy::SecretString + Zeroize-on-drop for all in-memory credentials.</li>
+      <li>— every ClickHouse query enforces WHERE tenant_id = ? from JWT claim, never request body.</li>
+      <li>— row-level policies via X-Tenant-Id header propagated through getClientHeader().</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      containers + supply chain
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— Chainguard Wolfi base images only. distroless. no shell, no package manager in runtime image.</li>
+      <li>— GitHub Actions pinned by SHA, never by tag.</li>
+      <li>— custom tracing redaction layer scrubs secrets before they hit any log sink.</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      compliance roadmap
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— SOC 2 Type II — Business tier customers. artifacts available under NDA at v1 + 90 days.</li>
+      <li>— HIPAA BAA — Business tier + Tamper-Evident Agent Ledger add-on.</li>
+      <li>— EU AI Act article 12 — export pack ships with the Tamper-Evident Agent Ledger add-on. enforcement Aug 2, 2026.</li>
+      <li>— India DPDP phase II — region-pinned IN storage. enforcement Nov 13, 2026.</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      responsible disclosure
+    </h2>
+    <p class="mt-4 text-fg-muted lowercase">
+      report security issues to <code class="font-mono text-fg">security@tracelane.dev</code>.
+      we respond within 24 hours. bug bounty program at v1 + 30 days.
+    </p>
+
+    <p class="mt-16 text-sm text-fg-subtle lowercase">
+      last updated: may 20, 2026.
+    </p>
+  </section>
+</Base>

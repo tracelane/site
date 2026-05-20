@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="privacy · tracelane"
+  description="what tracelane.dev collects, what it doesn't, and how we handle the few things we do."
+>
+  <section class="container-prose py-24">
+    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">
+      privacy policy
+    </p>
+    <h1
+      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+    >
+      privacy.
+    </h1>
+    <p class="mt-6 text-lg text-fg-muted leading-relaxed">
+      this page covers tracelane.dev — the marketing site. the product
+      (gateway, dashboard, docs) has separate documentation at
+      docs.tracelane.dev/privacy.
+    </p>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      what we collect on tracelane.dev
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— your email address, if you submit the notify form.</li>
+      <li>— your IP country (two-letter code, from Cloudflare's CF-IPCountry header) and a truncated User-Agent string, stored alongside your email for abuse detection only.</li>
+      <li>— Cloudflare Web Analytics aggregate data: page views, referrer, geographic region. server-side beacon, no cookies set in your browser.</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      what we don't collect
+    </h2>
+    <ul class="mt-4 space-y-2 text-fg-muted lowercase">
+      <li>— no cookies are set by tracelane.dev. nothing in your browser to delete.</li>
+      <li>— no third-party trackers. no Google Analytics. no Plausible JS. no Segment. no HubSpot. no Marketo. no Intercom widget.</li>
+      <li>— no marketing automation, no email re-engagement, no lead-scoring.</li>
+      <li>— no fingerprinting.</li>
+    </ul>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      how we use your email
+    </h2>
+    <p class="mt-4 text-fg-muted lowercase leading-relaxed">
+      one email on June 16, 2026 — the v1 launch notification. if you don't
+      explicitly opt into product updates after that, you'll never hear from us
+      again. we do not sell or share your email with any third party.
+    </p>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      where your data lives
+    </h2>
+    <p class="mt-4 text-fg-muted lowercase leading-relaxed">
+      the notify form writes to a Cloudflare D1 database, region-pinned to
+      Cloudflare's nearest edge to the submitter. data is not replicated
+      cross-region. we do not export this data to any third-party tool.
+    </p>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      your rights
+    </h2>
+    <p class="mt-4 text-fg-muted lowercase leading-relaxed">
+      email <code class="font-mono text-fg">support@tracelane.dev</code> to
+      request deletion of your email address from the notify list. we'll
+      action it within 7 days. GDPR data-subject requests and DPDP rights
+      requests get the same treatment.
+    </p>
+
+    <h2
+      class="mt-16 text-2xl font-semibold tracking-tight text-fg lowercase"
+    >
+      changes
+    </h2>
+    <p class="mt-4 text-fg-muted lowercase leading-relaxed">
+      this policy may change. if it changes materially, anyone on the notify
+      list will get a single email explaining what changed before the change
+      takes effect.
+    </p>
+
+    <p class="mt-16 text-sm text-fg-subtle lowercase">
+      last updated: may 20, 2026.
+    </p>
+  </section>
+</Base>

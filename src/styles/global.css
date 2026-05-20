@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  /* ===== Background ===== */
+  --color-bg: oklch(8% 0 0);              /* near-black #0a0a0a primary bg */
+  --color-bg-elevated: oklch(13% 0 0);    /* cards, elevated surfaces */
+  --color-bg-subtle: oklch(18% 0 0);      /* hover, alt sections */
+
+  /* ===== Foreground ===== */
+  --color-fg: oklch(98% 0 0);             /* near-white primary text */
+  --color-fg-muted: oklch(72% 0 0);       /* secondary body text */
+  --color-fg-subtle: oklch(50% 0 0);      /* tertiary, captions, fineprint */
+  --color-fg-dim: oklch(35% 0 0);         /* deep dim, labels */
+
+  /* ===== Borders ===== */
+  --color-border: oklch(22% 0 0);         /* hairline, structural */
+  --color-border-strong: oklch(32% 0 0);  /* emphasized hairline */
+
+  /* NO ACCENT COLOR. */
+  /* If you find yourself wanting one, the answer is heavier font weight or larger size. */
+
+  /* ===== Type scale (perfect fifth, 1.5) ===== */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3.375rem;
+  --text-4xl: 5.0625rem;
+  --text-5xl: 6.75rem;
+
+  /* ===== Radius — minimal ===== */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+
+  /* ===== Fonts ===== */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrainsMono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* ===== Font faces (self-hosted, no external CDN) ===== */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-var-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrainsMono";
+  src: url("/fonts/jetbrains-mono-var-latin.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* ===== Base ===== */
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+/* ===== Focus ===== */
+:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===== Containers ===== */
+.container-wide {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.container {
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.container-prose {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  opacity: 0.85;
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: transparent;
+  color: var(--color-fg);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  border-color: var(--color-fg-subtle);
+}
+
+/* ===== Skip link ===== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  z-index: 100;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ===== Motion ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
+  }
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

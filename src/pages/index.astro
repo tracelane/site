@@ -1,0 +1,699 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base>
+  {/* ===== Hero ===== */}
+  <section class="container py-24 sm:py-32">
+    <p
+      class="font-mono text-sm text-fg-subtle mb-8 tracking-wide lowercase"
+    >
+      apache 2.0 · audit-ledger-first · v1 ships june 16
+    </p>
+    <h1
+      class="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-fg lowercase"
+    >
+      predictive reliability for ai agents.
+    </h1>
+    <p
+      class="mt-8 text-lg sm:text-xl text-fg-muted max-w-2xl leading-relaxed"
+    >
+      rust gateway across 35 providers. full-fidelity OTel observability.
+      sub-50ms inline guardrails that block agent failures before they execute.
+      every span signed, merkle-chained, anchored to Sigstore Rekor.
+    </p>
+    <div class="mt-12 flex flex-col sm:flex-row gap-4">
+      <a href="#notify" class="btn-primary lowercase">
+        get notified at launch
+      </a>
+      <a
+        href="https://github.com/tracelane"
+        class="btn-secondary lowercase"
+        rel="me noopener"
+      >
+        star on github →
+      </a>
+    </div>
+    <p class="mt-8 text-sm text-fg-subtle font-mono lowercase">
+      v1 ships tue jun 16, 2026 · no credit card required for free hosted tier
+    </p>
+  </section>
+
+  {/* ===== What it is ===== */}
+  <section id="what" class="container py-24 border-t border-border">
+    <h2
+      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+    >
+      what tracelane is.
+    </h2>
+    <p class="mt-4 text-lg text-fg-muted max-w-2xl">
+      three integrated surfaces in one developer interface. open core. Apache 2.0.
+    </p>
+    <div class="mt-16 grid gap-12 md:grid-cols-3">
+      <article>
+        <p
+          class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider"
+        >
+          01 — gateway
+        </p>
+        <h3 class="text-xl font-semibold text-fg lowercase">
+          universal llm gateway
+        </h3>
+        <p class="mt-3 text-fg-muted leading-relaxed">
+          35 providers. one canonical wire format. rust + Axum + tokio. p99
+          overhead under 25ms at 5K RPS single-node. BYOK only — provider keys
+          envelope-encrypted, never in logs.
+        </p>
+      </article>
+      <article>
+        <p
+          class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider"
+        >
+          02 — observability
+        </p>
+        <h3 class="text-xl font-semibold text-fg lowercase">
+          full-fidelity traces
+        </h3>
+        <p class="mt-3 text-fg-muted leading-relaxed">
+          OTel GenAI semconv on every span. ClickHouse hot tier (90 days).
+          Cloudflare R2 cold tier (forever). time-travel replay of any past
+          trace. no sampling, no truncation — full fidelity.
+        </p>
+      </article>
+      <article>
+        <p
+          class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider"
+        >
+          03 — guardrails
+        </p>
+        <h3 class="text-xl font-semibold text-fg lowercase">
+          predictive layer
+        </h3>
+        <p class="mt-3 text-fg-muted leading-relaxed">
+          12 predictors run inline before the gateway forwards. sub-50ms p99 on
+          Hetzner CCX13 CPU. blocks: poisoned MCP tools, infinite loops, cost
+          runaways, PII leaks, jailbreak attempts. fail-open with configurable
+          timeout.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  {/* ===== Migration ===== */}
+  <section id="migrate" class="container py-24 border-t border-border">
+    <h2
+      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+    >
+      migrating from a tool that got acquired or breached?
+    </h2>
+    <p class="mt-4 text-lg text-fg-muted max-w-2xl">
+      two CLI commands at v1. no data leaves your infrastructure during
+      migration.
+    </p>
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      <article
+        class="rounded-md border border-border bg-bg-elevated p-8"
+      >
+        <h3 class="text-xl font-semibold text-fg">from Helicone</h3>
+        <p class="mt-2 text-sm text-fg-muted">
+          16,000 organizations stranded after the Mintlify acquisition (Mar 2026).
+        </p>
+        <pre
+          class="mt-6 rounded bg-bg-subtle p-4 font-mono text-sm overflow-x-auto text-fg"><code>$ tlane import-helicone \
+    --source-url $HELICONE_URL \
+    --source-key $HELICONE_KEY</code></pre>
+        <p class="mt-4 text-sm text-fg-muted">
+          migrates traces, configs, prompts, and rate-limit rules. ~5 minutes
+          for a 1M-span account.
+        </p>
+      </article>
+      <article
+        class="rounded-md border border-border bg-bg-elevated p-8"
+      >
+        <h3 class="text-xl font-semibold text-fg">from LiteLLM</h3>
+        <p class="mt-2 text-sm text-fg-muted">
+          after CVE-2026-33634 (Mar 24) and CVE-2026-42208 (Apr 24).
+        </p>
+        <pre
+          class="mt-6 rounded bg-bg-subtle p-4 font-mono text-sm overflow-x-auto text-fg"><code>$ tlane import-litellm \
+    --config litellm_config.yaml</code></pre>
+        <p class="mt-4 text-sm text-fg-muted">
+          drop-in gateway replacement. Sigstore-signed releases. SLSA Build L3
+          provenance. Trusted Publishing OIDC — no long-lived tokens.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  {/* ===== Audit ledger ===== */}
+  <section id="audit" class="container py-24 border-t border-border">
+    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">
+      the audit ledger
+    </p>
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight max-w-3xl text-fg lowercase leading-[1.1]"
+    >
+      every span. cryptographically signed.
+    </h2>
+    <p
+      class="mt-6 text-lg text-fg-muted max-w-2xl leading-relaxed"
+    >
+      every trace event is Ed25519-signed, merkle-chained, and anchored to
+      <a
+        href="https://docs.sigstore.dev/logging/overview/"
+        class="underline decoration-fg-subtle hover:decoration-fg transition-colors"
+        rel="noopener"
+      >
+        Sigstore Rekor
+      </a>
+       within 60 seconds. tampering with the audit log requires breaking SHA-256,
+      Ed25519, or the public Rekor witness — not your customer's KMS.
+    </p>
+
+    <div class="mt-16 grid gap-8 md:grid-cols-3 text-sm">
+      <div>
+        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">
+          eu ai act
+        </p>
+        <p class="mt-3 text-fg-muted">
+          article 12 export pack — full audit trail for high-risk AI systems.
+          required Aug 2, 2026.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">
+          india dpdp
+        </p>
+        <p class="mt-3 text-fg-muted">
+          phase II enforcement Nov 13, 2026. region-pinned storage. audit log
+          retention configurable.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">
+          hipaa
+        </p>
+        <p class="mt-3 text-fg-muted">
+          BAA available on Business tier. PII redaction inline. provider keys
+          envelope-encrypted.
+        </p>
+      </div>
+    </div>
+
+    <pre
+      class="mt-12 rounded-md border border-border bg-bg-elevated p-6 font-mono text-sm overflow-x-auto text-fg"><code><span class="text-fg-subtle"># verify any trace anchored to Sigstore Rekor</span>
+$ tlane verify trace_2026_06_16_abc123
+✓ signature valid (Ed25519)
+✓ Merkle chain unbroken (depth 14)
+✓ Rekor log entry 18234567 — anchored 2026-06-16T08:14:22Z
+✓ tamper-evident: yes</code></pre>
+  </section>
+
+  {/* ===== Pricing ===== */}
+  <section id="pricing" class="container py-24 border-t border-border">
+    <h2
+      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+    >
+      pricing.
+    </h2>
+    <p class="mt-4 text-lg text-fg-muted max-w-2xl">
+      open core. self-host free forever. hosted tiers start at $0.
+    </p>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-3">
+      {/* OSS */}
+      <article
+        class="rounded-md border border-border bg-bg-elevated p-6"
+      >
+        <h3 class="font-semibold text-fg lowercase">oss self-host</h3>
+        <p class="mt-2 font-mono text-3xl text-fg">$0</p>
+        <p class="mt-1 text-sm text-fg-subtle lowercase">Apache 2.0 · forever</p>
+        <ul class="mt-6 space-y-2 text-sm text-fg-muted lowercase">
+          <li>full rust gateway · 35 providers</li>
+          <li>ClickHouse + R2 storage</li>
+          <li>DuckDB embedded option (Lite)</li>
+          <li>community Discord support</li>
+        </ul>
+      </article>
+
+      {/* Free hosted */}
+      <article
+        class="rounded-md border border-border bg-bg-elevated p-6"
+      >
+        <h3 class="font-semibold text-fg lowercase">free hosted</h3>
+        <p class="mt-2 font-mono text-3xl text-fg">$0</p>
+        <p class="mt-1 text-sm text-fg-subtle lowercase">1M spans / mo</p>
+        <ul class="mt-6 space-y-2 text-sm text-fg-muted lowercase">
+          <li>single workspace, 1 seat</li>
+          <li>30-day trace retention</li>
+          <li>5 predictors enabled</li>
+          <li>no credit card</li>
+        </ul>
+      </article>
+
+      {/* Builder */}
+      <article
+        class="rounded-md border border-border bg-bg-elevated p-6"
+      >
+        <h3 class="font-semibold text-fg lowercase">builder</h3>
+        <p class="mt-2 font-mono text-3xl text-fg">
+          $59<span class="text-base text-fg-muted">/mo</span>
+        </p>
+        <p class="mt-1 text-sm text-fg-subtle lowercase">25M spans / mo · 3 seats</p>
+        <ul class="mt-6 space-y-2 text-sm text-fg-muted lowercase">
+          <li>90-day retention</li>
+          <li>all 12 predictors</li>
+          <li>prompt promotion (read-only)</li>
+          <li>email support · 24h</li>
+        </ul>
+      </article>
+
+      {/* Team — recommended (white border-2 emphasis) */}
+      <article
+        class="rounded-md border-2 border-fg bg-bg-elevated p-6 relative"
+      >
+        <p
+          class="absolute -top-3 left-6 px-2 bg-bg-elevated text-xs font-mono text-fg lowercase"
+        >
+          recommended
+        </p>
+        <h3 class="font-semibold text-fg lowercase">team</h3>
+        <p class="mt-2 font-mono text-3xl text-fg">
+          $249<span class="text-base text-fg-muted">/mo</span>
+        </p>
+        <p class="mt-1 text-sm text-fg-subtle lowercase">
+          100M spans / mo · unlimited seats
+        </p>
+        <ul class="mt-6 space-y-2 text-sm text-fg-muted lowercase">
+          <li>180-day retention</li>
+          <li>eval gates + auto-rollback</li>
+          <li>WorkOS SSO</li>
+          <li>Slack support · 8h</li>
+        </ul>
+      </article>
+
+      {/* Business */}
+      <article
+        class="rounded-md border border-border bg-bg-elevated p-6"
+      >
+        <h3 class="font-semibold text-fg lowercase">business</h3>
+        <p class="mt-2 font-mono text-3xl text-fg">
+          $899<span class="text-base text-fg-muted">/mo</span>
+        </p>
+        <p class="mt-1 text-sm text-fg-subtle lowercase">500M spans / mo</p>
+        <ul class="mt-6 space-y-2 text-sm text-fg-muted lowercase">
+          <li>1-year retention</li>
+          <li>SOC 2 Type II artifacts</li>
+          <li>Cedar policy framework</li>
+          <li>dedicated Slack · 4h</li>
+        </ul>
+      </article>
+
+      {/* Enterprise */}
+      <article
+        class="rounded-md border border-border bg-bg-elevated p-6"
+      >
+        <h3 class="font-semibold text-fg lowercase">enterprise</h3>
+        <p class="mt-2 font-mono text-3xl text-fg">
+          $2,999+<span class="text-base text-fg-muted">/mo</span>
+        </p>
+        <p class="mt-1 text-sm text-fg-subtle lowercase">custom volume</p>
+        <ul class="mt-6 space-y-2 text-sm text-fg-muted lowercase">
+          <li>unlimited retention</li>
+          <li>region pinning (us / eu / in)</li>
+          <li>BYOK + CMK self-service</li>
+          <li>1h SLA · dedicated CSM</li>
+        </ul>
+      </article>
+    </div>
+
+    {/* Audit add-on */}
+    <div
+      class="mt-12 rounded-md border border-border-strong bg-bg-elevated p-6"
+    >
+      <div
+        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+      >
+        <div>
+          <h3 class="font-semibold text-fg lowercase">
+            tamper-evident agent ledger
+          </h3>
+          <p class="mt-1 text-sm text-fg-muted lowercase">
+            $999/mo add-on. EU AI Act article 12 export pack, India DPDP phase II
+            compliance pack, HIPAA BAA.
+          </p>
+        </div>
+        <p class="font-mono text-2xl text-fg shrink-0">
+          +$999<span class="text-base text-fg-muted">/mo</span>
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-12 text-center text-sm text-fg-subtle lowercase">
+      all paid tiers available at v1 launch · tue jun 16, 2026
+    </p>
+  </section>
+
+  {/* ===== Trust signals ===== */}
+  <section id="trust" class="container py-24 border-t border-border">
+    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">
+      security posture
+    </p>
+    <h2
+      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+    >
+      built for procurement reviews.
+    </h2>
+    <div
+      class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-sm"
+    >
+      <div class="rounded-md border border-border bg-bg-elevated p-5">
+        <p
+          class="font-mono text-xs text-fg-dim lowercase tracking-wider"
+        >
+          release integrity
+        </p>
+        <p class="mt-3 text-fg-muted">
+          Sigstore Cosign keyless signing. SLSA Build L3 provenance. Trusted
+          Publishing OIDC — no long-lived tokens.
+        </p>
+      </div>
+      <div class="rounded-md border border-border bg-bg-elevated p-5">
+        <p
+          class="font-mono text-xs text-fg-dim lowercase tracking-wider"
+        >
+          sbom
+        </p>
+        <p class="mt-3 text-fg-muted">
+          CycloneDX SBOM published with every release. verifiable from GitHub
+          release artifacts.
+        </p>
+      </div>
+      <div class="rounded-md border border-border bg-bg-elevated p-5">
+        <p
+          class="font-mono text-xs text-fg-dim lowercase tracking-wider"
+        >
+          vuln scanning
+        </p>
+        <p class="mt-3 text-fg-muted">
+          OSV-Scanner + Grype + Syft on every commit. Trivy explicitly banned
+          (CVE-2026-33634).
+        </p>
+      </div>
+      <div class="rounded-md border border-border bg-bg-elevated p-5">
+        <p
+          class="font-mono text-xs text-fg-dim lowercase tracking-wider"
+        >
+          containers
+        </p>
+        <p class="mt-3 text-fg-muted">
+          Chainguard Wolfi base images only. distroless. no shell.
+        </p>
+      </div>
+      <div class="rounded-md border border-border bg-bg-elevated p-5">
+        <p
+          class="font-mono text-xs text-fg-dim lowercase tracking-wider"
+        >
+          transport
+        </p>
+        <p class="mt-3 text-fg-muted">
+          TLS 1.3 minimum. mTLS via SPIFFE/SPIRE for ingest. SSRF defense —
+          RFC1918 + link-local denied.
+        </p>
+      </div>
+      <div class="rounded-md border border-border bg-bg-elevated p-5">
+        <p
+          class="font-mono text-xs text-fg-dim lowercase tracking-wider"
+        >
+          standards
+        </p>
+        <p class="mt-3 text-fg-muted">
+          OTel GenAI semconv contributor.
+          <code class="font-mono text-xs">gen_ai.guardrail.decision</code>
+           event proposed.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-12 text-sm text-fg-muted lowercase">
+      full security posture:
+      <a
+        href="/security"
+        class="underline decoration-fg-subtle hover:decoration-fg transition-colors"
+      >
+        /security
+      </a>
+    </p>
+  </section>
+
+  {/* ===== FAQ ===== */}
+  <section id="faq" class="container py-24 border-t border-border">
+    <h2
+      class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+    >
+      frequently asked.
+    </h2>
+
+    <div class="mt-16 space-y-8 max-w-3xl">
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          what is tracelane?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          tracelane is an open-source (Apache 2.0) reliability platform for AI
+          agents that combines a universal rust LLM gateway, full-fidelity
+          OpenTelemetry observability, and sub-50ms predictive guardrails. every
+          trace event is Ed25519-signed and anchored to Sigstore Rekor for
+          cryptographic audit-log integrity.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          how is tracelane different from Helicone or LangSmith?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          tracelane unifies the gateway, observability, and predictive guardrail
+          layers in one rust binary. Helicone, Langfuse, and LangSmith are
+          observability-first — you bring your own gateway and your own
+          guardrails. tracelane is also Apache 2.0 with a published self-host
+          path; Helicone's gateway is GPL-3.0 (corporate-procurement-hostile),
+          Arize Phoenix is ELv2 (no SaaS resale), and LangSmith is closed-source.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          is tracelane really open source?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          yes. the core (rust gateway, ingest workers, observability backend,
+          predictive layer, CLI, SDKs, audit verifiers) is Apache 2.0. the
+          <code class="font-mono text-sm">/ee</code> directory contains
+          Tracelane Enterprise License code (paid-tier features behind
+          entitlements). the <code class="font-mono text-sm">/spec</code>
+           directory is CC0. the license boundary is enforced via the
+          workspace_entitlements table — paid features are gated at the
+          application layer, not by license-string compare.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          which providers does tracelane support?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          at v1: 35 providers including Anthropic, OpenAI, Google Gemini, AWS
+          Bedrock, Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI,
+          Mistral, Azure OpenAI, Vertex AI, and 22 more. single canonical wire
+          format across all of them.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          does tracelane support EU AI Act article 12?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          yes — the tamper-evident agent ledger add-on ($999/mo) ships an
+          article 12 export pack that covers the full audit-trail requirement
+          for high-risk AI systems. article 12 enforcement begins August 2,
+          2026. the add-on also covers India DPDP phase II (Nov 13, 2026) and
+          provides a HIPAA BAA.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          what's the latency overhead?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          gateway overhead p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding
+          provider time). predictive guardrail layer inline p50 &lt;30ms, p99
+          &lt;50ms on Hetzner CCX13 CPU. measured numbers will be published as
+          the Tracelane Reliability Benchmark v1.0 at v1 launch.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          can i self-host?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          yes. docker compose for development, Helm chart for production. runs
+          on a $5/mo VPS for the Lite (DuckDB embedded) configuration. full
+          ClickHouse + R2 production setup runs on a single Hetzner CCX13
+          ($15/mo). see
+          <a
+            href="https://docs.tracelane.dev/self-hosting"
+            class="underline decoration-fg-subtle hover:decoration-fg transition-colors"
+            rel="noopener"
+          >
+            docs.tracelane.dev/self-hosting
+          </a>.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary
+          class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg lowercase"
+        >
+          when does v1 launch?
+          <span
+            class="text-fg-dim group-open:rotate-45 transition-transform"
+            >+</span
+          >
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          tuesday, June 16, 2026 at 8:00 AM ET (5:30 PM IST) on Hacker News Show
+          HN, X, LinkedIn, and Bluesky simultaneously. get on the notification
+          list above.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  {/* ===== Notify form ===== */}
+  <section
+    id="notify"
+    class="container py-24 border-t border-border bg-bg-elevated/30"
+  >
+    <div class="max-w-2xl">
+      <h2
+        class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg lowercase"
+      >
+        get the v1 launch email.
+      </h2>
+      <p class="mt-4 text-lg text-fg-muted">
+        one email on June 16. then nothing unless you opt into product updates.
+        no newsletter, no marketing automation.
+      </p>
+      <form
+        id="notify-form"
+        class="mt-8 flex flex-col sm:flex-row gap-3"
+        method="POST"
+        action="/api/notify"
+      >
+        <label for="email" class="sr-only">email address</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          required
+          autocomplete="email"
+          placeholder="you@company.com"
+          class="flex-1 rounded-md border border-border bg-bg px-4 py-3 font-mono text-sm text-fg placeholder:text-fg-dim focus:outline-none focus:border-fg-subtle"
+        />
+        <button type="submit" class="btn-primary lowercase">
+          notify me
+        </button>
+      </form>
+      <p
+        id="notify-status"
+        class="mt-4 text-sm text-fg-subtle lowercase min-h-[1.25rem]"
+        aria-live="polite"
+      >
+      </p>
+    </div>
+  </section>
+</Base>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById("notify-form");
+    const status = document.getElementById("notify-status");
+    if (!form || !status) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById("email");
+      const submitBtn = form.querySelector("button[type='submit']");
+      if (!emailInput || !submitBtn) return;
+
+      const email = emailInput.value.trim();
+      status.textContent = "sending...";
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch("/api/notify", {
+          method: "POST",
+          body: JSON.stringify({ email }),
+          headers: { "Content-Type": "application/json" },
+        });
+        if (res.ok) {
+          status.textContent = "you're on the list. see you June 16.";
+          form.reset();
+        } else {
+          const data = await res.json().catch(() => ({}));
+          status.textContent = data.error || "something went wrong. try again.";
+        }
+      } catch {
+        status.textContent = "network error. try again.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  })();
+</script>

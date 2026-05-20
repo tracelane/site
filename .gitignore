@@ -1,0 +1,52 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Wrangler
+.wrangler/
+.dev.vars
+wrangler.toml.local
+
+# Lock files — keep pnpm-lock.yaml in repo
+package-lock.json
+yarn.lock
+
+# Strategy docs that must never leak (defense-in-depth even though this is the public site repo)
+BRD*
+TRD*
+BUILDERS_GUIDE*
+TASKLOG*
+BLOCKERS*
+CLAUDE-INTERNAL*
+customer-interviews/
+competitors/
+decisions-internal/
+RESEARCH_ACTION_POINTS*
+SECURITY_FINDINGS*
+FOUNDER_ACTIONS*
+V1_LAUNCH_STATUS*

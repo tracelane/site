@@ -1,0 +1,2 @@
+# Redirect www to apex
+https://www.tracelane.dev/* https://tracelane.dev/:splat 301!
