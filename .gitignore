@@ -32,6 +32,10 @@ pnpm-debug.log*
 .dev.vars
 wrangler.toml.local
 
+# Deploy script (local-only operational tooling, not part of the public site)
+deploy.ps1
+_tmp_3_*
+
 # Lock files — keep pnpm-lock.yaml in repo
 package-lock.json
 yarn.lock
