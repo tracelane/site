@@ -1,12 +1,14 @@
-# Cloudflare Wrangler config for tracelane-site (Pages + D1).
-# See: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+﻿# Cloudflare Workers config for tracelane-site (static assets + D1).
+# Project deploys via `wrangler deploy` with [assets] directory.
 
 name = "tracelane-site"
 compatibility_date = "2026-05-20"
-pages_build_output_dir = "dist"
+main = "functions/api/notify.ts"
 
-# D1 binding for /api/notify Pages Function.
-# Run `pnpm dlx wrangler d1 create tracelane-notify` then paste the database_id below.
+[assets]
+directory = "./dist"
+
+# D1 binding for /api/notify
 [[d1_databases]]
 binding = "DB"
 database_name = "tracelane-notify"
