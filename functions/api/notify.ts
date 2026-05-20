@@ -1,16 +1,14 @@
 /**
- * POST /api/notify — capture email into D1.
+ * Worker entrypoint for tracelane-site.
  *
- * Binding (set in Cloudflare Pages dashboard → Functions → D1 bindings):
- *   variable name: DB
- *   D1 database:   tracelane-notify
- *
- * Rate limit: configured at WAF level (10 req/min/IP for /api/notify).
- * See README-DEPLOY.md.
+ * Routes:
+ *   POST /api/notify  → capture email into D1
+ *   *    everything else → served from static assets (handled by [assets] config)
  */
 
 interface Env {
   DB: D1Database;
+  ASSETS: Fetcher;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -19,57 +17,51 @@ interface NotifyBody {
   email?: unknown;
 }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
+const json = (data: unknown, status = 200): Response =>
+  new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+
+async function handleNotify(request: Request, env: Env): Promise<Response> {
+  if (request.method !== "POST") {
+    return json({ error: "method not allowed" }, 405);
+  }
+
   try {
-    const body = (await context.request.json().catch(() => ({}))) as NotifyBody;
+    const body = (await request.json().catch(() => ({}))) as NotifyBody;
     const rawEmail = typeof body.email === "string" ? body.email : "";
     const email = rawEmail.trim().toLowerCase();
 
     if (!EMAIL_RE.test(email) || email.length > 254) {
-      return new Response(
-        JSON.stringify({ error: "invalid email" }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      return json({ error: "invalid email" }, 400);
     }
 
-    const country = context.request.headers.get("cf-ipcountry") ?? null;
-    const userAgentHeader = context.request.headers.get("user-agent");
+    const country = request.headers.get("cf-ipcountry") ?? null;
+    const userAgentHeader = request.headers.get("user-agent");
     const userAgent = userAgentHeader ? userAgentHeader.slice(0, 255) : null;
 
-    await context.env.DB.prepare(
+    await env.DB.prepare(
       "INSERT INTO notifications (email, source, ip_country, user_agent) VALUES (?, ?, ?, ?) ON CONFLICT(email) DO NOTHING"
     )
       .bind(email, "landing", country, userAgent)
       .run();
 
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (e) {
-    return new Response(JSON.stringify({ error: "server error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    return json({ ok: true });
+  } catch {
+    return json({ error: "server error" }, 500);
   }
-};
+}
 
-// Reject non-POST methods.
-export const onRequest: PagesFunction<Env> = async ({ request }) => {
-  if (request.method !== "POST") {
-    return new Response(JSON.stringify({ error: "method not allowed" }), {
-      status: 405,
-      headers: {
-        "Content-Type": "application/json",
-        Allow: "POST",
-      },
-    });
-  }
-  return new Response(JSON.stringify({ error: "method not allowed" }), {
-    status: 405,
-    headers: { "Content-Type": "application/json" },
-  });
+export default {
+  async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/api/notify") {
+      return handleNotify(request, env);
+    }
+
+    // Everything else: static assets via [assets] binding (auto-injected as env.ASSETS)
+    return env.ASSETS.fetch(request);
+  },
 };
