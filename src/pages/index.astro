@@ -316,11 +316,21 @@ $ tlane verify trace_2026_06_16_abc123
 
       <details class="border-b border-border pb-6 group">
         <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg">
-          How is Tracelane different from Helicone or LangSmith?
+          How is Tracelane different from Helicone, LangSmith, or Langfuse?
           <span class="text-fg-dim group-open:rotate-45 transition-transform">+</span>
         </summary>
         <p class="mt-4 text-fg-muted leading-relaxed">
-          Tracelane unifies the gateway, observability, and predictive guardrail layers in one Rust binary. Helicone, Langfuse, and LangSmith are observability-first — you bring your own gateway and your own guardrails. Tracelane is also Apache 2.0 with a published self-host path; Helicone's gateway is GPL-3.0 (corporate-procurement-hostile), Arize Phoenix is ELv2 (no SaaS resale), and LangSmith is closed-source.
+          Tracelane unifies the gateway, observability, predictive guardrail, and tamper-evident audit ledger in one Rust binary. Helicone, Langfuse, and LangSmith are observability-first — you bring your own gateway and your own guardrails. Tracelane is Apache 2.0 core with a published self-host path; Helicone's gateway is GPL-3.0 (corporate-procurement-hostile), Arize Phoenix is ELv2 (no SaaS resale), and LangSmith is closed-source. Tracelane's audit ledger anchors to Sigstore Rekor — no competitor in this category offers cryptographic audit log integrity at the trace level.
+        </p>
+      </details>
+
+      <details class="border-b border-border pb-6 group">
+        <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg">
+          What about LangSmith Engine?
+          <span class="text-fg-dim group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's predictive pre-flight guardrails flag the same failure modes at the gateway before the call reaches the provider — sub-50ms p99 on commodity CPU. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 35 providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a>
         </p>
       </details>
 
