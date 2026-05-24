@@ -170,52 +170,55 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  /* Razor-light gleam — fires once on page load, then permanently still.
+     Vercel/Linear "page introduces itself" pattern. Zero ongoing cost. */
   .hero-shine {
-    background: linear-gradient(
-      110deg,
-      var(--color-fg) 0%,
-      var(--color-fg) 42%,
-      var(--color-fg-muted) 50%,
-      var(--color-fg) 58%,
-      var(--color-fg) 100%
-    );
-    background-size: 220% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hero-sheen 9s ease-in-out infinite;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
   }
-  @keyframes hero-sheen {
-    0%   { background-position: 100% 0; }
-    100% { background-position: -120% 0; }
+  .hero-shine::before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: 0;
+    width: 1px;
+    height: 130%;
+    background: var(--color-fg);
+    z-index: -1;
+    pointer-events: none;
+    transform: translate3d(-40px, 0, 0) rotate(10deg);
+    transform-origin: top center;
+    opacity: 0;
+    animation: hero-razor 1.4s cubic-bezier(0.55, 0, 0.2, 1) 0.4s both;
+  }
+  @keyframes hero-razor {
+    0%   { transform: translate3d(-40px, 0, 0) rotate(10deg); opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { transform: translate3d(120vmax, 0, 0) rotate(10deg); opacity: 1; }
+    100% { transform: translate3d(120vmax, 0, 0) rotate(10deg); opacity: 0; }
   }
 
+  /* Hover lift — border brightens, 1px nudge. No drop shadow.
+     Linear treatment. Fires only on user intent; zero idle cost. */
   .lift-card {
-    transition:
-      border-color 0.2s ease,
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
   .lift-card:hover {
     border-color: var(--color-border-strong);
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px -12px oklch(0% 0 0 / 0.35);
   }
 
+  /* Static fg-tinted ring on the recommended tier. No animation, no breath.
+     Quiet visual emphasis — the page stays calm. */
   .glow-pulse { position: relative; }
   .glow-pulse::before {
     content: "";
     position: absolute;
-    inset: -2px;
+    inset: -1px;
     border-radius: inherit;
     pointer-events: none;
-    box-shadow: 0 0 0 1px var(--color-fg), 0 0 28px -6px var(--color-fg);
-    opacity: 0.35;
-    animation: glow-pulse 4s ease-in-out infinite;
-  }
-  @keyframes glow-pulse {
-    0%, 100% { opacity: 0.3; }
-    50%      { opacity: 0.65; }
+    box-shadow: 0 0 0 1px var(--color-fg), 0 0 22px -10px var(--color-fg);
+    opacity: 0.5;
   }
 }
