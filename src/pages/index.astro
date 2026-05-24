@@ -12,7 +12,7 @@ import Base from "../layouts/Base.astro";
       Predictive reliability for AI agents.
     </h1>
     <p class="mt-8 text-lg sm:text-xl text-fg-muted max-w-2xl leading-relaxed">
-      Rust gateway across 35 providers. Full-fidelity OTel observability. Sub-50ms inline guardrails that block agent failures before they execute. Every span signed, Merkle-chained, anchored to Sigstore Rekor.
+      Rust gateway across 35 providers. Full-fidelity OTel observability. Predictive pre-flight guardrails enforce policy at the gateway, p99 sub-50ms. Every span signed, Merkle-chained, anchored to Sigstore Rekor.
     </p>
     <div class="mt-12 flex flex-col sm:flex-row gap-4">
       <a href="#notify" class="btn-primary lowercase">get notified at launch</a>
@@ -52,7 +52,7 @@ import Base from "../layouts/Base.astro";
         <p class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider">03 — guardrails</p>
         <h3 class="text-xl font-semibold text-fg">Predictive layer</h3>
         <p class="mt-3 text-fg-muted leading-relaxed">
-          12 predictors run inline before the gateway forwards. Sub-50ms p99 on Hetzner CCX13 CPU. Blocks poisoned MCP tools, infinite loops, cost runaways, PII leaks, jailbreak attempts. Fail-open with configurable timeout.
+          12 predictors run inline before the gateway forwards. Sub-50ms p99 on Hetzner CCX13 CPU. Flags poisoned MCP tools, infinite loops, cost runaways, PII leaks, jailbreak attempts in the predictive pre-flight pass. Fail-open with configurable timeout.
         </p>
       </article>
     </div>
@@ -175,7 +175,7 @@ $ tlane verify trace_2026_06_16_abc123
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
           <li>90-day retention</li>
           <li>All 12 predictors</li>
-          <li>Prompt promotion (read-only)</li>
+          <li>Predictive pre-flight history (read-only)</li>
           <li>Email support · 24h</li>
         </ul>
       </article>
@@ -189,7 +189,7 @@ $ tlane verify trace_2026_06_16_abc123
         <p class="mt-1 text-sm text-fg-subtle">100M spans / mo · unlimited seats</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
           <li>180-day retention</li>
-          <li>Eval gates + auto-rollback</li>
+          <li>Predictive pre-flight + tamper-evident promotion record</li>
           <li>WorkOS SSO</li>
           <li>Slack support · 8h</li>
         </ul>
