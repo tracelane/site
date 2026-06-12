@@ -2,26 +2,27 @@
 import Base from "../../layouts/Base.astro";
 ---
 
-<Base title="Tracelane vs LangSmith Engine — predictive pre-flight vs post-failure clustering">
+<Base title="Tracelane vs LangSmith Engine — pre-flight policy vs post-failure clustering">
   {/* ===== Hero ===== */}
-  <section class="container py-24 sm:py-32">
-    <p class="font-mono text-sm text-fg-subtle mb-8 tracking-wide lowercase">
-      tracelane vs langsmith engine
-    </p>
-    <h1 class="text-[2.5rem] sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-fg max-w-4xl">
-      Predict failures pre-flight, or cluster them post-failure.
-    </h1>
-    <p class="mt-8 text-lg sm:text-xl text-fg-muted max-w-3xl leading-relaxed">
-      LangSmith Engine (May 13, 2026) clusters production failures after they happen, files pull requests, and bills against the LangSmith plan. Tracelane flags the same failure classes inline at the gateway, sub-50ms p99, before the call reaches the provider. Different layer. Different commercial posture.
-    </p>
+  <section class="container py-24 sm:py-32 relative overflow-hidden">
+    <div class="glow glow-teal" style="width:600px;height:440px;left:50%;top:-60px;transform:translateX(-50%)"></div>
+    <div class="relative z-[2]">
+      <p class="font-mono text-sm text-fg-subtle mb-8 tracking-wide lowercase">tracelane vs langsmith engine</p>
+      <h1 class="text-[2.5rem] sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-fg max-w-4xl">
+        Flag failures pre-flight, or <span class="grad-text">cluster them after.</span>
+      </h1>
+      <p class="mt-8 text-lg sm:text-xl text-fg-muted max-w-3xl leading-relaxed">
+        LangSmith Engine (May 13, 2026) clusters production failures after they happen, files pull requests, and bills against the LangSmith plan. Tracelane flags failure classes inline at the gateway, sub-50ms target, before the call reaches the provider. Different layer. Different commercial posture.
+      </p>
+    </div>
   </section>
 
   {/* ===== TL;DR ===== */}
   <section class="container py-16 border-t border-border">
-    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">tl;dr</p>
+    <p class="font-mono text-xs text-pop mb-4 tracking-wider lowercase">tl;dr</p>
     <ul class="space-y-3 text-fg-muted max-w-3xl leading-relaxed">
       <li>— LangSmith Engine is reactive: triage after failure has shipped.</li>
-      <li>— Tracelane is predictive: flag the failure class inline at the gateway, sub-50ms p99.</li>
+      <li>— Tracelane is pre-flight: flag the failure class inline at the gateway, sub-50ms target.</li>
       <li>— Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per ToS. Tracelane is neutral OTel ingest with BYOK 0% markup across 35 providers.</li>
       <li>— Engine adds value on top of an existing LangSmith deployment. Tracelane replaces LiteLLM + Helicone/Langfuse + a custom guardrail layer with one Rust binary.</li>
       <li>— Both are useful. They sit at different layers of the agent reliability stack.</li>
@@ -30,8 +31,8 @@ import Base from "../../layouts/Base.astro";
 
   {/* ===== Capability matrix ===== */}
   <section class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Capability comparison.</h2>
-    <p class="mt-4 text-lg text-fg-muted max-w-2xl">Based on LangSmith Engine launch announcement (May 13, 2026) and LangChain documentation as of May 24, 2026.</p>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Capability comparison.</h2>
+    <p class="mt-4 text-lg text-fg-muted max-w-2xl">Based on the LangSmith Engine launch announcement (May 13, 2026) and LangChain documentation.</p>
 
     <div class="mt-12 overflow-x-auto">
       <table class="w-full text-left border-collapse text-sm">
@@ -45,7 +46,7 @@ import Base from "../../layouts/Base.astro";
         <tbody class="text-fg-muted">
           <tr class="border-b border-border">
             <td class="py-4 pr-6 text-fg">Failure handling timing</td>
-            <td class="py-4 pr-6">Pre-flight inline at gateway, p99 sub-50ms</td>
+            <td class="py-4 pr-6">Pre-flight inline at gateway, sub-50ms target</td>
             <td class="py-4">Post-failure clustering, async triage</td>
           </tr>
           <tr class="border-b border-border">
@@ -65,22 +66,22 @@ import Base from "../../layouts/Base.astro";
           </tr>
           <tr class="border-b border-border">
             <td class="py-4 pr-6 text-fg">Self-host path</td>
-            <td class="py-4 pr-6">Docker Compose, Helm, $5–15/mo VPS</td>
+            <td class="py-4 pr-6">Docker Compose, Helm, single small VPS</td>
             <td class="py-4">Hosted only (LangSmith Cloud / Enterprise)</td>
           </tr>
           <tr class="border-b border-border">
             <td class="py-4 pr-6 text-fg">Audit log integrity</td>
-            <td class="py-4 pr-6">Ed25519-signed, Merkle-chained, Sigstore Rekor anchored</td>
-            <td class="py-4">Application-layer trace storage; no cryptographic anchor</td>
+            <td class="py-4 pr-6">SHA-256 hash chain, Ed25519-signed Merkle root, offline-verifiable</td>
+            <td class="py-4">Application-layer trace storage; no cryptographic chain</td>
           </tr>
           <tr class="border-b border-border">
             <td class="py-4 pr-6 text-fg">EU AI Act Article 12 export pack</td>
-            <td class="py-4 pr-6">$999/mo add-on, available at V1 (Jun 16, 2026)</td>
+            <td class="py-4 pr-6">$999/mo add-on, available at V1</td>
             <td class="py-4">Not in launch announcement</td>
           </tr>
           <tr class="border-b border-border">
             <td class="py-4 pr-6 text-fg">Gateway included</td>
-            <td class="py-4 pr-6">Yes — Rust gateway, 35 providers, p99 25ms overhead</td>
+            <td class="py-4 pr-6">Yes — Rust gateway, 35 providers</td>
             <td class="py-4">No — assumes you bring your own (or LangChain's)</td>
           </tr>
           <tr>
@@ -95,22 +96,20 @@ import Base from "../../layouts/Base.astro";
 
   {/* ===== When to choose which ===== */}
   <section class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">When to choose which.</h2>
-
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">When to choose which.</h2>
     <div class="mt-12 grid gap-6 md:grid-cols-2">
-      <article class="rounded-md border border-border bg-bg-elevated p-8">
-        <p class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider">choose tracelane if</p>
+      <article class="rounded-lg border border-border bg-bg-elevated p-8">
+        <p class="font-mono text-xs text-pop mb-3 lowercase tracking-wider">choose tracelane if</p>
         <ul class="space-y-3 text-fg-muted text-sm leading-relaxed">
-          <li>— You want predictive prevention, not post-failure triage</li>
+          <li>— You want failures flagged pre-flight, not just triaged after</li>
           <li>— You need BYOK 0% markup across multiple providers</li>
           <li>— You need neutral OTel ingest, not a proprietary trace surface</li>
-          <li>— You need a cryptographic audit ledger for EU AI Act / DPDP / HIPAA</li>
+          <li>— You need a tamper-evident audit ledger for EU AI Act / DPDP / HIPAA</li>
           <li>— You want Apache 2.0 core with a self-host path</li>
           <li>— You don't already run LangSmith and don't want to adopt it just to get Engine</li>
         </ul>
       </article>
-
-      <article class="rounded-md border border-border bg-bg-elevated p-8">
+      <article class="rounded-lg border border-border bg-bg-elevated p-8">
         <p class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider">choose langsmith engine if</p>
         <ul class="space-y-3 text-fg-muted text-sm leading-relaxed">
           <li>— You already run LangSmith and your traces are there</li>
@@ -122,20 +121,15 @@ import Base from "../../layouts/Base.astro";
         </ul>
       </article>
     </div>
-
     <p class="mt-12 text-fg-muted max-w-3xl leading-relaxed">
-      These tools are not mutually exclusive at the architectural layer. Tracelane sits at the gateway and trace ingest layer. Engine sits on top of an existing trace store. Some teams will run both — Tracelane to flag failures pre-flight and to produce the cryptographic audit ledger, LangSmith Engine to cluster the failures that escape and draft fixes.
+      These tools are not mutually exclusive at the architectural layer. Tracelane sits at the gateway and trace-ingest layer; Engine sits on top of an existing trace store. Some teams will run both — Tracelane to flag failures pre-flight and produce the audit ledger, LangSmith Engine to cluster the failures that escape and draft fixes.
     </p>
   </section>
 
   {/* ===== CTA ===== */}
   <section class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">
-      Tracelane V1 ships Tue Jun 16, 2026.
-    </h2>
-    <p class="mt-4 text-lg text-fg-muted max-w-2xl">
-      Open core. Apache 2.0. Self-host or use the free hosted tier.
-    </p>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Tracelane V1 ships Tue Jun 16, 2026.</h2>
+    <p class="mt-4 text-lg text-fg-muted max-w-2xl">Open core. Apache 2.0. Self-host or use the free hosted tier.</p>
     <div class="mt-8 flex flex-col sm:flex-row gap-4">
       <a href="/#notify" class="btn-primary lowercase">get notified at launch</a>
       <a href="/" class="btn-secondary lowercase">back to home →</a>

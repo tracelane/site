@@ -1,14 +1,18 @@
 ---
-// no props
+const chisel = `<svg viewBox="0 0 76 76" width="20" height="20" aria-hidden="true" class="logo-mark">
+  <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/>
+  <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/>
+  <rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/>
+  <circle cx="38" cy="38" r="9" fill="var(--color-bg)" stroke="currentColor" stroke-width="3.5"/>
+  <circle cx="38" cy="38" r="3.2" fill="currentColor"/>
+</svg>`;
 ---
 
 <footer class="border-t border-border py-12 mt-24">
   <div class="container-wide grid gap-8 sm:grid-cols-2 md:grid-cols-4 text-sm">
     <div>
-      <p class="font-sans font-semibold text-fg lowercase">tracelane</p>
-      <p class="mt-3 text-fg-subtle text-xs leading-relaxed">
-        Predictive reliability for AI agents. Apache 2.0.
-      </p>
+      <p class="flex items-center gap-2 text-fg lowercase font-semibold"><span set:html={chisel} />tracelane</p>
+      <p class="mt-3 text-fg-subtle text-xs leading-relaxed">The flight recorder for AI agents. Apache 2.0.</p>
     </div>
     <nav aria-label="Product">
       <p class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider">product</p>

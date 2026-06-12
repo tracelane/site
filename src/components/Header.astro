@@ -1,50 +1,36 @@
 ---
-// no props
+const chisel = `<svg viewBox="0 0 76 76" width="22" height="22" aria-hidden="true" class="logo-mark">
+  <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/>
+  <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/>
+  <rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/>
+  <circle cx="38" cy="38" r="9" fill="var(--color-bg)" stroke="currentColor" stroke-width="3.5"/>
+  <circle cx="38" cy="38" r="3.2" fill="currentColor"/>
+</svg>`;
 ---
 
-<header class="border-b border-border bg-bg/80 backdrop-blur sticky top-0 z-50">
-  <div class="container-wide flex h-14 items-center justify-between">
-    <a
-      href="/"
-      class="font-sans font-semibold text-base tracking-tight text-fg lowercase"
-      aria-label="tracelane home"
-    >
-      tracelane
+<header class="border-b border-border sticky top-0 z-50" style="background:color-mix(in srgb, var(--color-bg) 80%, transparent);backdrop-filter:blur(16px)">
+  <div class="container-wide flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 text-fg" aria-label="tracelane home">
+      <span set:html={chisel} />
+      <span class="font-semibold text-base tracking-tight lowercase">tracelane</span>
     </a>
     <nav aria-label="Primary" class="flex items-center gap-3 sm:gap-4">
       <ul class="flex items-center gap-4 sm:gap-6 text-sm text-fg-muted lowercase">
-        <li class="hidden sm:list-item">
-          <a href="/#what" class="hover:text-fg transition-colors">what</a>
-        </li>
-        <li class="hidden sm:list-item">
-          <a href="/#audit" class="hover:text-fg transition-colors">audit ledger</a>
-        </li>
-        <li class="hidden md:list-item">
-          <a href="/#pricing" class="hover:text-fg transition-colors">pricing</a>
-        </li>
-        <li class="hidden md:list-item">
-          <a href="/security" class="hover:text-fg transition-colors">security</a>
-        </li>
-        <li>
-          <a href="https://docs.tracelane.dev" class="hover:text-fg transition-colors" rel="noopener">docs</a>
-        </li>
-        <li>
-          <a href="https://github.com/tracelane" class="hover:text-fg transition-colors" rel="me noopener">github</a>
-        </li>
+        <li class="hidden sm:list-item"><a href="/#what" class="hover:text-fg transition-colors">what</a></li>
+        <li class="hidden sm:list-item"><a href="/#audit" class="hover:text-fg transition-colors">audit ledger</a></li>
+        <li class="hidden md:list-item"><a href="/#pricing" class="hover:text-fg transition-colors">pricing</a></li>
+        <li class="hidden md:list-item"><a href="/security" class="hover:text-fg transition-colors">security</a></li>
+        <li><a href="https://docs.tracelane.dev" class="hover:text-fg transition-colors" rel="noopener">docs</a></li>
+        <li><a href="https://github.com/tracelane" class="hover:text-fg transition-colors" rel="me noopener">github</a></li>
       </ul>
-      <button
-        type="button"
-        class="theme-toggle"
-        id="theme-toggle"
-        aria-label="Toggle color theme"
-        title="Toggle theme"
-      >
+      <a href="/#notify" class="btn-primary lowercase hidden sm:inline-flex" style="padding:0.5rem 1rem;font-size:0.8125rem">get notified</a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
         </svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
     </nav>
@@ -59,9 +45,7 @@
       var current = document.documentElement.getAttribute("data-theme") || "dark";
       var next = current === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
-      try {
-        localStorage.setItem("theme", next);
-      } catch (e) {}
+      try { localStorage.setItem("theme", next); } catch (e) {}
     });
   })();
 </script>

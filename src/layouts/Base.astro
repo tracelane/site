@@ -11,8 +11,8 @@ export interface Props {
 }
 
 const {
-  title = "Tracelane · predictive reliability for AI agents",
-  description = "Apache 2.0 Rust gateway, full-fidelity OTel observability, sub-50ms predictive guardrails. Audit-ledger-first. V1 ships June 16.",
+  title = "tracelane — the flight recorder for AI agents",
+  description = "Open-source gateway for AI agents. Trace every run, replay the exact failure, and prove what happened with a tamper-evident ledger. Self-host or start free. V1 ships June 16.",
   canonical = Astro.url.pathname,
   ogImage = "/og-default.png",
 } = Astro.props;
@@ -37,11 +37,7 @@ const jsonLd = {
       name: "Tracelane",
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Linux, macOS, Windows",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       softwareVersion: "1.0.0",
       datePublished: "2026-06-16",
       license: "https://www.apache.org/licenses/LICENSE-2.0",
@@ -56,8 +52,8 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#070809" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4f7f2" media="(prefers-color-scheme: light)" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -81,7 +77,7 @@ const jsonLd = {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/space-grotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

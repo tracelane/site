@@ -2,13 +2,10 @@
 import Base from "../layouts/Base.astro";
 ---
 
-<Base
-  title="Changelog · Tracelane"
-  description="Release notes and changelog for Tracelane."
->
+<Base title="Changelog · Tracelane" description="Release notes and changelog for Tracelane.">
   <section class="container-prose py-24">
     <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">changelog</p>
-    <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Changelog.</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Changelog.</h1>
     <p class="mt-6 text-lg text-fg-muted leading-relaxed">
       Detailed release notes live at
       <a href="https://github.com/tracelane" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">github.com/tracelane</a>. Each release is Cosign-signed with SLSA Build L3 provenance.
@@ -16,14 +13,13 @@ import Base from "../layouts/Base.astro";
 
     <div class="mt-16 space-y-12">
       <article>
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">unreleased</p>
+        <p class="font-mono text-xs text-pop lowercase tracking-wider">unreleased</p>
         <h2 class="mt-2 text-xl font-semibold text-fg">V1.0.0 — coming Tue Jun 16, 2026</h2>
         <ul class="mt-4 space-y-2 text-fg-muted">
           <li>— Rust gateway across 35 LLM providers</li>
           <li>— Full-fidelity OTel GenAI observability backend</li>
-          <li>— 12 inline predictive guardrails (sub-50ms p99)</li>
-          <li>— Predictive pre-flight + tamper-evident promotion record</li>
-          <li>— Audit ledger: Ed25519 + Merkle + Sigstore Rekor</li>
+          <li>— Pre-flight policy at the gateway (schema-violation + tool-definition-drift at V1)</li>
+          <li>— Tamper-evident audit ledger: SHA-256 hash chain + Ed25519-signed Merkle root</li>
           <li>— CLI: tlane import-helicone, tlane import-litellm, tlane verify</li>
         </ul>
       </article>

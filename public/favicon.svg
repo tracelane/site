@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" fill="#0a0a0a" rx="6"/>
-  <text x="16" y="22" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="20" fill="#fafafa" text-anchor="middle" letter-spacing="-0.05em">t</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 76" width="76" height="76">
+  <rect width="76" height="76" rx="16" fill="#0a0a0a"/>
+  <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="#eaf6ec"/>
+  <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="#eaf6ec"/>
+  <rect x="20" y="36.4" width="36" height="3.2" fill="#eaf6ec"/>
+  <circle cx="38" cy="38" r="9" fill="#0a0a0a" stroke="#eaf6ec" stroke-width="3.5"/>
+  <circle cx="38" cy="38" r="3.2" fill="#eaf6ec"/>
 </svg>
