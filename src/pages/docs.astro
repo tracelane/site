@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Docs · Tracelane" description="Documentation for Tracelane lands with V1. Source and README are on GitHub today.">
+  <section class="container-prose py-24">
+    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">docs</p>
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Docs — coming soon.</h1>
+    <p class="mt-6 text-lg text-fg-muted leading-relaxed">
+      Full docs go live at
+      <code class="font-mono text-fg">docs.tracelane.dev</code>
+      with V1. Until then, the source and README live on
+      <a href="https://github.com/tracelane" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">github.com/tracelane</a>.
+    </p>
+
+    <div class="mt-16 space-y-8">
+      <article>
+        <p class="font-mono text-xs text-pop lowercase tracking-wider">what V1 docs will cover</p>
+        <ul class="mt-4 space-y-2 text-fg-muted">
+          <li>— Gateway: install, configure 35 LLM providers, traffic shaping, failover</li>
+          <li>— Tracing: OTel GenAI semantics, SDK quickstarts, replay workflow</li>
+          <li>— Audit ledger: SHA-256 hash chain + Ed25519-signed Merkle root, offline verify</li>
+          <li>— Pre-flight policy: schema-violation + tool-definition-drift checks at the gateway</li>
+          <li>— CLI: <code class="font-mono text-fg">tlane import-helicone</code>, <code class="font-mono text-fg">tlane import-litellm</code>, <code class="font-mono text-fg">tlane verify</code></li>
+          <li>— Self-host: Docker Compose for dev, Helm chart for prod, single-node Hetzner reference</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="mt-16 text-sm text-fg-subtle">
+      Get notified when V1 (and docs) ship —
+      <a href="/#notify" class="underline decoration-fg-subtle hover:decoration-fg">notify list</a>.
+    </p>
+  </section>
+</Base>
