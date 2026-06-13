@@ -165,7 +165,7 @@ $ tlane verify trace_2026_06_xx_abc123
       <p class="mt-4 text-lg text-fg-muted">Open core. Self-host free forever. Hosted tiers start at $0.</p>
     </div>
 
-    <div class="mt-16 grid gap-6 md:grid-cols-3">
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
       <article class="rounded-lg border border-border bg-bg-elevated p-6">
         <h3 class="font-semibold text-fg">OSS self-host</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$0</p>
@@ -181,21 +181,21 @@ $ tlane verify trace_2026_06_xx_abc123
       <article class="rounded-lg border border-border bg-bg-elevated p-6">
         <h3 class="font-semibold text-fg">Free hosted</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$0</p>
-        <p class="mt-1 text-sm text-fg-subtle">1M spans / mo</p>
+        <p class="mt-1 text-sm text-fg-subtle">10K traces + 10K gateway / mo</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
           <li>Single workspace, 1 seat</li>
-          <li>30-day trace retention</li>
+          <li>7-day retention · 60 RPM</li>
           <li>Pre-flight policy checks</li>
-          <li>No credit card</li>
+          <li>No credit card · no commercial use</li>
         </ul>
       </article>
 
       <article class="rounded-lg border border-border bg-bg-elevated p-6">
         <h3 class="font-semibold text-fg">Builder</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$59<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">25M spans / mo · 3 seats</p>
+        <p class="mt-1 text-sm text-fg-subtle">150K traces + 150K gateway / mo · 1 seat</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>90-day retention</li>
+          <li>30-day retention · 600 RPM</li>
           <li>Predictive pre-flight history (read-only)</li>
           <li>Audit ledger + offline verify</li>
           <li>Email support · 24h</li>
@@ -206,11 +206,11 @@ $ tlane verify trace_2026_06_xx_abc123
         <p class="absolute -top-3 left-6 px-2 bg-bg-elevated text-xs font-mono text-pop lowercase">recommended</p>
         <h3 class="font-semibold text-fg">Team</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$249<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">100M spans / mo · 10 seats</p>
+        <p class="mt-1 text-sm text-fg-subtle">1M traces + 1M gateway / mo · 10 seats</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>180-day retention</li>
+          <li>90-day retention · +$19/seat to 25</li>
           <li>Predictive pre-flight + tamper-evident promotion record</li>
-          <li>WorkOS SSO</li>
+          <li>WorkOS SSO · 99% SLA</li>
           <li>Slack support · 8h</li>
         </ul>
       </article>
@@ -218,11 +218,11 @@ $ tlane verify trace_2026_06_xx_abc123
       <article class="rounded-lg border border-border bg-bg-elevated p-6">
         <h3 class="font-semibold text-fg">Business</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$899<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">500M spans / mo</p>
+        <p class="mt-1 text-sm text-fg-subtle">5M traces + 5M gateway / mo · 25 seats</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>1-year retention</li>
-          <li>SOC 2 Type II artifacts</li>
-          <li>Cedar policy framework</li>
+          <li>180-day retention · +$19/seat to 50</li>
+          <li>Inline ensemble guardrail · 99.9% SLA</li>
+          <li>WorkOS SSO</li>
           <li>Dedicated Slack · 4h</li>
         </ul>
       </article>
@@ -230,9 +230,9 @@ $ tlane verify trace_2026_06_xx_abc123
       <article class="rounded-lg border border-border bg-bg-elevated p-6">
         <h3 class="font-semibold text-fg">Enterprise</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$2,999+<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">Custom volume</p>
+        <p class="mt-1 text-sm text-fg-subtle">25M+ traces · custom</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>Unlimited retention · unlimited seats</li>
+          <li>365-day retention · unlimited seats</li>
           <li>Region pinning (US / EU / IN)</li>
           <li>BYOK + CMK self-service</li>
           <li>1h SLA · dedicated CSM</li>
@@ -255,7 +255,7 @@ $ tlane verify trace_2026_06_xx_abc123
       </div>
     </div>
 
-    <p class="mt-12 text-center text-sm text-fg-subtle">Core tiers available at V1 launch · Tue Jun 16, 2026</p>
+    <p class="mt-12 text-center text-sm text-fg-subtle">Metered in traces, not spans — one gateway call counts as 0.1 trace, and failed requests aren't billed. Core tiers available at launch · coming soon.</p>
   </section>
 
   {/* ===== Trust ===== */}
@@ -339,7 +339,7 @@ $ tlane verify trace_2026_06_xx_abc123
 
       <details class="border-b border-border pb-6 group">
         <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between text-fg">When does V1 launch?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Tuesday, June 16, 2026 on Hacker News Show HN, X, LinkedIn, and Bluesky. Get on the notification list above.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">Soon — we're finishing the V1 quality gate. Drop your email above and you'll get a single message the day it's live, with the Show HN, X, LinkedIn, and Bluesky links.</p>
       </details>
     </div>
   </section>
@@ -349,7 +349,7 @@ $ tlane verify trace_2026_06_xx_abc123
     <div class="glow glow-lime" style="width:480px;height:380px;left:50%;top:-120px;transform:translateX(-50%)"></div>
     <div class="max-w-2xl relative z-[2]">
       <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Get the V1 launch email.</h2>
-      <p class="mt-4 text-lg text-fg-muted">One email on June 16. Then nothing unless you opt into product updates. No newsletter, no marketing automation.</p>
+      <p class="mt-4 text-lg text-fg-muted">One email the day we launch. Then nothing unless you opt into product updates. No newsletter, no marketing automation.</p>
       <form id="notify-form" class="mt-8 flex flex-col sm:flex-row gap-3" method="POST" action="/api/notify">
         <label for="email" class="sr-only">email address</label>
         <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@company.com"
@@ -406,7 +406,7 @@ $ tlane verify trace_2026_06_xx_abc123
           body: JSON.stringify({ email: email }),
           headers: { "Content-Type": "application/json" },
         });
-        if (res.ok) { status.textContent = "You're on the list. See you June 16."; form.reset(); }
+        if (res.ok) { status.textContent = "You're on the list. We'll email you the day we launch."; form.reset(); }
         else { var data = await res.json().catch(function () { return {}; }); status.textContent = data.error || "Something went wrong. Try again."; }
       } catch (err) { status.textContent = "Network error. Try again."; }
       finally { submitBtn.disabled = false; }
