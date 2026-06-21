@@ -53,11 +53,9 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
             <source src="/hero.mp4" type="video/mp4" />
           </video>
           <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the tracelane story">
-            <span class="stage-chip">▶ the 45-second story</span>
             <span class="play">
               <svg width="26" height="30" viewBox="0 0 26 30" fill="#06120b" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z" /></svg>
             </span>
-            <span class="stage-cap">watch what your agent actually did</span>
             <span class="stage-logo" set:html={chisel} />
           </button>
         </div>
@@ -98,16 +96,16 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       <p class="mt-4 text-lg text-fg-muted">Three things, one Rust binary. Open core. Apache 2.0.</p>
     </div>
     <div class="mt-16 grid gap-5 md:grid-cols-6 md:auto-rows-fr reveal-group cards-hover">
-      <article class="glass rounded-2xl p-8 md:col-span-3 md:row-span-2 flex flex-col">
+      <article class="glass rounded-2xl p-6 md:col-span-3 md:row-span-2 flex flex-col">
         <div class="feat-glyph" aria-hidden="true"><span class="glyph-eq"><i></i><i></i><i></i><i></i><i></i></span></div>
         <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">01 — record</p>
-        <h3 class="text-2xl font-medium text-fg">Universal gateway</h3>
+        <h3 class="text-xl font-medium text-fg">Universal gateway</h3>
         <p class="mt-3 text-fg-muted leading-relaxed">
           One endpoint in front of every model. Bring your own keys, 0% markup, bounded overhead — and every call is captured in full fidelity.
         </p>
         <div class="sig-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </article>
-      <article class="glass rounded-2xl p-8 md:col-span-3">
+      <article class="glass rounded-2xl p-6 md:col-span-3">
         <div class="feat-glyph" aria-hidden="true"><svg class="glyph-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/></svg></div>
         <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">02 — replay</p>
         <h3 class="text-xl font-medium text-fg">Replay the failure</h3>
@@ -115,7 +113,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
           Step-level trace of prompts, tool calls, latency, and cost — down to the exact call that broke, and whether you've seen it before.
         </p>
       </article>
-      <article class="glass rounded-2xl p-8 md:col-span-3">
+      <article class="glass rounded-2xl p-6 md:col-span-3">
         <div class="feat-glyph" aria-hidden="true"><svg class="glyph-prove" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg></div>
         <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">03 — prove</p>
         <h3 class="text-xl font-medium text-fg">Prove it</h3>
@@ -323,8 +321,8 @@ $ tlane verify trace_2026_06_xx_abc123
 
   {/* ===== FAQ ===== */}
   <section id="faq" class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Frequently asked.</h2>
-    <div class="mt-16 space-y-4 max-w-3xl reveal-group">
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg text-center">Frequently asked.</h2>
+    <div class="mt-16 space-y-4 max-w-3xl mx-auto reveal-group text-left">
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What is Tracelane?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
         <p class="mt-4 text-fg-muted leading-relaxed">Tracelane is an open-source (Apache 2.0) flight recorder for AI agents: a universal Rust LLM gateway, full-fidelity OpenTelemetry observability, and a tamper-evident audit ledger. Each event is SHA-256 hash-chained and the Merkle root is Ed25519-signed every 100 events, so any trace can be verified offline.</p>
@@ -375,7 +373,7 @@ $ tlane verify trace_2026_06_xx_abc123
   {/* ===== Notify ===== */}
   <section id="notify" class="container py-24 border-t border-border relative overflow-hidden">
     <div class="glow glow-lime" style="width:480px;height:380px;left:50%;top:-120px;transform:translateX(-50%)"></div>
-    <div class="max-w-2xl relative z-[2] glass rounded-2xl p-8 sm:p-10">
+    <div class="max-w-2xl mx-auto text-center relative z-[2] glass rounded-2xl p-8 sm:p-10">
       <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Get the V1 launch email.</h2>
       <p class="mt-4 text-lg text-fg-muted">One email the day we launch. Then nothing unless you opt into product updates. No newsletter, no marketing automation.</p>
       <form id="notify-form" class="mt-8 flex flex-col sm:flex-row gap-3" method="POST" action="/api/notify">
