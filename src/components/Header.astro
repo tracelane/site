@@ -1,5 +1,5 @@
 ---
-const chisel = `<svg viewBox="0 0 76 76" width="22" height="22" aria-hidden="true" class="logo-mark">
+const chisel = `<svg viewBox="0 0 76 76" width="30" height="30" aria-hidden="true" class="logo-mark">
   <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/>
   <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/>
   <rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/>
@@ -8,44 +8,36 @@ const chisel = `<svg viewBox="0 0 76 76" width="22" height="22" aria-hidden="tru
 </svg>`;
 ---
 
-<header class="border-b border-border sticky top-0 z-50" style="background:color-mix(in srgb, var(--color-bg) 80%, transparent);backdrop-filter:blur(16px)">
-  <div class="container-wide flex h-16 items-center justify-between">
+<header class="site-header border-b border-border sticky top-0 z-50" style="background:color-mix(in srgb, var(--color-bg) 80%, transparent);backdrop-filter:blur(16px)">
+  <div class="w-full px-5 sm:px-8 flex h-[4.25rem] items-center justify-between">
     <a href="/" class="flex items-center gap-2.5 text-fg" aria-label="tracelane home">
       <span set:html={chisel} />
-      <span class="font-semibold text-base tracking-tight lowercase">tracelane</span>
+      <span class="font-semibold text-xl tracking-tight lowercase" style="font-family:var(--font-display)">tracelane</span>
     </a>
-    <nav aria-label="Primary" class="flex items-center gap-3 sm:gap-4">
-      <ul class="flex items-center gap-4 sm:gap-6 text-sm text-fg-muted lowercase">
-        <li class="hidden sm:list-item"><a href="/#what" class="hover:text-fg transition-colors">what</a></li>
-        <li class="hidden sm:list-item"><a href="/#audit" class="hover:text-fg transition-colors">audit ledger</a></li>
-        <li class="hidden md:list-item"><a href="/#pricing" class="hover:text-fg transition-colors">pricing</a></li>
-        <li class="hidden md:list-item"><a href="/security" class="hover:text-fg transition-colors">security</a></li>
-        <li><a href="/docs" class="hover:text-fg transition-colors">docs</a></li>
-        <li><a href="https://github.com/tracelane" class="hover:text-fg transition-colors" rel="me noopener">github</a></li>
+    <nav aria-label="Primary" class="flex items-center gap-3 sm:gap-5">
+      <ul class="flex items-center gap-4 sm:gap-6 text-sm text-fg-muted">
+        <li class="hidden sm:list-item"><a href="/#what" class="hover:text-fg transition-colors">What</a></li>
+        <li class="hidden sm:list-item"><a href="/#audit" class="hover:text-fg transition-colors">Audit Ledger</a></li>
+        <li class="hidden md:list-item"><a href="/#pricing" class="hover:text-fg transition-colors">Pricing</a></li>
+        <li class="hidden md:list-item"><a href="/security" class="hover:text-fg transition-colors">Security</a></li>
+        <li><a href="/docs" class="hover:text-fg transition-colors">Docs</a></li>
+        <li><a href="https://github.com/tracelane" class="hover:text-fg transition-colors" rel="me noopener">GitHub</a></li>
       </ul>
-      <a href="/#notify" class="btn-primary lowercase hidden sm:inline-flex" style="padding:0.5rem 1rem;font-size:0.8125rem">get notified</a>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-      </button>
+      <a href="/#notify" class="btn-primary hidden sm:inline-flex whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.8125rem">Be First to Know</a>
     </nav>
   </div>
 </header>
 
 <script is:inline>
+  // header gains a subtle shadow once the page is scrolled
   (function () {
-    var btn = document.getElementById("theme-toggle");
-    if (!btn) return;
-    btn.addEventListener("click", function () {
-      var current = document.documentElement.getAttribute("data-theme") || "dark";
-      var next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
-    });
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+    var onScroll = function () {
+      if (window.scrollY > 8) header.classList.add("scrolled");
+      else header.classList.remove("scrolled");
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
   })();
 </script>
