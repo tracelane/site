@@ -153,6 +153,35 @@ html[data-theme="databricks"] {
   --color-border: #e6e1d9; --color-border-strong: #cdc6ba;
   --color-accent: #ff3621; --color-accent-2: #e8330e; --color-pop: #ff3621; --color-verify: #12824e;
 }
+/* Ember — lava-adjacent warm red, but more orange + on a neutral charcoal/white
+   canvas (no navy, no oat) so it reads as its own brand, not Databricks. */
+html[data-theme="ember"] {
+  --color-bg: #fbfaf9; --color-bg-elevated: #ffffff; --color-bg-subtle: #f1f0ed;
+  --color-fg: #1b1c1b; --color-fg-muted: #52585a; --color-fg-subtle: #767b7c; --color-fg-dim: #a6abab;
+  --color-border: #e7e5e0; --color-border-strong: #d3d0c9;
+  --color-accent: #f24e2e; --color-accent-2: #d83f1f; --color-pop: #f24e2e; --color-verify: #12824e;
+}
+/* Cherry — vivid red with a slight pink lean, on a cool neutral canvas. */
+html[data-theme="cherry"] {
+  --color-bg: #fbfafb; --color-bg-elevated: #ffffff; --color-bg-subtle: #f1f0f2;
+  --color-fg: #1c1a1c; --color-fg-muted: #565358; --color-fg-subtle: #7a787d; --color-fg-dim: #aaa7ac;
+  --color-border: #e8e6e9; --color-border-strong: #d4d1d6;
+  --color-accent: #e11d48; --color-accent-2: #c2173d; --color-pop: #e11d48; --color-verify: #12824e;
+}
+/* Crimson — classic true red, balanced and confident. */
+html[data-theme="crimson"] {
+  --color-bg: #fbfafa; --color-bg-elevated: #ffffff; --color-bg-subtle: #f1f0ef;
+  --color-fg: #1b1b1a; --color-fg-muted: #555654; --color-fg-subtle: #797a78; --color-fg-dim: #a9aaa8;
+  --color-border: #e7e6e4; --color-border-strong: #d3d2cf;
+  --color-accent: #d32030; --color-accent-2: #b81b29; --color-pop: #d32030; --color-verify: #12824e;
+}
+/* Garnet — deep luxe wine-red on a warm cream canvas. Most "premium" red. */
+html[data-theme="garnet"] {
+  --color-bg: #faf8f6; --color-bg-elevated: #ffffff; --color-bg-subtle: #f1edea;
+  --color-fg: #1f1a19; --color-fg-muted: #575250; --color-fg-subtle: #7a7572; --color-fg-dim: #a9a4a1;
+  --color-border: #e8e3df; --color-border-strong: #d4cdc8;
+  --color-accent: #8e1a2a; --color-accent-2: #74121f; --color-pop: #8e1a2a; --color-verify: #12824e;
+}
 
 /* ---- Preview palette switcher (floating, bottom-center) ---- */
 .theme-switcher {
