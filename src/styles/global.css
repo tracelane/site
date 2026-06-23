@@ -33,29 +33,29 @@
   --font-sans: "Geist", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrainsMono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Color tokens — DARK default, cool slate base (lifted off OLED black) */
-  --color-bg: #0e1117;
-  --color-bg-elevated: #181c26;
-  --color-bg-subtle: #212733;
-  --color-fg: #eef2f8;
-  --color-fg-muted: #9ca7b6;
-  --color-fg-subtle: #6c7682;
-  --color-fg-dim: #4d5662;
-  --color-border: #272d39;
-  --color-border-strong: #38414f;
+  /* Color tokens — LIGHT, clean white base with cool slate ink */
+  --color-bg: #ffffff;
+  --color-bg-elevated: #f6f8fb;
+  --color-bg-subtle: #eef1f6;
+  --color-fg: #0e1117;
+  --color-fg-muted: #4c5765;
+  --color-fg-subtle: #69737f;
+  --color-fg-dim: #98a2af;
+  --color-border: #e4e8ef;
+  --color-border-strong: #cdd5df;
 
-  /* Brand signal — cool cyan → blue liquid gradient */
-  --color-accent: #34d6ee;   /* cyan — primary brand */
-  --color-accent-2: #4f8dff; /* blue — gradient partner */
-  --color-pop: #34d6ee;      /* eyebrows, dots, recommended */
+  /* Brand signal — cool cyan → blue liquid gradient (deepened for contrast on white) */
+  --color-accent: #0e9fc4;   /* cyan — primary brand */
+  --color-accent-2: #2f6df0; /* blue — gradient partner */
+  --color-pop: #0e9fc4;      /* eyebrows, dots, recommended */
 
   /* Proof signal — emerald. ONLY for verify / valid / crypto states. */
-  --color-verify: #34e0a1;
+  --color-verify: #0fae74;
 
-  /* Liquid-glass surface (frosted, translucent) */
-  --glass-bg: color-mix(in srgb, #aac6ff 7%, transparent);
-  --glass-border: color-mix(in srgb, #ffffff 10%, transparent);
-  --glass-hi: color-mix(in srgb, #ffffff 14%, transparent);
+  /* Liquid-glass surface (frosted, translucent) — subtle dark frost on white */
+  --glass-bg: color-mix(in srgb, #0e1117 4%, transparent);
+  --glass-border: color-mix(in srgb, #0e1117 9%, transparent);
+  --glass-hi: color-mix(in srgb, #ffffff 65%, transparent);
 }
 
 /* ---- Fonts ---- */
@@ -91,7 +91,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 body { margin: 0; min-height: 100vh; overflow-x: hidden; }
 
