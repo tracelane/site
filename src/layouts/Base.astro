@@ -47,11 +47,15 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="teal">
   <head>
+    <script is:inline>
+      // PREVIEW: apply the last-picked palette before paint (no flash)
+      (function () { try { var t = localStorage.getItem("tl-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {} })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0e1117" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -75,8 +79,7 @@ const jsonLd = {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <link rel="preload" href="/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/dm-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
@@ -89,6 +92,39 @@ const jsonLd = {
       <slot />
     </main>
     <Footer />
+
+    {/* PREVIEW ONLY — palette switcher. Remove before shipping. */}
+    <div class="theme-switcher" role="group" aria-label="Preview color palette">
+      <span class="ts-label">Palette</span>
+      <button type="button" data-set-theme="teal"><i style="background:#0d9aa6"></i><span>Teal</span></button>
+      <button type="button" data-set-theme="cobalt"><i style="background:#2f6bff"></i><span>Cobalt</span></button>
+      <button type="button" data-set-theme="emerald"><i style="background:#0e9f6e"></i><span>Emerald</span></button>
+      <button type="button" data-set-theme="iris"><i style="background:#6451e8"></i><span>Iris</span></button>
+      <button type="button" data-set-theme="apple"><i style="background:#4f9e10"></i><span>Apple</span></button>
+      <button type="button" data-set-theme="databricks"><i style="background:#ff3621"></i><span>Lava</span></button>
+    </div>
+
+    <script is:inline>
+      // PREVIEW: palette switcher — sets data-theme + remembers the choice
+      (function () {
+        var sw = document.querySelector(".theme-switcher");
+        if (!sw) return;
+        function mark(t) {
+          sw.querySelectorAll("button").forEach(function (b) {
+            b.setAttribute("aria-pressed", b.getAttribute("data-set-theme") === t ? "true" : "false");
+          });
+        }
+        mark(document.documentElement.getAttribute("data-theme"));
+        sw.addEventListener("click", function (e) {
+          var b = e.target.closest("button");
+          if (!b) return;
+          var t = b.getAttribute("data-set-theme");
+          document.documentElement.setAttribute("data-theme", t);
+          try { localStorage.setItem("tl-theme", t); } catch (_) {}
+          mark(t);
+        });
+      })();
+    </script>
 
     <script is:inline>
       // top scroll-progress bar
