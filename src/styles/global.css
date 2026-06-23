@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 /* ============================================================
-   tracelane — Direction D "Liquid Signal"
-   Modern dev-infra aesthetic (Linear / Braintrust / Langfuse family),
-   liquid-glass + minimalist: cool GRAPHITE base, frosted translucent
-   surfaces, a cool CYAN→BLUE liquid gradient as the brand signal, and
-   EMERALD reserved for "verify / valid / proof" states. Geist type.
-   Restrained, minimal motion. No indigo, no violet, no amber.
-   Token NAMES are unchanged, so every existing page (security,
-   privacy, terms, 404, changelog, vs/*) re-skins automatically.
+   tracelane — clean, flat light theme
+   Warm "oat" off-white base, navy ink, a single flat LAVA red-orange
+   as the brand signal, and GREEN reserved for "verify / valid / proof"
+   states. DM Sans display + body, JetBrains Mono for code. Restrained,
+   minimal motion; flat surfaces (no glass blur / gradients).
+   Token NAMES are unchanged, so every page (security, privacy, terms,
+   404, changelog, vs/*) re-skins automatically.
    ============================================================ */
 
 @theme {
