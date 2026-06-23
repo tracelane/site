@@ -5,8 +5,8 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
   <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/>
   <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/>
   <rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/>
-  <circle cx="38" cy="38" r="9" fill="var(--color-bg)" stroke="currentColor" stroke-width="3.5"/>
-  <circle cx="38" cy="38" r="3.2" fill="currentColor"/>
+  <circle cx="38" cy="38" r="9" fill="var(--color-bg)" stroke="currentColor" stroke-width="3"/>
+  <circle cx="38" cy="38" r="3.6" fill="none" stroke="currentColor" stroke-width="2.6"/>
 </svg>`;
 ---
 
@@ -54,7 +54,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
           </video>
           <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the tracelane story">
             <span class="play">
-              <svg width="26" height="30" viewBox="0 0 26 30" fill="#06120b" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z" /></svg>
+              <svg width="26" height="30" viewBox="0 0 26 30" fill="#ffffff" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z" /></svg>
             </span>
             <span class="stage-logo" set:html={chisel} />
           </button>

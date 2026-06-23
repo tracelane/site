@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 /* ============================================================
-   tracelane — Direction D "Liquid Signal"
-   Modern dev-infra aesthetic (Linear / Braintrust / Langfuse family),
-   liquid-glass + minimalist: cool GRAPHITE base, frosted translucent
-   surfaces, a cool CYAN→BLUE liquid gradient as the brand signal, and
-   EMERALD reserved for "verify / valid / proof" states. Geist type.
-   Restrained, minimal motion. No indigo, no violet, no amber.
-   Token NAMES are unchanged, so every existing page (security,
-   privacy, terms, 404, changelog, vs/*) re-skins automatically.
+   tracelane — clean, flat light theme
+   Warm "oat" off-white base, navy ink, a single flat LAVA red-orange
+   as the brand signal, and GREEN reserved for "verify / valid / proof"
+   states. DM Sans display + body, JetBrains Mono for code. Restrained,
+   minimal motion; flat surfaces (no glass blur / gradients).
+   Token NAMES are unchanged, so every page (security, privacy, terms,
+   404, changelog, vs/*) re-skins automatically.
    ============================================================ */
 
 @theme {
@@ -28,37 +27,44 @@
   --radius-md: 0.625rem;
   --radius-lg: 1.25rem;
 
-  /* Fonts — display + body = Geist, mono = JetBrains Mono (all self-hosted) */
-  --font-display: "Geist", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: "Geist", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Fonts — display + body = DM Sans (Databricks-style), mono = JetBrains Mono (all self-hosted) */
+  --font-display: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrainsMono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Color tokens — DARK default, cool slate base (lifted off OLED black) */
-  --color-bg: #0e1117;
-  --color-bg-elevated: #181c26;
-  --color-bg-subtle: #212733;
-  --color-fg: #eef2f8;
-  --color-fg-muted: #9ca7b6;
-  --color-fg-subtle: #6c7682;
-  --color-fg-dim: #4d5662;
-  --color-border: #272d39;
-  --color-border-strong: #38414f;
+  /* Color tokens — LIGHT, Databricks-style: warm "oat" white + navy ink */
+  --color-bg: #fbfaf8;          /* warm off-white page */
+  --color-bg-elevated: #ffffff; /* cards sit brighter than the page */
+  --color-bg-subtle: #f1eee8;   /* oat — code blocks / insets */
+  --color-fg: #1b3139;          /* navy 800 — primary ink */
+  --color-fg-muted: #46585f;    /* muted navy-gray body */
+  --color-fg-subtle: #6a7a80;
+  --color-fg-dim: #98a4a8;
+  --color-border: #e6e1d9;      /* warm hairline */
+  --color-border-strong: #cdc6ba;
 
-  /* Brand signal — cool cyan → blue liquid gradient */
-  --color-accent: #34d6ee;   /* cyan — primary brand */
-  --color-accent-2: #4f8dff; /* blue — gradient partner */
-  --color-pop: #34d6ee;      /* eyebrows, dots, recommended */
+  /* Brand signal — Databricks "Lava" red-orange (flat, no gradient) */
+  --color-accent: #ff3621;   /* lava 600 — primary brand */
+  --color-accent-2: #e8330e; /* lava 700 — hover / depth */
+  --color-pop: #ff3621;      /* eyebrows, dots, recommended */
 
-  /* Proof signal — emerald. ONLY for verify / valid / crypto states. */
-  --color-verify: #34e0a1;
+  /* Proof signal — green. ONLY for verify / valid / crypto states. */
+  --color-verify: #12824e;
 
-  /* Liquid-glass surface (frosted, translucent) */
-  --glass-bg: color-mix(in srgb, #aac6ff 7%, transparent);
-  --glass-border: color-mix(in srgb, #ffffff 10%, transparent);
-  --glass-hi: color-mix(in srgb, #ffffff 14%, transparent);
+  /* Card surface — flat white on oat (no glass blur) */
+  --glass-bg: #ffffff;
+  --glass-border: #e6e1d9;
+  --glass-hi: color-mix(in srgb, #ffffff 0%, transparent);
 }
 
 /* ---- Fonts ---- */
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/dm-sans-var-latin.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-display: swap;
+  font-style: normal;
+}
 @font-face {
   font-family: "Geist";
   src: url("/fonts/geist-var-latin.woff2") format("woff2");
@@ -91,14 +97,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 body { margin: 0; min-height: 100vh; overflow-x: hidden; }
 
-/* Display face on headings — Geist, optically tightened */
-h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.025em; }
+/* Display face on headings — DM Sans, optically tightened */
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
 
-::selection { background: var(--color-pop); color: #04161b; }
+::selection { background: var(--color-pop); color: #ffffff; }
 :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 2px; }
 
 /* ---- Layout ---- */
@@ -108,23 +114,16 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.025em; }
 
 /* ---- Buttons ---- */
 .btn-primary {
-  position: relative; overflow: hidden;
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.85rem 1.5rem;
-  background: linear-gradient(100deg, var(--color-accent-2), var(--color-accent));
-  color: #04161b;
+  background: var(--color-accent);
+  color: #ffffff;
   font-weight: 600; font-size: var(--text-sm);
-  border-radius: var(--radius-md); border: none; cursor: pointer;
+  border-radius: var(--radius-sm); border: none; cursor: pointer;
   text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.25s ease, opacity 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
-.btn-primary::after {
-  content: ""; position: absolute; top: 0; left: -130%; width: 60%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent);
-  transform: skewX(-20deg); transition: left 0.6s ease; pointer-events: none;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px -12px var(--color-accent); }
-.btn-primary:hover::after { left: 150%; }
+.btn-primary:hover { background: var(--color-accent-2); transform: translateY(-1px); box-shadow: 0 10px 24px -14px rgba(255,54,33,0.7); }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
 .btn-secondary {
@@ -150,37 +149,30 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.025em; }
 .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--color-pop); box-shadow: 0 0 10px var(--color-pop); }
 
 .grad-text {
-  background: linear-gradient(100deg, var(--color-accent-2), var(--color-accent), var(--color-accent-2));
-  background-size: 200% auto;
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  animation: grad-shimmer 7s linear infinite;
+  color: var(--color-accent);
 }
 @keyframes grad-shimmer { to { background-position: 200% center; } }
 .logo-mark { display: block; color: var(--color-fg); }
 
-/* ---- Ambient glows ---- */
-.glow { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+/* ---- Ambient glows (disabled — Databricks aesthetic is flat) ---- */
+.glow { display: none; position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
 .glow-teal { background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 32%, transparent), transparent 62%); }
 .glow-lime { background: radial-gradient(circle, color-mix(in srgb, var(--color-accent-2) 24%, transparent), transparent 60%); }
 
-/* ---- Liquid-glass surface utility (frosted, translucent, top-lit) ---- */
+/* ---- Card surface utility (flat white on oat) ---- */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 1px 0 0 var(--glass-hi) inset, 0 24px 60px -34px rgba(0,0,0,0.85);
+  box-shadow: 0 1px 2px rgba(27,49,57,0.04), 0 8px 24px -18px rgba(27,49,57,0.18);
 }
 
-/* ---- Hero product window (liquid glass) ---- */
+/* ---- Hero product window (flat card) ---- */
 .stage-wrap {
   position: relative; z-index: 2; max-width: 1000px; margin: 3.75rem auto 0;
   padding: 10px; border-radius: calc(var(--radius-lg) + 6px);
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  background: #ffffff;
   border: 1px solid var(--glass-border);
-  box-shadow: 0 1px 0 0 var(--glass-hi) inset,
-              0 60px 140px -60px color-mix(in srgb, var(--color-accent) 42%, transparent),
-              0 30px 70px -42px rgba(0,0,0,0.85);
+  box-shadow: 0 2px 6px rgba(27,49,57,0.05), 0 40px 80px -50px rgba(27,49,57,0.30);
 }
 .win-bar { display: flex; align-items: center; gap: 0.5rem; padding: 4px 8px 12px; }
 .win-dots { display: inline-flex; gap: 7px; }
@@ -268,7 +260,7 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.025em; }
 .cards-hover > article:hover, .cards-hover > div:hover {
   transform: translateY(-4px);
   border-color: var(--color-accent);
-  box-shadow: 0 18px 50px -24px color-mix(in srgb, var(--color-accent) 70%, transparent);
+  box-shadow: 0 16px 40px -26px rgba(27,49,57,0.35);
 }
 
 /* ---- Header nav underline ---- */
@@ -291,6 +283,7 @@ header.site-header.scrolled { box-shadow: 0 12px 32px -22px rgba(0,0,0,0.7); }
 /* ---- Hero animated background (aurora mesh + dot grid) ---- */
 .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .hero-aurora {
+  display: none; /* flat Databricks hero — no aurora mesh */
   position: absolute; inset: -30% -10%;
   background:
     radial-gradient(40% 50% at 28% 26%, color-mix(in srgb, var(--color-accent) 24%, transparent), transparent 70%),
@@ -404,7 +397,7 @@ header.site-header.scrolled { box-shadow: 0 12px 32px -22px rgba(0,0,0,0.7); }
 /* ---- Skip link ---- */
 .skip-link {
   position: absolute; top: -100px; left: 1rem; padding: 0.75rem 1.25rem;
-  background: var(--color-pop); color: #04161b; font-weight: 600;
+  background: var(--color-pop); color: #ffffff; font-weight: 600;
   border-radius: var(--radius-sm); z-index: 100; transition: top 0.15s ease;
 }
 .skip-link:focus { top: 1rem; }
