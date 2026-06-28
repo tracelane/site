@@ -65,8 +65,8 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
     {/* ===== Provider marquee ===== */}
     <div class="marquee mt-20">
       <div class="marq-track">
-        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>35+ providers</span>
-        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>35+ providers</span>
+        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>30+ providers</span>
+        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>30+ providers</span>
       </div>
     </div>
   </header>
@@ -128,23 +128,18 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
   <section id="migrate" class="container py-24 border-t border-border">
     <div class="reveal max-w-2xl">
       <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Migrating from a tool that got acquired or breached?</h2>
-      <p class="mt-4 text-lg text-fg-muted">Two CLI commands at V1. No data leaves your infrastructure during migration.</p>
+      <p class="mt-4 text-lg text-fg-muted">Importers land with V1 — no data leaves your infrastructure during migration.</p>
     </div>
     <div class="mt-12 grid gap-6 md:grid-cols-2 reveal-group cards-hover">
       <article class="glass rounded-2xl p-8">
         <h3 class="text-xl font-medium text-fg">From Helicone</h3>
-        <p class="mt-2 text-sm text-fg-muted">For teams stranded after the Mintlify acquisition (Mar 2026).</p>
-        <pre class="mt-6 rounded-md bg-bg-subtle p-4 font-mono text-sm overflow-x-auto text-fg"><code>$ tlane import-helicone \
-    --source-url $HELICONE_URL \
-    --source-key $HELICONE_KEY</code></pre>
-        <p class="mt-4 text-sm text-fg-muted">Migrates traces, configs, prompts, and rate-limit rules.</p>
+        <p class="mt-2 text-sm text-fg-muted">For teams on Helicone after it entered maintenance mode (Mintlify acquisition, Mar 2026).</p>
+        <p class="mt-4 text-sm text-fg-muted">One-command import of traces, configs, prompts, and rate-limit rules — <span class="text-fg">lands with V1</span>.</p>
       </article>
       <article class="glass rounded-2xl p-8">
         <h3 class="text-xl font-medium text-fg">From LiteLLM</h3>
         <p class="mt-2 text-sm text-fg-muted">After CVE-2026-33634 (Mar 24) and CVE-2026-42208 (Apr 24).</p>
-        <pre class="mt-6 rounded-md bg-bg-subtle p-4 font-mono text-sm overflow-x-auto text-fg"><code>$ tlane import-litellm \
-    --config litellm_config.yaml</code></pre>
-        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p>
+        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement; <span class="text-fg">config import lands with V1</span>. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p>
       </article>
     </div>
   </section>
@@ -164,11 +159,11 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       <div class="mt-16 grid gap-5 md:grid-cols-3 text-sm reveal-group cards-hover">
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">eu ai act</p>
-          <p class="mt-3 text-fg-muted">Article 12 export pack — full audit trail for high-risk AI systems. Annex III enforcement deferred to Dec 2, 2027 (Digital Omnibus, May 7, 2026); the ledger ships at V1.</p>
+          <p class="mt-3 text-fg-muted">Article 12 export pack — full audit trail for high-risk AI systems. Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>); the ledger ships at V1.</p>
         </div>
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">india dpdp</p>
-          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. Region-pinned storage. Audit-log retention configurable.</p>
+          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. EU data residency at V1; India residency on the roadmap, on demand. Audit-log retention configurable.</p>
         </div>
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">hipaa</p>
@@ -177,9 +172,9 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       </div>
 
       <pre class="mt-12 glass rounded-2xl p-6 font-mono text-sm overflow-x-auto text-fg"><code><span class="text-fg-subtle"># verify any trace offline — no trust in us required</span>
-$ tlane verify trace_2026_06_xx_abc123
+$ tlane verify &lt;trace-id&gt;
 <span class="text-verify">✓</span> signature valid (Ed25519, Merkle root)
-<span class="text-verify">✓</span> hash chain unbroken (SHA-256, depth 1,402)
+<span class="text-verify">✓</span> hash chain unbroken (SHA-256)
 <span class="text-verify">✓</span> tamper-evident: yes <span class="caret">▋</span></code></pre>
     </div>
   </section>
@@ -197,7 +192,7 @@ $ tlane verify trace_2026_06_xx_abc123
         <p class="mt-2 font-mono text-3xl text-fg">$0</p>
         <p class="mt-1 text-sm text-fg-subtle">Apache 2.0 · forever</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>Full Rust gateway · 35 providers</li>
+          <li>Full Rust gateway · 30+ providers — 6 native adapters plus any OpenAI-compatible endpoint</li>
           <li>ClickHouse + R2 storage</li>
           <li>Tamper-evident audit ledger</li>
           <li>Community Discord support</li>
@@ -259,7 +254,7 @@ $ tlane verify trace_2026_06_xx_abc123
         <p class="mt-1 text-sm text-fg-subtle">25M+ traces · custom</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
           <li>365-day retention · custom seats</li>
-          <li>Region pinning (US / EU / IN)</li>
+          <li>Region pinning (EU at V1; US / IN on the roadmap)</li>
           <li>BYOK + CMK self-service</li>
           <li>1h SLA · dedicated CSM</li>
         </ul>
@@ -274,7 +269,7 @@ $ tlane verify trace_2026_06_xx_abc123
             <span class="font-mono text-xs text-fg-dim lowercase tracking-wider px-2 py-0.5 border border-border-strong rounded-sm">ships at v1</span>
           </div>
           <p class="mt-2 text-sm text-fg-muted">
-            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, with EU AI Act Article 12 export pack, India DPDP Phase II compliance pack, and HIPAA BAA. EU AI Act Annex III enforcement deferred to Dec 2, 2027 (Digital Omnibus, May 7, 2026).
+            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, with the EU AI Act Article 12 export pack, EU data residency, and configurable audit-log retention. India DPDP Phase II alignment and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).
           </p>
         </div>
         <p class="font-mono text-2xl text-fg shrink-0">+$999<span class="text-base text-fg-muted">/mo</span></p>
@@ -301,7 +296,7 @@ $ tlane verify trace_2026_06_xx_abc123
       </div>
       <div class="glass rounded-2xl p-5">
         <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">vuln scanning</p>
-        <p class="mt-3 text-fg-muted">OSV-Scanner + Grype + Syft on every commit. Trivy explicitly banned (CVE-2026-33634).</p>
+        <p class="mt-3 text-fg-muted">OSV-Scanner + Grype + Syft on every commit.</p>
       </div>
       <div class="glass rounded-2xl p-5">
         <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">pre-flight policy</p>
@@ -313,7 +308,7 @@ $ tlane verify trace_2026_06_xx_abc123
       </div>
       <div class="glass rounded-2xl p-5">
         <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">standards</p>
-        <p class="mt-3 text-fg-muted">OTel GenAI semconv contributor. <code class="font-mono text-xs">gen_ai.guardrail.decision</code> event proposed.</p>
+        <p class="mt-3 text-fg-muted">OTel GenAI semconv — tracking the pre-execution judgment / negative-proof proposal (<a href="https://github.com/open-telemetry/semantic-conventions/issues/3244" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">#3244</a>).</p>
       </div>
     </div>
     <p class="mt-12 text-sm text-fg-muted">Full security posture: <a href="/security" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">/security</a></p>
@@ -335,7 +330,7 @@ $ tlane verify trace_2026_06_xx_abc123
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What about LangSmith Engine?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's pre-flight policy checks flag failure modes at the gateway before the call reaches the provider — sub-50ms target. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 35 providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
+        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's pre-flight policy checks flag failure modes at the gateway before the call reaches the provider — sub-50ms target. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
@@ -345,12 +340,12 @@ $ tlane verify trace_2026_06_xx_abc123
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Which providers does Tracelane support?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">At V1: 35 providers including Anthropic, OpenAI, Google Gemini, AWS Bedrock, Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, Mistral, Azure OpenAI, Vertex AI, and more. One canonical wire format across all of them.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">At V1: 30+ providers — 6 native adapters (Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Does Tracelane support EU AI Act Article 12?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger add-on ($999/mo) ships at V1. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), EU AI Act Article 12 export pack, India DPDP Phase II compliance pack, and HIPAA BAA are all available at V1. EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) deferred enforcement to Dec 2, 2027. The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger add-on ($999/mo) ships at V1. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), the EU AI Act Article 12 export pack, and EU data residency are available at V1; the India DPDP Phase II alignment pack and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">

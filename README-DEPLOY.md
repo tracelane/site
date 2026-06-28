@@ -233,7 +233,10 @@ per the privacy promise in `/privacy`.
 
 After step 4, every `git push origin main` auto-deploys. No manual step.
 
+> **Gate (required):** run `bash scripts/pre-public-push.sh` before every push to `main` — it must exit 0. Cloudflare auto-deploys `main` with no staging gate, so a banned-phrase regression is live immediately. (Syntactic guard only — unbuilt-capability / stale-claim copy still needs manual sign-off.)
+
 ```bash
+bash scripts/pre-public-push.sh   # must pass
 git add .
 git commit -m "feat: <what changed>"
 git push
