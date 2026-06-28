@@ -231,15 +231,27 @@ per the privacy promise in `/privacy`.
 
 ## subsequent deploys
 
-After step 4, every `git push origin main` auto-deploys. No manual step.
+Direct pushes to `main` are **blocked** by branch protection (added 2026-06-29): a change must go
+through a pull request, and the `Workers Builds: tracelane-site` status check must pass before merge.
+**Merging the PR** is what triggers the Cloudflare production deploy (~90s). There is still no staging
+gate, so a bad merge is live immediately.
 
-> **Gate (required):** run `bash scripts/pre-public-push.sh` before every push to `main` — it must exit 0. Cloudflare auto-deploys `main` with no staging gate, so a banned-phrase regression is live immediately. (Syntactic guard only — unbuilt-capability / stale-claim copy still needs manual sign-off.)
+> **Gate (required) before opening a PR:** run `bash scripts/pre-public-push.sh` (must exit 0) and
+> `npx astro check` (0 errors). The gate is a syntactic banned-phrase guard only — unbuilt-capability
+> / stale-claim copy still needs manual sign-off (see `SITE_CORRECTIVE_UPDATES.md` push discipline).
 
 ```bash
-bash scripts/pre-public-push.sh   # must pass
+bash scripts/pre-public-push.sh         # must pass (exit 0)
+npx astro check                         # must be clean (0 errors)
+
+git switch -c claude/<topic>            # never commit straight to main — it's blocked
 git add .
 git commit -m "feat: <what changed>"
-git push
+git push -u origin claude/<topic>
+
+gh pr create --base main --fill         # open the PR
+gh pr checks --watch                    # wait for "Workers Builds" to go green
+gh pr merge --squash --delete-branch    # merge → main auto-deploys (~90s)
 ```
 
 Cloudflare picks it up within 30 seconds. Build + deploy completes in ~90 seconds.
