@@ -6,15 +6,14 @@
 # push is LIVE immediately — there is no staging gate.
 #
 # Scope: shippable site copy only — src/**/*.astro + src/**/*.md(x).
-# Internal working docs at the repo root (SITE_CORRECTIVE_UPDATES.md,
-# TRACELANE_LAUNCH_ACTION_POINTS.md, CC-fix-marketing-page.md, README*, etc.)
-# are deliberately NOT scanned: they legitimately quote the banned phrases they
-# track, and they do not ship.
+# Internal working docs in the repo root (and README*) are deliberately NOT
+# scanned: they legitimately quote the banned phrases they track, and they do
+# not ship.
 #
 # Behaviour: prints file:line for every match and exits 1 on any hit; exits 0
 # when clean. This is a syntactic guard only — it does NOT catch
-# unbuilt-capability (C1/C2/C3) or stale-claim semantics. Those still need the
-# manual sign-off described in SITE_CORRECTIVE_UPDATES.md (push discipline).
+# unbuilt-capability (C1/C2/C3) or stale-claim semantics. Those still require
+# manual sign-off for capability/claim changes.
 
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 2

@@ -238,7 +238,7 @@ gate, so a bad merge is live immediately.
 
 > **Gate (required) before opening a PR:** run `bash scripts/pre-public-push.sh` (must exit 0) and
 > `npx astro check` (0 errors). The gate is a syntactic banned-phrase guard only — unbuilt-capability
-> / stale-claim copy still needs manual sign-off (see `SITE_CORRECTIVE_UPDATES.md` push discipline).
+> / stale-claim copy still needs manual sign-off.
 
 ```bash
 bash scripts/pre-public-push.sh         # must pass (exit 0)
