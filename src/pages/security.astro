@@ -23,10 +23,10 @@ import Base from "../layouts/Base.astro";
 
     <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Vulnerability management</h2>
     <ul class="mt-4 space-y-2 text-fg-muted">
-      <li>— OSV-Scanner + Grype + Syft on every commit. Trivy explicitly banned (CVE-2026-33634).</li>
+      <li>— OSV-Scanner + Grype + Syft on every commit.</li>
       <li>— gitleaks + trufflehog on every commit to block secret leaks.</li>
       <li>— GitHub Security Advisories enabled for coordinated disclosure.</li>
-      <li>— LiteLLM, arize-phoenix, openssl crate explicitly banned in cargo-deny config.</li>
+      <li>— cargo-deny enforces the dependency and license allow-list on every build.</li>
     </ul>
 
     <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Transport + isolation</h2>
@@ -56,8 +56,8 @@ import Base from "../layouts/Base.astro";
     <ul class="mt-4 space-y-2 text-fg-muted">
       <li>— SOC 2 Type II — Business tier customers. Artifacts available under NDA at V1 + 90 days.</li>
       <li>— HIPAA BAA — Business tier + Tamper-Evident Agent Ledger add-on.</li>
-      <li>— EU AI Act Article 12 — export pack ships with the Tamper-Evident Agent Ledger add-on at V1. Annex III enforcement deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026).</li>
-      <li>— India DPDP Phase II — region-pinned IN storage. Enforcement Nov 13, 2026.</li>
+      <li>— EU AI Act Article 12 — export pack ships with the Tamper-Evident Agent Ledger add-on at V1. Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).</li>
+      <li>— India DPDP Phase II — region-pinned IN storage on the roadmap (India residency on demand); EU residency at V1. Enforcement Nov 13, 2026.</li>
     </ul>
 
     <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Responsible disclosure</h2>
