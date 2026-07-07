@@ -4,88 +4,117 @@ import Base from "../../layouts/Base.astro";
 
 <Base title="Tracelane vs LangSmith Engine — pre-flight policy vs post-failure clustering">
   {/* ===== Hero ===== */}
-  <section class="container py-24 sm:py-32 relative overflow-hidden">
-    <div class="glow glow-teal" style="width:600px;height:440px;left:50%;top:-60px;transform:translateX(-50%)"></div>
+  <section class="relative container overflow-hidden py-24 sm:py-32">
+    <div
+      class="glow glow-teal"
+      style="width:600px;height:440px;left:50%;top:-60px;transform:translateX(-50%)"
+    >
+    </div>
     <div class="relative z-[2]">
-      <p class="font-mono text-sm text-fg-subtle mb-8 tracking-wide lowercase">tracelane vs langsmith engine</p>
-      <h1 class="text-[2.5rem] sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-fg max-w-4xl">
+      <p class="text-fg-subtle mb-8 font-mono text-sm tracking-wide lowercase">
+        tracelane vs langsmith engine
+      </p>
+      <h1
+        class="text-fg max-w-4xl text-[2.5rem] leading-[1.05] font-bold tracking-tight sm:text-5xl md:text-6xl"
+      >
         Flag failures pre-flight, or <span class="grad-text">cluster them after.</span>
       </h1>
-      <p class="mt-8 text-lg sm:text-xl text-fg-muted max-w-3xl leading-relaxed">
-        LangSmith Engine (May 13, 2026) clusters production failures after they happen, files pull requests, and bills against the LangSmith plan. Tracelane flags failure classes inline at the gateway, sub-50ms target, before the call reaches the provider. Different layer. Different commercial posture.
+      <p class="text-fg-muted mt-8 max-w-3xl text-lg leading-relaxed sm:text-xl">
+        LangSmith Engine (May 13, 2026) clusters production failures after they happen, files pull
+        requests, and bills against the LangSmith plan. Tracelane flags failure classes inline at
+        the gateway, sub-50ms target, before the call reaches the provider. Different layer.
+        Different commercial posture.
       </p>
     </div>
   </section>
 
   {/* ===== TL;DR ===== */}
-  <section class="container py-16 border-t border-border">
-    <p class="font-mono text-xs text-pop mb-4 tracking-wider lowercase">tl;dr</p>
-    <ul class="space-y-3 text-fg-muted max-w-3xl leading-relaxed">
+  <section class="border-border container border-t py-16">
+    <p class="text-pop mb-4 font-mono text-xs tracking-wider lowercase">tl;dr</p>
+    <ul class="text-fg-muted max-w-3xl space-y-3 leading-relaxed">
       <li>— LangSmith Engine is reactive: triage after failure has shipped.</li>
-      <li>— Tracelane is pre-flight: flag the failure class inline at the gateway, sub-50ms target.</li>
-      <li>— Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per ToS. Tracelane is neutral OTel ingest with BYOK 0% markup across 30+ providers.</li>
-      <li>— Engine adds value on top of an existing LangSmith deployment. Tracelane replaces LiteLLM + Helicone/Langfuse + a custom guardrail layer with one Rust binary.</li>
+      <li>
+        — Tracelane is pre-flight: flag the failure class inline at the gateway, sub-50ms target.
+      </li>
+      <li>
+        — Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per
+        ToS. Tracelane is neutral OTel ingest with BYOK 0% markup across 30+ providers.
+      </li>
+      <li>
+        — Engine adds value on top of an existing LangSmith deployment. Tracelane replaces LiteLLM +
+        Helicone/Langfuse + a custom guardrail layer with one Rust binary.
+      </li>
       <li>— Both are useful. They sit at different layers of the agent reliability stack.</li>
     </ul>
   </section>
 
   {/* ===== Capability matrix ===== */}
-  <section class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Capability comparison.</h2>
-    <p class="mt-4 text-lg text-fg-muted max-w-2xl">Based on the LangSmith Engine launch announcement (May 13, 2026) and LangChain documentation.</p>
+  <section class="border-border container border-t py-24">
+    <h2 class="text-fg text-3xl font-bold tracking-tight sm:text-4xl">Capability comparison.</h2>
+    <p class="text-fg-muted mt-4 max-w-2xl text-lg">
+      Based on the LangSmith Engine launch announcement (May 13, 2026) and LangChain documentation.
+    </p>
 
     <div class="mt-12 overflow-x-auto">
-      <table class="w-full text-left border-collapse text-sm">
+      <table class="w-full border-collapse text-left text-sm">
         <thead>
-          <tr class="border-b border-border-strong">
-            <th class="py-4 pr-6 font-mono text-xs text-fg-dim lowercase tracking-wider">capability</th>
-            <th class="py-4 pr-6 font-mono text-xs text-fg-dim lowercase tracking-wider">tracelane v1</th>
-            <th class="py-4 font-mono text-xs text-fg-dim lowercase tracking-wider">langsmith engine</th>
+          <tr class="border-border-strong border-b">
+            <th class="text-fg-dim py-4 pr-6 font-mono text-xs tracking-wider lowercase"
+              >capability</th
+            >
+            <th class="text-fg-dim py-4 pr-6 font-mono text-xs tracking-wider lowercase"
+              >tracelane v1</th
+            >
+            <th class="text-fg-dim py-4 font-mono text-xs tracking-wider lowercase"
+              >langsmith engine</th
+            >
           </tr>
         </thead>
         <tbody class="text-fg-muted">
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">Failure handling timing</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">Failure handling timing</td>
             <td class="py-4 pr-6">Pre-flight inline at gateway, sub-50ms target</td>
             <td class="py-4">Post-failure clustering, async triage</td>
           </tr>
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">LLM provider lock-in</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">LLM provider lock-in</td>
             <td class="py-4 pr-6">None — 30+ providers, BYOK 0% markup</td>
             <td class="py-4">LangChain-managed inference keys per ToS</td>
           </tr>
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">Trace surface</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">Trace surface</td>
             <td class="py-4 pr-6">OTel GenAI semconv, neutral ingest</td>
             <td class="py-4">LangSmith proprietary trace format</td>
           </tr>
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">License</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">License</td>
             <td class="py-4 pr-6">Apache 2.0 core / Tracelane Enterprise / CC0 spec</td>
             <td class="py-4">Closed-source SaaS</td>
           </tr>
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">Self-host path</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">Self-host path</td>
             <td class="py-4 pr-6">Docker Compose, Helm, single small VPS</td>
             <td class="py-4">Hosted only (LangSmith Cloud / Enterprise)</td>
           </tr>
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">Audit log integrity</td>
-            <td class="py-4 pr-6">SHA-256 hash chain, Ed25519-signed Merkle root, offline-verifiable</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">Audit log integrity</td>
+            <td class="py-4 pr-6"
+              >SHA-256 hash chain, Ed25519-signed Merkle root, offline-verifiable</td
+            >
             <td class="py-4">Application-layer trace storage; no cryptographic chain</td>
           </tr>
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">EU AI Act Article 12 export pack</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">EU AI Act Article 12 export pack</td>
             <td class="py-4 pr-6">$999/mo add-on, available at V1</td>
             <td class="py-4">Not in launch announcement</td>
           </tr>
-          <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">Gateway included</td>
+          <tr class="border-border border-b">
+            <td class="text-fg py-4 pr-6">Gateway included</td>
             <td class="py-4 pr-6">Yes — Rust gateway, 30+ providers</td>
             <td class="py-4">No — assumes you bring your own (or LangChain's)</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 text-fg">Commercial model</td>
+            <td class="text-fg py-4 pr-6">Commercial model</td>
             <td class="py-4 pr-6">Open-core + usage-based hosted, MoR via Polar.sh</td>
             <td class="py-4">LangSmith plan add-on (Developer/Plus/Enterprise)</td>
           </tr>
@@ -95,12 +124,12 @@ import Base from "../../layouts/Base.astro";
   </section>
 
   {/* ===== When to choose which ===== */}
-  <section class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">When to choose which.</h2>
+  <section class="border-border container border-t py-24">
+    <h2 class="text-fg text-3xl font-bold tracking-tight sm:text-4xl">When to choose which.</h2>
     <div class="mt-12 grid gap-6 md:grid-cols-2">
-      <article class="rounded-lg border border-border bg-bg-elevated p-8">
-        <p class="font-mono text-xs text-pop mb-3 lowercase tracking-wider">choose tracelane if</p>
-        <ul class="space-y-3 text-fg-muted text-sm leading-relaxed">
+      <article class="border-border bg-bg-elevated rounded-lg border p-8">
+        <p class="text-pop mb-3 font-mono text-xs tracking-wider lowercase">choose tracelane if</p>
+        <ul class="text-fg-muted space-y-3 text-sm leading-relaxed">
           <li>— You want failures flagged pre-flight, not just triaged after</li>
           <li>— You need BYOK 0% markup across multiple providers</li>
           <li>— You need neutral OTel ingest, not a proprietary trace surface</li>
@@ -109,9 +138,11 @@ import Base from "../../layouts/Base.astro";
           <li>— You don't already run LangSmith and don't want to adopt it just to get Engine</li>
         </ul>
       </article>
-      <article class="rounded-lg border border-border bg-bg-elevated p-8">
-        <p class="font-mono text-xs text-fg-dim mb-3 lowercase tracking-wider">choose langsmith engine if</p>
-        <ul class="space-y-3 text-fg-muted text-sm leading-relaxed">
+      <article class="border-border bg-bg-elevated rounded-lg border p-8">
+        <p class="text-fg-dim mb-3 font-mono text-xs tracking-wider lowercase">
+          choose langsmith engine if
+        </p>
+        <ul class="text-fg-muted space-y-3 text-sm leading-relaxed">
           <li>— You already run LangSmith and your traces are there</li>
           <li>— You're committed to LangChain-managed inference keys</li>
           <li>— Post-failure clustering and PR drafting is your priority workflow</li>
@@ -121,17 +152,24 @@ import Base from "../../layouts/Base.astro";
         </ul>
       </article>
     </div>
-    <p class="mt-12 text-fg-muted max-w-3xl leading-relaxed">
-      These tools are not mutually exclusive at the architectural layer. Tracelane sits at the gateway and trace-ingest layer; Engine sits on top of an existing trace store. Some teams will run both — Tracelane to flag failures pre-flight and produce the audit ledger, LangSmith Engine to cluster the failures that escape and draft fixes.
+    <p class="text-fg-muted mt-12 max-w-3xl leading-relaxed">
+      These tools are not mutually exclusive at the architectural layer. Tracelane sits at the
+      gateway and trace-ingest layer; Engine sits on top of an existing trace store. Some teams will
+      run both — Tracelane to flag failures pre-flight and produce the audit ledger, LangSmith
+      Engine to cluster the failures that escape and draft fixes.
     </p>
   </section>
 
   {/* ===== CTA ===== */}
-  <section class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Tracelane V1 — coming soon.</h2>
-    <p class="mt-4 text-lg text-fg-muted max-w-2xl">Open core. Apache 2.0. Self-host or use the free hosted tier.</p>
-    <div class="mt-8 flex flex-col sm:flex-row gap-4">
-      <a href="/#notify" class="btn-primary">Be First to Know</a>
+  <section class="border-border container border-t py-24">
+    <h2 class="text-fg text-3xl font-bold tracking-tight sm:text-4xl">
+      Tracelane V1 — coming soon.
+    </h2>
+    <p class="text-fg-muted mt-4 max-w-2xl text-lg">
+      Open core. Apache 2.0. Self-host or use the free hosted tier.
+    </p>
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+      <a href="/#notify" class="btn-primary">Get the launch email</a>
       <a href="/" class="btn-secondary">Back to Home →</a>
     </div>
   </section>
