@@ -1,449 +1,1437 @@
 ---
 import Base from "../layouts/Base.astro";
-
-const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="true" class="logo-mark">
-  <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/>
-  <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/>
-  <rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/>
-  <circle cx="38" cy="38" r="9" fill="var(--color-bg)" stroke="currentColor" stroke-width="3"/>
-  <circle cx="38" cy="38" r="3.6" fill="none" stroke="currentColor" stroke-width="2.6"/>
-</svg>`;
 ---
 
 <Base>
   {/* ===== Hero ===== */}
-  <header class="relative overflow-hidden">
-    <div class="hero-bg">
-      <div class="hero-aurora"></div>
-      <div class="hero-grid"></div>
+  <header class="hero wrap">
+    <div class="hero-mesh" aria-hidden="true">
+      <div class="mesh a"></div>
+      <div class="mesh b"></div>
     </div>
 
-    <div class="container relative z-[2] pt-32 pb-20 sm:pt-40 text-center">
-      <span class="badge mb-7 hero-rise" style="--d:0s"><span class="dot"></span>open source · self-host · your keys, 0% markup</span>
+    <div class="eyebrow"><b>●</b> record · replay · prove — open source, apache-2.0</div>
+    <h1>The <span class="grad">flight recorder</span> for AI&nbsp;agents.</h1>
+    <p class="sub">
+      Agents fail without crashing — every call returns a clean 200 while the run drifts off course.
+      Tracelane records the entire execution path to a tamper-evident, cryptographically signed
+      ledger.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="#notify">Get the launch email</a>
+      <a class="btn ghost" href="https://github.com/tracelane" rel="me noopener">Watch on GitHub</a>
+    </div>
+    <div class="cta-note">self-host anywhere · your keys, 0% markup · repo opens at v1</div>
 
-      <h1 class="font-semibold tracking-tight leading-[1.02] text-fg text-[clamp(2.2rem,9vw,2.9rem)] sm:text-5xl md:text-6xl max-w-4xl mx-auto hero-rise" style="--d:0.08s">
-        The <span class="grad-text">flight recorder</span> for AI agents
-      </h1>
-
-      <p class="mt-7 text-lg text-fg-muted max-w-3xl mx-auto leading-relaxed hero-rise" style="--d:0.16s">
-        Autonomous agents fail without crashing. Every call returns a clean 200, every token is well-formed — and the run is already three steps off course. Tracelane records the entire execution path to a tamper-evident, cryptographically signed ledger. See exactly where it drifted. Prove exactly what happened.
-      </p>
-
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center hero-rise" style="--d:0.24s">
-        <a href="#notify" class="btn-primary">Be First to Know</a>
-        <a href="https://github.com/tracelane" class="btn-secondary" rel="me noopener">Follow on GitHub →</a>
+    {/* product frame — recorded trace (demo) */}
+    <div class="frame">
+      <div class="fbar">
+        <i></i><i></i><i></i><span class="fbar-addr">app.tracelane.dev — trace a3f8-2e1b-9c04</span>
       </div>
-      <p class="mt-7 font-mono text-xs text-fg-dim lowercase tracking-wide hero-rise" style="--d:0.30s">no credit card · apache-2.0 core · self-host anywhere</p>
-    </div>
-
-    {/* ===== HERO VIDEO STAGE =====
-         Drop your Veo 3 / launch film in:
-            /public/hero.mp4          (the video)
-            /public/hero-poster.jpg   (poster frame shown before play)
-         No code change needed — the <video> below already points at them.
-         The neon gradient shows until those files exist, so it never looks broken. */}
-    <div class="container">
-      <div class="stage-wrap hero-rise" style="--d:0.38s">
-        <div class="win-bar" aria-hidden="true">
-          <span class="win-dots"><i></i><i></i><i></i></span>
-          <span class="win-addr">tracelane — replay</span>
-        </div>
-        <div class="stage" id="hero-stage">
-          <video id="hero-video" class="stage-video" poster="/hero-poster.jpg" preload="none" playsinline controls style="display:none">
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
-          <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the tracelane story">
-            <span class="play">
-              <svg width="26" height="30" viewBox="0 0 26 30" fill="#ffffff" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z" /></svg>
-            </span>
-            <span class="stage-logo" set:html={chisel} />
-          </button>
-        </div>
+      <div class="fhead">
+        <span class="ft">checkout.process_refund</span>
+        <span class="ferr">error inside</span>
+        <span class="fled">recorded · ledger #8408–8414</span>
       </div>
-    </div>
-
-    {/* ===== Provider marquee ===== */}
-    <div class="marquee mt-20">
-      <div class="marq-track">
-        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>30+ providers</span>
-        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>30+ providers</span>
+      <div class="fs">
+        <div class="frail"></div>
+        <div class="frow">
+          <div class="fdot"></div><div class="fc">
+            <span class="fk">agent</span><span class="fn">plan_refund_flow</span><span class="fms"
+              >18&nbsp;ms</span
+            ><span class="fhash">#8408 ✓</span>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fdot"></div><div class="fc">
+            <span class="fk">llm</span><span class="fn">gen_ai.chat · claude-opus-4</span><span
+              class="fms">612&nbsp;ms · 1,204&nbsp;tok</span
+            ><span class="fhash">#8409 ✓</span>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fdot"></div><div class="fc">
+            <span class="fk">tool</span><span class="fn">get_order(id=48213)</span><span class="fms"
+              >84&nbsp;ms</span
+            ><span class="fhash">#8410 ✓</span>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fdot err"></div><div class="fc">
+            <span class="fk">tool</span><span class="fn">refund_payment(…)</span><span
+              class="fms fms-err">6&nbsp;ms</span
+            ><span class="fhash bad">#8413 ✗</span>
+          </div>
+          <div class="fseen">
+            <b>tool-schema-violation</b> — matched a known failure signature · seen 34× before · rejected
+            pre-dispatch
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fdot"></div><div class="fc">
+            <span class="fk">agent</span><span class="fn">await_human_approval</span><span
+              class="fms">—</span
+            ><span class="fhash">#8414 ✓</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  {/* ===== Why agent failures stay invisible ===== */}
-  <section id="why" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Why agent failures stay invisible</h2>
-    </div>
-    <div class="mt-16 grid gap-5 md:grid-cols-3 reveal-group cards-hover">
-      <article class="glass rounded-2xl p-8">
-        <p class="text-fg-muted leading-relaxed"><span class="text-fg font-medium">State drift compounds.</span> A bad tool output at step 2 corrupts every step after it. The model keeps going, confidently, further from the goal.</p>
-      </article>
-      <article class="glass rounded-2xl p-8">
-        <p class="text-fg-muted leading-relaxed"><span class="text-fg font-medium">Success codes lie.</span> A 200 and clean tokens say nothing about whether the state is still valid three steps later. Tracelane reconstructs the causal path, not just the request log.</p>
-      </article>
-      <article class="glass rounded-2xl p-8">
-        <p class="text-fg-muted leading-relaxed"><span class="text-fg font-medium">Tools are an open execution surface.</span> Every tool call is code running on your behalf. The ledger is the cryptographic record of exactly what ran.</p>
-      </article>
+  {/* ===== Success codes lie ===== */}
+  <section id="what">
+    <div class="wrap">
+      <div class="cap">Why agent failures stay invisible</div>
+      <h2>Success codes lie.</h2>
+      <p class="lede">
+        A 200 and clean tokens say nothing about whether the state is still valid three steps later.
+        Tracelane reconstructs the causal path, not just the request log.
+      </p>
+      <div class="tri">
+        <div class="card-i">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" aria-hidden="true"
+            ><circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="2"></circle><circle
+              cx="20"
+              cy="20"
+              r="5"
+              fill="var(--lava)"></circle></svg
+          >
+          <h3>Record</h3>
+          <p>
+            One gateway endpoint in front of every model. Bring your own keys, 0% markup, bounded
+            overhead — every call captured in full fidelity.
+          </p>
+          <a href="#arch" class="ul">How the gateway works →</a>
+        </div>
+        <div class="card-i g2">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" aria-hidden="true"
+            ><path
+              d="M8 20a12 12 0 1 1 3.5 8.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path><path
+              d="M8 28v-8h8"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path><path
+              d="M20 14v7l5 3"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></svg
+          >
+          <h3>Replay</h3>
+          <p>
+            Step-level trace of prompts, tool calls, latency, and cost — down to the exact call that
+            broke, and whether you've seen it before.
+          </p>
+          <a href="#arch" class="ul">See how replay works →</a>
+        </div>
+        <div class="card-i g3">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" aria-hidden="true"
+            ><path
+              d="M20 5l12 6v9c0 7.5-5 12.5-12 15-7-2.5-12-7.5-12-15v-9z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"></path><path
+              d="M14 20l4 4 8-8"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></svg
+          >
+          <h3>Prove</h3>
+          <p>
+            A tamper-evident ledger — SHA-256 hash chain, Ed25519-signed Merkle root — anyone can
+            verify offline. Logs you can't argue with.
+          </p>
+          <a href="#audit" class="ul">The audit ledger →</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  {/* ===== Record / Replay / Prove ===== */}
-  <section id="what" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Everything your agent does, on the record.</h2>
-      <p class="mt-4 text-lg text-fg-muted">Three things, one Rust binary. Open core. Apache 2.0.</p>
-    </div>
-    <div class="mt-16 grid gap-5 md:grid-cols-6 md:auto-rows-fr reveal-group cards-hover">
-      <article class="glass rounded-2xl p-6 md:col-span-3 md:row-span-2 flex flex-col">
-        <div class="feat-glyph" aria-hidden="true"><span class="glyph-eq"><i></i><i></i><i></i><i></i><i></i></span></div>
-        <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">01 — record</p>
-        <h3 class="text-xl font-medium text-fg">Universal gateway</h3>
-        <p class="mt-3 text-fg-muted leading-relaxed">
-          One endpoint in front of every model. Bring your own keys, 0% markup, bounded overhead — and every call is captured in full fidelity.
-        </p>
-        <div class="sig-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      </article>
-      <article class="glass rounded-2xl p-6 md:col-span-3">
-        <div class="feat-glyph" aria-hidden="true"><svg class="glyph-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/></svg></div>
-        <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">02 — replay</p>
-        <h3 class="text-xl font-medium text-fg">Replay the failure</h3>
-        <p class="mt-3 text-fg-muted leading-relaxed">
-          Step-level trace of prompts, tool calls, latency, and cost — down to the exact call that broke, and whether you've seen it before.
-        </p>
-      </article>
-      <article class="glass rounded-2xl p-6 md:col-span-3">
-        <div class="feat-glyph" aria-hidden="true"><svg class="glyph-prove" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg></div>
-        <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">03 — prove</p>
-        <h3 class="text-xl font-medium text-fg">Prove it</h3>
-        <p class="mt-3 text-fg-muted leading-relaxed">
-          A tamper-evident ledger — SHA-256 hash chain, Ed25519-signed Merkle root — anyone can verify offline. Logs you can't argue with.
-        </p>
-      </article>
-    </div>
-  </section>
+  {/* ===== Architecture ===== */}
+  <section id="arch">
+    <div class="wrap">
+      <div class="cap">Architecture</div>
+      <h2>One recorder between your agents and every model.</h2>
+      <p class="lede">
+        Point your agent at the Tracelane gateway. Calls route to any of 30+ providers with your own
+        keys; every event lands in the trace store and is hash-chained into the tenant ledger.
+      </p>
+      <div class="diagram">
+        <svg
+          viewBox="0 0 880 300"
+          fill="none"
+          role="img"
+          aria-label="Your agent connects to the Tracelane gateway, which routes to 30+ providers with your keys and records every event to a tamper-evident per-tenant ledger that anyone can verify offline with tlane verify."
+        >
+          <rect
+            x="20"
+            y="110"
+            width="150"
+            height="80"
+            rx="12"
+            fill="var(--bg)"
+            stroke="var(--line-2)"></rect>
+          <text
+            x="95"
+            y="143"
+            text-anchor="middle"
+            fill="var(--ink)"
+            font-size="12"
+            font-weight="600">your agent</text
+          >
+          <text x="95" y="162" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >any framework · SDK or proxy</text
+          >
 
-  {/* ===== Migration ===== */}
-  <section id="migrate" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Migrating from a tool that got acquired or breached?</h2>
-      <p class="mt-4 text-lg text-fg-muted">Importers land with V1 — no data leaves your infrastructure during migration.</p>
-    </div>
-    <div class="mt-12 grid gap-6 md:grid-cols-2 reveal-group cards-hover">
-      <article class="glass rounded-2xl p-8">
-        <h3 class="text-xl font-medium text-fg">From Helicone</h3>
-        <p class="mt-2 text-sm text-fg-muted">For teams on Helicone after it entered maintenance mode (Mintlify acquisition, Mar 2026).</p>
-        <p class="mt-4 text-sm text-fg-muted">One-command import of traces, configs, prompts, and rate-limit rules — <span class="text-fg">lands with V1</span>.</p>
-      </article>
-      <article class="glass rounded-2xl p-8">
-        <h3 class="text-xl font-medium text-fg">From LiteLLM</h3>
-        <p class="mt-2 text-sm text-fg-muted">After CVE-2026-33634 (Mar 24) and CVE-2026-42208 (Apr 24).</p>
-        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement; <span class="text-fg">config import lands with V1</span>. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p>
-      </article>
+          <path d="M170 150 H 250" stroke="var(--ink-3)" stroke-width="1.5" marker-end="url(#arr)"
+          ></path>
+
+          <rect
+            x="252"
+            y="92"
+            width="190"
+            height="116"
+            rx="12"
+            fill="var(--card)"
+            stroke="url(#gline)"
+            stroke-width="2"></rect>
+          <text
+            x="347"
+            y="122"
+            text-anchor="middle"
+            fill="var(--ink)"
+            font-size="12"
+            font-weight="600">tracelane gateway</text
+          >
+          <text x="347" y="141" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >rust · BYOK · 0% markup</text
+          >
+          <text x="347" y="158" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >pre-flight policy checks</text
+          >
+          <rect
+            x="277"
+            y="170"
+            width="140"
+            height="20"
+            rx="10"
+            fill="var(--verify-soft)"
+            stroke="var(--verify-line)"></rect>
+          <text x="347" y="184" text-anchor="middle" fill="var(--verify-deep)" font-size="9.5"
+            >records every event</text
+          >
+
+          <path d="M442 128 H 520" stroke="var(--ink-3)" stroke-width="1.5" marker-end="url(#arr)"
+          ></path>
+
+          <rect
+            x="522"
+            y="40"
+            width="150"
+            height="176"
+            rx="12"
+            fill="var(--bg)"
+            stroke="var(--line-2)"></rect>
+          <text
+            x="597"
+            y="66"
+            text-anchor="middle"
+            fill="var(--ink)"
+            font-size="12"
+            font-weight="600">30+ providers</text
+          >
+          <text x="597" y="88" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >anthropic · openai</text
+          >
+          <text x="597" y="104" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >gemini · bedrock</text
+          >
+          <text x="597" y="120" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >azure · cohere</text
+          >
+          <text x="597" y="142" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >+ any openai-compatible</text
+          >
+          <text x="597" y="158" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >endpoint</text
+          >
+          <text
+            x="597"
+            y="196"
+            text-anchor="middle"
+            fill="var(--ink-3)"
+            font-size="10"
+            letter-spacing="0.6">YOUR KEYS</text
+          >
+
+          <path d="M347 208 V 244" stroke="var(--verify)" stroke-width="1.5" marker-end="url(#arrg)"
+          ></path>
+
+          <rect
+            x="192"
+            y="246"
+            width="310"
+            height="42"
+            rx="12"
+            fill="var(--verify-soft)"
+            stroke="var(--verify-line)"></rect>
+          <text
+            x="347"
+            y="264"
+            text-anchor="middle"
+            fill="var(--verify-deep)"
+            font-size="12"
+            font-weight="600">tamper-evident ledger</text
+          >
+          <text x="347" y="279" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >sha-256 chain · ed25519-signed merkle roots · per tenant</text
+          >
+
+          <path
+            d="M502 267 H 585"
+            stroke="var(--ink-3)"
+            stroke-width="1.5"
+            stroke-dasharray="4 4"
+            marker-end="url(#arr)"></path>
+
+          <rect
+            x="588"
+            y="246"
+            width="200"
+            height="42"
+            rx="12"
+            fill="var(--card)"
+            stroke="var(--line-2)"></rect>
+          <text
+            x="688"
+            y="264"
+            text-anchor="middle"
+            fill="var(--ink)"
+            font-size="12"
+            font-weight="600">tlane verify</text
+          >
+          <text x="688" y="279" text-anchor="middle" fill="var(--ink-3)" font-size="9.5"
+            >offline · no trust in us required</text
+          >
+
+          <defs>
+            <linearGradient id="gline" x1="0" y1="0" x2="1" y2="1"
+              ><stop offset="0%" stop-color="var(--lava)"></stop><stop
+                offset="100%"
+                stop-color="var(--lava-2)"></stop></linearGradient
+            >
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"
+              ><path d="M0,0 L8,4 L0,8" fill="none" stroke="var(--ink-3)" stroke-width="1.5"
+              ></path></marker
+            >
+            <marker id="arrg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"
+              ><path d="M0,0 L8,4 L0,8" fill="none" stroke="var(--verify)" stroke-width="1.5"
+              ></path></marker
+            >
+          </defs>
+        </svg>
+        <div class="dg-note">
+          trace store: clickhouse hot · r2 cold (eu) · metered in traces, not spans
+        </div>
+      </div>
     </div>
   </section>
 
   {/* ===== Audit ledger ===== */}
-  <section id="audit" class="container py-24 border-t border-border relative overflow-hidden">
-    <div class="glow glow-teal" style="width:520px;height:420px;right:-80px;top:40px"></div>
-    <div class="relative z-[2]">
-      <p class="font-mono text-xs text-pop mb-4 tracking-wider lowercase">the audit ledger</p>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight max-w-3xl text-fg leading-[1.05]">
-        Every run. On the record. <span class="grad-text">Provably.</span>
-      </h2>
-      <p class="mt-6 text-lg text-fg-muted max-w-2xl leading-relaxed">
-        Each event is hash-chained with SHA-256. Every 100 events, the Merkle root is signed with Ed25519. Verify the whole chain offline — tampering means breaking SHA-256 or forging a signature, not editing a row.
-      </p>
-
-      <div class="mt-16 grid gap-5 md:grid-cols-3 text-sm reveal-group cards-hover">
-        <div class="glass rounded-2xl p-6">
-          <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">eu ai act</p>
-          <p class="mt-3 text-fg-muted">Article 12 export pack — full audit trail for high-risk AI systems. Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>); the ledger ships at V1.</p>
+  <section id="audit">
+    <div class="wrap">
+      <div class="cap">The audit ledger</div>
+      <h2>Every run. On the record. Provably.</h2>
+      <div class="lgrid">
+        <div>
+          <p class="lede">
+            Each event is hash-chained with SHA-256. Every 100 events, the Merkle root is signed
+            with Ed25519. Verify the whole chain offline — tampering means breaking SHA-256 or
+            forging a signature, not editing a row.
+          </p>
+          <div class="crows">
+            <div class="crow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                ><path
+                  d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"></path></svg
+              >
+              <span
+                ><b>EU AI Act</b> — Article 12 export pack for high-risk systems. Annex III enforcement
+                provisionally deferred to Dec 2, 2027 (Digital Omnibus, pending formal adoption). Build
+                audit history before enforcement binds.</span
+              >
+            </div>
+            <div class="crow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                ><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle><path
+                  d="M12 7v5l3.5 2"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"></path></svg
+              >
+              <span
+                ><b>India DPDP</b> — Phase II enforcement Nov 13, 2026. EU data residency at V1; India
+                residency on the roadmap.</span
+              >
+            </div>
+            <div class="crow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                ><rect
+                  x="4"
+                  y="10"
+                  width="16"
+                  height="10"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="2"></rect><path
+                  d="M8 10V7a4 4 0 018 0v3"
+                  stroke="currentColor"
+                  stroke-width="2"></path></svg
+              >
+              <span
+                ><b>HIPAA</b> — BAA on Business tier roadmap. PII redaction inline. Provider keys envelope-encrypted.</span
+              >
+            </div>
+          </div>
         </div>
-        <div class="glass rounded-2xl p-6">
-          <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">india dpdp</p>
-          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. EU data residency at V1; India residency on the roadmap, on demand. Audit-log retention configurable.</p>
-        </div>
-        <div class="glass rounded-2xl p-6">
-          <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">hipaa</p>
-          <p class="mt-3 text-fg-muted">BAA available on Business tier. PII redaction inline. Provider keys envelope-encrypted.</p>
+        <div class="term" aria-label="tlane verify terminal session">
+          <span class="c"># verify any trace offline — no trust in us required</span><br />
+          <span class="w">$ tlane verify a3f8-2e1b-9c04</span><br />
+          <span class="g">✓ signature valid (Ed25519, Merkle root)</span><br />
+          <span class="g">✓ hash chain unbroken (SHA-256)</span><br />
+          <span class="g">✓ tamper-evident: yes</span>
+          <span class="cursor" aria-hidden="true">▋</span>
         </div>
       </div>
+    </div>
+  </section>
 
-      <pre class="mt-12 glass rounded-2xl p-6 font-mono text-sm overflow-x-auto text-fg"><code><span class="text-fg-subtle"># verify any trace offline — no trust in us required</span>
-$ tlane verify &lt;trace-id&gt;
-<span class="text-verify">✓</span> signature valid (Ed25519, Merkle root)
-<span class="text-verify">✓</span> hash chain unbroken (SHA-256)
-<span class="text-verify">✓</span> tamper-evident: yes <span class="caret">▋</span></code></pre>
+  {/* ===== Mid-page capture ===== */}
+  <section id="notify-mid">
+    <div class="wrap">
+      <div class="midcap">
+        <div class="midcap-copy">
+          <div class="cap">Launching soon</div>
+          <h2 class="midcap-h">Get the launch email.</h2>
+          <p class="lede">
+            One email the day V1 is live — the repo, the reliability benchmark, the launch links.
+            Nothing else unless you opt in.
+          </p>
+        </div>
+        <form class="capform js-notify" method="POST" action="/api/notify" novalidate>
+          <label class="sr-only" for="email-mid">email address</label>
+          <input
+            id="email-mid"
+            class="capinput"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@company.com"
+          />
+          <button class="btn" type="submit">Get the launch email</button>
+          <p class="capstatus" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
   </section>
 
   {/* ===== Pricing ===== */}
-  <section id="pricing" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Pricing.</h2>
-      <p class="mt-4 text-lg text-fg-muted">Open core. Self-host free forever. Hosted tiers start at $0.</p>
-    </div>
+  <section id="pricing">
+    <div class="wrap">
+      <div class="cap">Pricing</div>
+      <h2>Self-host free forever. Hosted from $0.</h2>
+      <div class="pgrid">
+        <div class="tier">
+          <h3>OSS self-host</h3><div class="pr m">$0</div>
+          <div class="qty">full apache 2.0 stack · forever</div>
+          <ul>
+            <li>
+              Rust gateway · 30+ providers — 6 native adapters plus any OpenAI-compatible endpoint
+            </li>
+            <li>ClickHouse + R2 storage</li>
+            <li>Audit ledger included</li>
+          </ul>
+        </div>
+        <div class="tier rec">
+          <span class="rt">recommended</span>
+          <h3>Team</h3><div class="pr m">$249<small>/mo</small></div>
+          <div class="qty">1M traces + 1M gateway / mo · 10 seats</div>
+          <ul>
+            <li>90-day retention · +$19/seat to 25</li>
+            <li>WorkOS SSO · 99% SLA · Slack support</li>
+            <li>Predictive pre-flight + tamper-evident promotion record</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <h3>Business</h3><div class="pr m">$899<small>/mo</small></div>
+          <div class="qty">5M traces + 5M gateway / mo · 25 seats</div>
+          <ul>
+            <li>180-day retention · +$19/seat to 50</li>
+            <li>99.9% SLA · dedicated Slack</li>
+          </ul>
+        </div>
+      </div>
 
-    <div class="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-3 reveal-group cards-hover">
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">OSS self-host</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$0</p>
-        <p class="mt-1 text-sm text-fg-subtle">Apache 2.0 · forever</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>Full Rust gateway · 30+ providers — 6 native adapters plus any OpenAI-compatible endpoint</li>
-          <li>ClickHouse + R2 storage</li>
-          <li>Tamper-evident audit ledger</li>
-          <li>Community Discord support</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Free hosted</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$0</p>
-        <p class="mt-1 text-sm text-fg-subtle">10K traces + 10K gateway / mo</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>Single workspace, 1 seat</li>
-          <li>7-day retention · 60 RPM</li>
-          <li>Pre-flight policy checks</li>
-          <li>No credit card · no commercial use</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Builder</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$59<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">150K traces + 150K gateway / mo · 1 seat</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>30-day retention · 600 RPM</li>
-          <li>Predictive pre-flight history (read-only)</li>
-          <li>Audit ledger + offline verify</li>
-          <li>Email support · 24h</li>
-        </ul>
-      </article>
-
-      <article class="rec-card glass border-2 rounded-2xl p-6 relative" style="border-color:var(--color-accent)">
-        <p class="absolute -top-3 left-6 px-2 bg-bg-elevated text-xs font-mono text-pop lowercase">recommended</p>
-        <h3 class="font-medium text-fg">Team</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$249<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">1M traces + 1M gateway / mo · 10 seats</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>90-day retention · +$19/seat to 25</li>
-          <li>Predictive pre-flight + tamper-evident promotion record</li>
-          <li>WorkOS SSO · 99% SLA</li>
-          <li>Slack support · 8h</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Business</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$899<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">5M traces + 5M gateway / mo · 25 seats</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>180-day retention · +$19/seat to 50</li>
-          <li>Inline ensemble guardrail · 99.9% SLA</li>
-          <li>WorkOS SSO</li>
-          <li>Dedicated Slack · 4h</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Enterprise</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$2,999+<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">25M+ traces · custom</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>365-day retention · custom seats</li>
-          <li>Region pinning (EU at V1; US / IN on the roadmap)</li>
-          <li>BYOK + CMK self-service</li>
-          <li>1h SLA · dedicated CSM</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="mt-12 glass rounded-2xl p-6">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <div class="flex items-center gap-3 flex-wrap">
-            <h3 class="font-medium text-fg">Tamper-evident agent ledger</h3>
-            <span class="font-mono text-xs text-fg-dim lowercase tracking-wider px-2 py-0.5 border border-border-strong rounded-sm">ships at v1</span>
-          </div>
-          <p class="mt-2 text-sm text-fg-muted">
-            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, with the EU AI Act Article 12 export pack, EU data residency, and configurable audit-log retention. India DPDP Phase II alignment and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).
+      <div class="addon">
+        <div class="t">
+          <h3>Tamper-evident agent ledger <span class="ships">ships at v1</span></h3>
+          <p>
+            SHA-256 hash chain + Ed25519-signed Merkle roots · EU AI Act Article 12 export pack · EU
+            data residency · configurable audit retention.
           </p>
         </div>
-        <p class="font-mono text-2xl text-fg shrink-0">+$999<span class="text-base text-fg-muted">/mo</span></p>
+        <div class="pr m">+$999<small>/mo</small></div>
       </div>
-    </div>
 
-    <p class="mt-12 text-center text-sm text-fg-subtle">Metered in traces, not spans — one gateway call counts as 0.1 trace, and failed requests aren't billed. Core tiers available at launch · coming soon.</p>
-  </section>
-
-  {/* ===== Trust ===== */}
-  <section id="trust" class="container py-24 border-t border-border">
-    <div class="reveal">
-      <p class="font-mono text-xs text-pop mb-4 tracking-wider lowercase">security posture</p>
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Built for procurement reviews.</h2>
-    </div>
-    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-sm reveal-group cards-hover">
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">release integrity</p>
-        <p class="mt-3 text-fg-muted">Sigstore Cosign keyless signing. SLSA Build L3 provenance. Trusted Publishing OIDC — no long-lived tokens.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">sbom</p>
-        <p class="mt-3 text-fg-muted">CycloneDX SBOM published with every release. Verifiable from GitHub release artifacts.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">vuln scanning</p>
-        <p class="mt-3 text-fg-muted">OSV-Scanner + Grype + Syft on every commit.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">pre-flight policy</p>
-        <p class="mt-3 text-fg-muted">Policy checks run inline at the gateway before the call leaves. V1: schema-violation + tool-definition-drift, fail-open, sub-50ms target. More on a published roadmap.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">transport</p>
-        <p class="mt-3 text-fg-muted">TLS 1.3 minimum. mTLS via SPIFFE/SPIRE for ingest. SSRF defense — RFC1918 + link-local denied.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">standards</p>
-        <p class="mt-3 text-fg-muted">OTel GenAI semconv — tracking the pre-execution judgment / negative-proof proposal (<a href="https://github.com/open-telemetry/semantic-conventions/issues/3244" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">#3244</a>).</p>
+      <div class="meter m">
+        also: free hosted $0 (10K+10K) · builder $59 (150K+150K) · enterprise $2,999+ (25M+, 365d,
+        region pinning EU at v1) · metered in traces, not spans · failed requests aren't billed
       </div>
     </div>
-    <p class="mt-12 text-sm text-fg-muted">Full security posture: <a href="/security" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">/security</a></p>
   </section>
 
   {/* ===== FAQ ===== */}
-  <section id="faq" class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg text-center">Frequently asked.</h2>
-    <div class="mt-16 space-y-4 max-w-3xl mx-auto reveal-group text-left">
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What is Tracelane?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Tracelane is an open-source (Apache 2.0) flight recorder for AI agents: a universal Rust LLM gateway, full-fidelity OpenTelemetry observability, and a tamper-evident audit ledger. Each event is SHA-256 hash-chained and the Merkle root is Ed25519-signed every 100 events, so any trace can be verified offline.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">How is Tracelane different from Helicone, LangSmith, or Langfuse?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Tracelane unifies the gateway, observability, pre-flight policy, and a tamper-evident audit ledger in one Rust binary. Helicone, Langfuse, and LangSmith are observability-first — you bring your own gateway and your own guardrails. Tracelane is Apache 2.0 core with a published self-host path; Helicone's gateway is GPL-3.0 (corporate-procurement-hostile), Arize Phoenix is ELv2 (no SaaS resale), and LangSmith is closed-source. The audit ledger is hash-chained and Ed25519-signed — no competitor in this category offers cryptographic audit-log integrity at the trace level.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What about LangSmith Engine?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's pre-flight policy checks flag failure modes at the gateway before the call reaches the provider — sub-50ms target. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Is Tracelane really open source?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Yes. The core (Rust gateway, ingest workers, observability backend, pre-flight layer, CLI, SDKs, audit verifiers) is Apache 2.0. The <code class="font-mono text-sm">/ee</code> directory contains Tracelane Enterprise License code (paid-tier features behind entitlements). The <code class="font-mono text-sm">/spec</code> directory is CC0. Paid features are gated by the workspace_entitlements table at the application layer, not by a license-string compare.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Which providers does Tracelane support?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">At V1: 30+ providers — 6 native adapters (Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Does Tracelane support EU AI Act Article 12?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger add-on ($999/mo) ships at V1. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), the EU AI Act Article 12 export pack, and EU data residency are available at V1; the India DPDP Phase II alignment pack and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What's the latency overhead?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider time). Pre-flight policy layer targets p99 &lt;50ms on commodity CPU. These are engineering targets — measured numbers publish as the Tracelane Reliability Benchmark v1.0 at launch.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Can I self-host?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Yes. Docker Compose for development, Helm chart for production. The full ClickHouse + R2 stack runs on a single small Hetzner node. Self-host docs land with V1 — see <a href="/docs" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">/docs</a>.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">When does V1 launch?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Soon — we're finishing the V1 quality gate. Drop your email above and you'll get a single message the day it's live, with the Show HN, X, LinkedIn, and Bluesky links.</p>
-      </details>
+  <section id="faq">
+    <div class="wrap">
+      <div class="cap">Frequently asked</div>
+      <h2>Straight answers.</h2>
+      <div class="faqcard">
+        <details>
+          <summary>What is Tracelane?</summary>
+          <p>
+            An open-source (Apache 2.0) flight recorder for AI agents: a universal Rust LLM gateway,
+            full-fidelity OpenTelemetry observability, and a tamper-evident audit ledger. Each event
+            is SHA-256 hash-chained and the Merkle root is Ed25519-signed every 100 events, so any
+            trace can be verified offline.
+          </p>
+        </details>
+        <details>
+          <summary>How is it different from Helicone, LangSmith, or Langfuse?</summary>
+          <p>
+            Tracelane unifies the gateway, observability, pre-flight policy, and a tamper-evident
+            audit ledger in one Rust binary. The others are observability-first — you bring your own
+            gateway and guardrails. No competitor in this category offers cryptographic audit-log
+            integrity at the trace level. <a href="/vs/langsmith-engine" class="ul"
+              >vs LangSmith Engine →</a
+            >
+          </p>
+        </details>
+        <details>
+          <summary>What's the latency overhead?</summary>
+          <p>
+            Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider
+            time). Pre-flight policy targets p99 &lt;50ms on commodity CPU. These are engineering
+            targets — measured numbers publish as the Tracelane Reliability Benchmark v1.0 at
+            launch.
+          </p>
+        </details>
+        <details>
+          <summary>When does V1 launch?</summary>
+          <p>
+            Soon — we're finishing the V1 quality gate. Drop your email and you'll get a single
+            message the day it's live, with the Show HN, X, LinkedIn, and Bluesky links.
+          </p>
+        </details>
+      </div>
     </div>
   </section>
 
-  {/* ===== Notify ===== */}
-  <section id="notify" class="container py-24 border-t border-border relative overflow-hidden">
-    <div class="glow glow-lime" style="width:480px;height:380px;left:50%;top:-120px;transform:translateX(-50%)"></div>
-    <div class="max-w-2xl mx-auto text-center relative z-[2] glass rounded-2xl p-8 sm:p-10">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Get the V1 launch email.</h2>
-      <p class="mt-4 text-lg text-fg-muted">One email the day we launch. Then nothing unless you opt into product updates. No newsletter, no marketing automation.</p>
-      <form id="notify-form" class="mt-8 flex flex-col sm:flex-row gap-3" method="POST" action="/api/notify">
-        <label for="email" class="sr-only">email address</label>
-        <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@company.com"
-          class="flex-1 rounded-md border border-border bg-bg px-4 py-3 font-mono text-sm text-fg placeholder:text-fg-dim focus:outline-none focus:border-accent" />
-        <button type="submit" class="btn-primary">Count Me In</button>
-      </form>
-      <p id="notify-status" class="mt-4 text-sm text-fg-subtle min-h-[1.25rem]" aria-live="polite"></p>
+  {/* ===== Final band capture ===== */}
+  <section id="notify" class="final">
+    <div class="wrap">
+      <div class="band">
+        <h2>Get the V1 launch email.</h2>
+        <p class="lede">
+          One email the day we launch. Then nothing unless you opt into product updates.
+        </p>
+        <form class="capf js-notify" method="POST" action="/api/notify" novalidate>
+          <label class="sr-only" for="email-final">email address</label>
+          <input
+            id="email-final"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@company.com"
+          />
+          <button class="btn" type="submit">Get the launch email</button>
+          <p class="capstatus" aria-live="polite"></p>
+        </form>
+        <div class="small">no newsletter · no marketing automation</div>
+      </div>
     </div>
   </section>
 </Base>
 
 <script is:inline>
-  // hero video stage — reveal native player on click
+  // Email capture — both the mid-page and final-band forms POST /api/notify.
   (function () {
-    var btn = document.getElementById("hero-play");
-    var vid = document.getElementById("hero-video");
-    if (!btn || !vid) return;
-    btn.addEventListener("click", function () {
-      btn.style.display = "none";
-      vid.style.display = "block";
-      var p = vid.play();
-      if (p && p.catch) p.catch(function () {});
-    });
-  })();
-
-  // scroll reveal — single elements (.reveal) and staggered grids (.reveal-group)
-  (function () {
-    var els = document.querySelectorAll(".reveal, .reveal-group");
-    if (!("IntersectionObserver" in window) || !els.length) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    var forms = document.querySelectorAll("form.js-notify");
+    if (!forms.length) return;
+    forms.forEach(function (form) {
+      var status = form.querySelector(".capstatus");
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var input = form.querySelector("input[type='email']");
+        var btn = form.querySelector("button[type='submit']");
+        if (!input) return;
+        var email = input.value.trim();
+        if (status) status.textContent = "Sending…";
+        if (btn) btn.disabled = true;
+        try {
+          var res = await fetch("/api/notify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: email }),
+          });
+          if (res.ok) {
+            if (status)
+              status.textContent = "You're on the list. We'll email you the day we launch.";
+            form.reset();
+          } else {
+            var data = await res.json().catch(function () {
+              return {};
+            });
+            if (status) status.textContent = data.error || "Something went wrong. Try again.";
+          }
+        } catch (err) {
+          if (status) status.textContent = "Network error. Try again.";
+        } finally {
+          if (btn) btn.disabled = false;
+        }
       });
-    }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
-    els.forEach(function (el) { io.observe(el); });
-  })();
-
-  // cursor-tracked spotlight on cards
-  (function () {
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var cards = document.querySelectorAll(".cards-hover > article, .cards-hover > div");
-    cards.forEach(function (card) {
-      card.addEventListener("pointermove", function (e) {
-        var r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
-        card.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
-      });
-    });
-  })();
-
-  // notify form
-  (function () {
-    var form = document.getElementById("notify-form");
-    var status = document.getElementById("notify-status");
-    if (!form || !status) return;
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      var emailInput = document.getElementById("email");
-      var submitBtn = form.querySelector("button[type='submit']");
-      if (!emailInput || !submitBtn) return;
-      var email = emailInput.value.trim();
-      status.textContent = "Sending...";
-      submitBtn.disabled = true;
-      try {
-        var res = await fetch("/api/notify", {
-          method: "POST",
-          body: JSON.stringify({ email: email }),
-          headers: { "Content-Type": "application/json" },
-        });
-        if (res.ok) { status.textContent = "You're on the list. We'll email you the day we launch."; form.reset(); }
-        else { var data = await res.json().catch(function () { return {}; }); status.textContent = data.error || "Something went wrong. Try again."; }
-      } catch (err) { status.textContent = "Network error. Try again."; }
-      finally { submitBtn.disabled = false; }
     });
   })();
 </script>
+
+<style>
+  /* ---------- hero ---------- */
+  .hero {
+    padding: var(--s16) 0 var(--s12);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero > *:not(.hero-mesh) {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    contain: paint;
+  }
+  .mesh {
+    position: absolute;
+    border-radius: 50%;
+  }
+  .mesh.a {
+    width: 560px;
+    height: 560px;
+    top: -200px;
+    right: -140px;
+    opacity: 0.5;
+    background: radial-gradient(
+      circle at 35% 35%,
+      color-mix(in srgb, var(--lava-2) 42%, transparent) 0%,
+      color-mix(in srgb, var(--lava) 26%, transparent) 38%,
+      transparent 70%
+    );
+  }
+  .mesh.b {
+    width: 520px;
+    height: 520px;
+    top: 60px;
+    left: -220px;
+    opacity: 0.4;
+    background: radial-gradient(
+      circle at 60% 40%,
+      color-mix(in srgb, var(--mesh-blue) 32%, transparent) 0%,
+      color-mix(in srgb, var(--verify) 22%, transparent) 55%,
+      transparent 75%
+    );
+  }
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .mesh {
+      will-change: transform;
+    }
+    .mesh.a {
+      animation: drift 26s ease-in-out infinite alternate;
+    }
+    .mesh.b {
+      animation: drift 32s ease-in-out infinite alternate-reverse;
+    }
+  }
+  @keyframes drift {
+    from {
+      transform: translate(0, 0) scale(1);
+    }
+    to {
+      transform: translate(-40px, 32px) scale(1.1);
+    }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: var(--s3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .eyebrow b {
+    color: var(--lava-text);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 7vw, 58px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.07;
+    max-width: 780px;
+    margin: 0 auto var(--s3);
+  }
+  h1 .grad {
+    background: linear-gradient(120deg, var(--lava) 0%, var(--lava-2) 60%, var(--warn) 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 610px;
+    margin: 0 auto var(--s4);
+  }
+  .cta-row {
+    display: flex;
+    gap: var(--s2);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--s2);
+  }
+  .cta-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+
+  /* product frame */
+  .frame {
+    margin: var(--s8) auto 0;
+    max-width: 848px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    text-align: left;
+    box-shadow: var(--shadow-lift);
+    transition:
+      transform var(--tr),
+      box-shadow var(--tr);
+  }
+  .frame:hover {
+    transform: translateY(-3px);
+  }
+  .fbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-3);
+  }
+  .fbar i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line-2);
+  }
+  .fbar-addr {
+    margin-left: 8px;
+  }
+  .fhead {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: 12px var(--s2);
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .ft {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .ferr {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--lava-text);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--lava) 8%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--lava) 24%, var(--card));
+  }
+  .fled {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--verify-deep);
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--verify-soft);
+    border: 1px solid var(--verify-line);
+  }
+  .fs {
+    position: relative;
+    padding: var(--s2);
+  }
+  .frail {
+    position: absolute;
+    left: 26px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--verify) 0%, var(--verify-deep) 100%);
+  }
+  .frow {
+    position: relative;
+    padding: 4px 0 4px 30px;
+    border-radius: 6px;
+  }
+  .frow:hover {
+    background: var(--panel);
+  }
+  .fdot {
+    position: absolute;
+    left: 21px;
+    top: 12px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2px solid var(--verify);
+    z-index: 2;
+  }
+  .fdot.err {
+    border-color: var(--lava);
+  }
+  .fc {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    flex-wrap: wrap;
+  }
+  .fk {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    width: 52px;
+  }
+  .fn {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    flex: 1;
+    min-width: 150px;
+  }
+  .fms {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .fms-err {
+    color: var(--lava-text);
+  }
+  .fhash {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--verify-deep);
+  }
+  .fhash.bad {
+    color: var(--lava-text);
+  }
+  .fseen {
+    flex-basis: 100%;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-2);
+    padding: 4px 0 2px 63px;
+  }
+  .fseen b {
+    color: var(--warn);
+    font-weight: 600;
+  }
+
+  /* ---------- sections ---------- */
+  section {
+    padding: var(--s12) 0;
+    position: relative;
+    z-index: 1;
+  }
+  .cap {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: var(--s2);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 4.6vw, 34px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: var(--s2);
+  }
+  .lede {
+    font-size: 15.5px;
+    color: var(--ink-2);
+    max-width: 610px;
+  }
+
+  /* animated underline links */
+  .ul {
+    position: relative;
+    font-weight: 500;
+    font-size: 14px;
+    display: inline-block;
+    color: var(--ink);
+  }
+  .ul::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--tr);
+  }
+  .ul:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* feature trio */
+  .tri {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s2);
+    margin-top: var(--s6);
+  }
+  .card-i {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: var(--s3);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform var(--tr),
+      box-shadow var(--tr);
+  }
+  .card-i:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+  }
+  .card-i::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--lava), var(--lava-2));
+  }
+  .card-i.g2::before {
+    background: linear-gradient(90deg, var(--mesh-blue), var(--verify));
+  }
+  .card-i.g3::before {
+    background: linear-gradient(90deg, var(--verify), var(--verify-deep));
+  }
+  .card-i .ic {
+    width: 34px;
+    height: 34px;
+    margin-bottom: var(--s2);
+    color: var(--ink-2);
+  }
+  .card-i.g3 .ic {
+    color: var(--verify-deep);
+  }
+  .card-i h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: var(--s1);
+    font-family: var(--sans);
+    letter-spacing: -0.01em;
+  }
+  .card-i p {
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+  .card-i .ul {
+    margin-top: var(--s2);
+  }
+
+  /* diagram */
+  .diagram {
+    margin-top: var(--s6);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--card);
+    padding: var(--s4) var(--s3);
+    box-shadow: var(--shadow);
+  }
+  .diagram svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .diagram text {
+    font-family: var(--mono);
+  }
+  .dg-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-align: center;
+    margin-top: var(--s2);
+  }
+
+  /* ledger */
+  .lgrid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--s4);
+    align-items: start;
+    margin-top: var(--s4);
+  }
+  .crows {
+    margin-top: var(--s3);
+  }
+  .crow {
+    display: flex;
+    gap: var(--s2);
+    padding: 14px var(--s2);
+    font-size: 13.5px;
+    color: var(--ink-2);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  .crow svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--verify-deep);
+  }
+  .crow b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .term {
+    background: linear-gradient(160deg, #131a21 0%, #0e1922 100%);
+    border-radius: 14px;
+    padding: var(--s3);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: #b9c4cc;
+    box-shadow: var(--shadow-lift);
+    overflow-x: auto;
+  }
+  .term .c {
+    color: #8896a1;
+  }
+  .term .g {
+    color: #4fce93;
+  }
+  .term .w {
+    color: #fff;
+  }
+  .term .cursor {
+    color: #4fce93;
+  }
+
+  /* mid-page capture */
+  .midcap {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--s4);
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: var(--s4);
+  }
+  .midcap-h {
+    margin-bottom: var(--s1);
+  }
+  .capform {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .capinput {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 14px;
+    border: 1px solid var(--line-2);
+    border-radius: 8px;
+    min-width: 220px;
+    flex: 1;
+    outline: none;
+    background: var(--card);
+    color: var(--ink);
+    transition: border-color var(--tr);
+  }
+  .capinput::placeholder {
+    color: var(--ink-3);
+  }
+  .capinput:focus {
+    border-color: var(--ink-3);
+  }
+  .capstatus {
+    flex-basis: 100%;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    min-height: 1rem;
+    margin: 0;
+  }
+
+  /* pricing */
+  .pgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s2);
+    margin-top: var(--s6);
+  }
+  .tier {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: var(--s3);
+    box-shadow: var(--shadow);
+    position: relative;
+    transition:
+      transform var(--tr),
+      box-shadow var(--tr);
+  }
+  .tier:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+  }
+  .tier.rec {
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--card), var(--card)) padding-box,
+      linear-gradient(135deg, var(--lava), var(--lava-2)) border-box;
+  }
+  .tier .rt {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 12px;
+    padding: 3px 10px;
+    background: linear-gradient(135deg, var(--lava), var(--lava-2));
+  }
+  .tier h3 {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--sans);
+  }
+  .tier .pr {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 600;
+    margin: 6px 0 2px;
+  }
+  .tier .pr small {
+    font-size: 12px;
+    color: var(--ink-3);
+    font-weight: 400;
+  }
+  .tier .qty {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-bottom: var(--s2);
+  }
+  .tier ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 12.5px;
+    color: var(--ink-2);
+  }
+  .tier ul li::before {
+    content: "—";
+    margin-right: 8px;
+    color: var(--ink-3);
+  }
+
+  .addon {
+    margin-top: var(--s2);
+    background: var(--card);
+    border: 1px solid var(--verify-line);
+    border-radius: 14px;
+    padding: var(--s3);
+    display: flex;
+    gap: var(--s3);
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .addon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--verify), var(--verify-deep));
+  }
+  .addon .t {
+    flex: 1;
+    min-width: 260px;
+  }
+  .addon h3 {
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: var(--sans);
+  }
+  .addon .ships {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--verify-deep);
+    background: var(--verify-soft);
+    border: 1px solid var(--verify-line);
+    border-radius: 12px;
+    padding: 2px 8px;
+  }
+  .addon p {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    margin-top: 6px;
+  }
+  .addon .pr {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .addon .pr small {
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+  .meter {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: var(--s2);
+  }
+  .m {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* faq */
+  .faqcard {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    margin-top: var(--s3);
+    padding: 0 var(--s3);
+  }
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+  details:last-child {
+    border-bottom: none;
+  }
+  summary {
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s2);
+    padding: var(--s2) 0;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: "+";
+    font-family: var(--mono);
+    color: var(--ink-3);
+  }
+  details[open] summary::after {
+    content: "–";
+  }
+  details p {
+    padding: 0 0 var(--s2);
+    font-size: 13.5px;
+    color: var(--ink-2);
+    max-width: 700px;
+  }
+  details p .ul {
+    font-size: 13.5px;
+    color: var(--lava-text);
+  }
+
+  /* final band */
+  .final {
+    text-align: center;
+  }
+  .final .band {
+    background: linear-gradient(135deg, #171f27 0%, #10202b 55%, #0e2a26 100%);
+    border-radius: 20px;
+    padding: var(--s8) var(--s4);
+    color: #fff;
+    box-shadow: var(--shadow-lift);
+    position: relative;
+    overflow: hidden;
+  }
+  .final .band::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    top: -260px;
+    right: -140px;
+    background: radial-gradient(circle, rgba(255, 106, 61, 0.35), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .final h2 {
+    color: #fff;
+    font-size: clamp(28px, 5vw, 36px);
+  }
+  .final .lede {
+    color: #9fb0ba;
+    margin: 0 auto var(--s4);
+  }
+  .capf {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+  .capf input {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    min-width: 250px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    transition: border-color var(--tr);
+  }
+  .capf input::placeholder {
+    color: #7e919c;
+  }
+  .capf input:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  .final .capstatus {
+    color: #9fb0ba;
+    text-align: center;
+  }
+  .final .small {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #7e919c;
+    margin-top: var(--s2);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px) {
+    .tri,
+    .lgrid,
+    .pgrid,
+    .midcap {
+      grid-template-columns: 1fr;
+    }
+    section {
+      padding: var(--s8) 0;
+    }
+    .hero {
+      padding: var(--s8) 0;
+    }
+    .sub {
+      font-size: 16px;
+    }
+    .capinput {
+      min-width: 0;
+      width: 100%;
+    }
+    .capform .btn,
+    .capf .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .capf input {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+</style>
