@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="EU AI Act · Tracelane"
+  description="How Tracelane's full-fidelity trace capture, tamper-evident audit ledger, and offline verifier map to EU AI Act Article 12 record-keeping obligations."
+>
+  <section class="container-prose py-24">
+    <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">eu ai act</p>
+    <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Record-keeping, mapped.</h1>
+    <p class="mt-6 text-lg text-fg-muted leading-relaxed">
+      The EU AI Act obliges providers and deployers of high-risk AI systems to keep automatic, traceable records of what their systems did. Tracelane is built to produce those records as a by-product of running your agents — full-fidelity traces, a tamper-evident ledger, and a verifier anyone can run offline. This page maps what the Act asks for to what Tracelane gives you.
+    </p>
+
+    <p class="mt-6 text-sm text-fg-subtle leading-relaxed">
+      Informational, not legal advice. Obligations depend on your system's classification and role; confirm your position with counsel.
+    </p>
+
+    <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Article 12 — Record-keeping</h2>
+    <p class="mt-4 text-fg-muted leading-relaxed">
+      Article 12 requires high-risk AI systems to technically allow the automatic recording of events (“logs”) over the system's lifetime, at a level that lets you identify situations where the system may present a risk or undergo a substantial modification, and that supports post-market monitoring. In agent terms: you need a durable, trustworthy record of what the model saw, what tools it called, and what it did.
+    </p>
+
+    <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">How Tracelane maps to it</h2>
+    <ul class="mt-4 space-y-3 text-fg-muted">
+      <li>
+        <span class="text-fg">Automatic event logging.</span> Every LLM call, tool call, browser action, and agent-to-agent handoff is captured as an OpenTelemetry trace at the gateway — no per-event instrumentation required for the gateway path. The record is a by-product of routing the call, not an extra step you have to remember.
+      </li>
+      <li>
+        <span class="text-fg">Traceability + integrity.</span> The audit ledger is a per-tenant SHA-256 hash chain: each entry commits to the one before it, so any reordering, deletion, or edit of a past record breaks the chain and is detectable. This is <span class="text-fg">tamper-evident</span> — it does not prevent tampering, it makes tampering provable after the fact.
+      </li>
+      <li>
+        <span class="text-fg">Independent verification.</span> Anyone can verify the ledger themselves, offline, with no Tracelane account and no network call — <code class="font-mono text-fg">tlane verify --offline</code> (or the open-source <code class="font-mono text-fg">@tracelanedev/audit-verifier</code>). An auditor checks your records without trusting us, or you.
+      </li>
+      <li>
+        <span class="text-fg">Retention + export.</span> Records are retained per your plan's retention window and exportable as an evidence pack for a regulator, auditor, or post-market-monitoring file.
+      </li>
+    </ul>
+
+    <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Verifiable today vs. on the roadmap</h2>
+    <ul class="mt-4 space-y-2 text-fg-muted">
+      <li>— <span class="text-fg">Today:</span> full-fidelity trace capture; the per-tenant tamper-evident SHA-256 hash-chain ledger; the offline, no-account verifier; the exportable evidence pack (Tamper-Evident Agent Ledger add-on).</li>
+      <li>— <span class="text-fg">Roadmap:</span> Sigstore Rekor transparency-log anchoring (a public, append-only witness for each chain head) and eIDAS-qualified timestamping via a QTSP. These strengthen third-party trust in the timeline; the tamper-evident chain stands on its own without them.</li>
+    </ul>
+
+    <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Timeline</h2>
+    <p class="mt-4 text-fg-muted leading-relaxed">
+      High-risk (Annex III) obligations — including Article 12 record-keeping — have their enforcement <span class="text-fg">provisionally deferred to Dec 2, 2027</span> under the Digital Omnibus political agreement (May 7, 2026), pending formal adoption. Treat that date as provisional, not settled; we track the adoption process and update this page as the text is finalised. (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">background</a>.)
+    </p>
+
+    <p class="mt-16 text-sm text-fg-subtle">
+      Questions on evidence packs or verification? <code class="font-mono text-fg">compliance@tracelane.dev</code>.
+    </p>
+  </section>
+</Base>
