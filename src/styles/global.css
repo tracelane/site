@@ -3,8 +3,8 @@
 /* ============================================================
    tracelane — light theme, v2 Tinted Slate + Lava palette
    Tinted-slate canvas, navy ink, a single LAVA red-orange brand signal,
-   and GREEN reserved for "verify / valid / proof" states. Source Serif 4
-   display, Inter body, JetBrains Mono for data/code (all self-hosted).
+   and GREEN reserved for "verify / valid / proof" states. Plus Jakarta
+   Sans (display + body), JetBrains Mono for data/code (all self-hosted).
    Only the palette + font tokens changed here — layout/content/motion of
    the existing pages are unchanged. Token NAMES are unchanged, so every
    page (security, privacy, terms, 404, changelog, vs/*) re-skins too.
@@ -27,9 +27,9 @@
   --radius-md: 0.625rem;
   --radius-lg: 1.25rem;
 
-  /* Fonts — display = Source Serif 4, UI/body = Inter, data/code = JetBrains Mono (all self-hosted) */
-  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* Fonts — display + UI/body = Plus Jakarta Sans, data/code = JetBrains Mono (all self-hosted) */
+  --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: "JetBrainsMono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* Color tokens — v2 Tinted Slate: slate canvas + navy ink (never blank white) */
@@ -59,16 +59,9 @@
 
 /* ---- Fonts ---- */
 @font-face {
-  font-family: "Source Serif 4";
-  src: url("/fonts/source-serif-4-var-latin.woff2") format("woff2");
-  font-weight: 200 900;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/inter-var-latin.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/plus-jakarta-sans-var-latin.woff2") format("woff2");
+  font-weight: 200 800;
   font-display: swap;
   font-style: normal;
 }
