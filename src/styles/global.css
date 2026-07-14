@@ -2,8 +2,8 @@
 
 /* ============================================================
    tracelane — light theme, v2 Tinted Slate + Lava palette
-   Tinted-slate canvas, navy ink, a single Harmonic-style coral (soft
-   red-orange) brand signal, and GREEN for "verify / proof" states. Figtree
+   Tinted-slate canvas, navy ink, a single LAVA red-orange brand signal,
+   and GREEN for "verify / proof" states. Figtree
    (display + body), JetBrains Mono for data/code (all self-hosted).
    Only the palette + font tokens changed here — layout/content/motion of
    the existing pages are unchanged. Token NAMES are unchanged, so every
@@ -43,10 +43,10 @@
   --color-border: #e2e7ee; /* hairline */
   --color-border-strong: #cfd7e2;
 
-  /* Brand signal — Harmonic-style coral (soft red-orange, adjacent to lava) */
-  --color-accent: #e2664a; /* coral — primary brand */
-  --color-accent-2: #cc5638; /* coral depth — hover */
-  --color-pop: #e2664a; /* eyebrows, dots, recommended */
+  /* Brand signal — Lava red-orange */
+  --color-accent: #ff3621; /* lava — primary brand */
+  --color-accent-2: #e8330e; /* lava depth — hover */
+  --color-pop: #ff3621; /* eyebrows, dots, recommended */
 
   /* Proof signal — green. ONLY for verify / valid / crypto states. */
   --color-verify: #12824e;
