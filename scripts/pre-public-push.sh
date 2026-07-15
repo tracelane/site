@@ -72,6 +72,12 @@ report "overclaim-verbs"  'blocks failures|prevents failures|before they execute
 #     changelog.astro is allowlisted: a changelog legitimately carries historical release dates.
 report "hard-launch-date" 'ships (Mon|Tue|Wed|Thu|Fri|Sat|Sun)?[[:space:]]*[A-Za-z]+ [0-9]{1,2}, 2026' changelog.astro
 
+# 8 — billing honesty. The "0.1 trace / failed-requests-unbilled" model is UNBUILT:
+#     the code counts 1 trace per gateway call and increments the quota counter BEFORE
+#     dispatch (so failures ARE counted). ADR-020 is the real, shipped model — 1 call =
+#     1 trace, $1.20/10K overage above quota. Block the false claims so they can't return.
+report "billing-0.1-trace" '0\.1 ?trace|counts? as 0\.1|failed requests? (aren.t|are not) billed'
+
 # 7 — Rekor must read as roadmap, never as shipped/live. Allowed ONLY on a line that also
 #     says "roadmap" or "planned".
 rekor_hits="$(grep -HniE 'rekor' "${FILES[@]}" 2>/dev/null | grep -viE 'roadmap|planned' || true)"
