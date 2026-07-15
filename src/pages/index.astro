@@ -37,10 +37,10 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
     </div>
 
     {/* ===== HERO VIDEO STAGE =====
-         Drop your Veo 3 / launch film in:
-            /public/hero.mp4          (the video)
-            /public/hero-poster.jpg   (poster frame shown before play)
-         No code change needed — the <video> below already points at them.
+         Real product footage (recorded from the live app):
+            /public/hero-loop.mp4     (muted autoplay loop — the audit-ledger verification)
+            /public/hero-poster.jpg   (first frame; fallback before the loop plays)
+            /public/hero.mp4          (full walkthrough — plays on click)
          The neon gradient shows until those files exist, so it never looks broken. */}
     <div class="container">
       <div class="stage-wrap hero-rise" style="--d:0.38s">
@@ -49,10 +49,16 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
           <span class="win-addr">tracelane — replay</span>
         </div>
         <div class="stage" id="hero-stage">
+          {/* Muted autoplay loop — behind the overlay (z-index below .stage-overlay). */}
+          <video id="hero-loop" class="stage-video" autoplay muted loop playsinline preload="metadata" poster="/hero-poster.jpg">
+            <source src="/hero-loop.mp4" type="video/mp4" />
+          </video>
+          {/* Full walkthrough — revealed on click, stacks above the loop. */}
           <video id="hero-video" class="stage-video" poster="/hero-poster.jpg" preload="none" playsinline controls style="display:none">
             <source src="/hero.mp4" type="video/mp4" />
           </video>
-          <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the tracelane story">
+          <button class="stage-overlay" id="hero-play" type="button" aria-label="Watch the full walkthrough"
+            style="background:radial-gradient(58% 58% at 50% 50%, rgba(6,8,15,.34), rgba(6,8,15,.10) 62%, transparent);">
             <span class="play">
               <svg width="26" height="30" viewBox="0 0 26 30" fill="#ffffff" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z" /></svg>
             </span>
@@ -387,9 +393,11 @@ $ tlane verify &lt;trace-id&gt;
   (function () {
     var btn = document.getElementById("hero-play");
     var vid = document.getElementById("hero-video");
+    var loop = document.getElementById("hero-loop");
     if (!btn || !vid) return;
     btn.addEventListener("click", function () {
       btn.style.display = "none";
+      if (loop) { try { loop.pause(); loop.style.display = "none"; } catch (e) {} }
       vid.style.display = "block";
       var p = vid.play();
       if (p && p.catch) p.catch(function () {});
