@@ -1,386 +1,242 @@
 ---
-import Base from "../layouts/Base.astro";
+import BaseCrisp from "../layouts/BaseCrisp.astro";
 
-const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="true" class="logo-mark">
-  <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/>
-  <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/>
-  <rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/>
-  <circle cx="38" cy="38" r="9" fill="var(--color-bg)" stroke="currentColor" stroke-width="3"/>
-  <circle cx="38" cy="38" r="3.6" fill="none" stroke="currentColor" stroke-width="2.6"/>
-</svg>`;
+// one green check, reused across pricing lists
+const check = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#1f9d64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const play = `<svg width="20" height="24" viewBox="0 0 26 30" fill="#fff" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z"/></svg>`;
 ---
 
-<Base>
+<BaseCrisp>
   {/* ===== Hero ===== */}
-  <header class="relative overflow-hidden">
-    <div class="hero-bg">
-      <div class="hero-aurora"></div>
-      <div class="hero-grid"></div>
-    </div>
+  <section class="hero"><div class="wrap">
+    <span class="pill"><span class="t">OPEN SOURCE</span> self-host · your keys · 0% markup</span>
+    <h1>The flight recorder<br><span class="thin">for AI agents.</span></h1>
+    <p class="hsub">Autonomous agents fail without crashing — a clean 200, well-formed tokens, and the run already three steps off course. Tracelane records every run to a tamper-evident ledger you can prove.</p>
+    <div class="hcta"><a href="#notify" class="btn btn-lava">Be first to know →</a><a href="https://github.com/tracelane" rel="me noopener" class="btn btn-ghost">GitHub</a></div>
+    <div class="hmicro">apache-2.0 core · self-host anywhere · no credit card</div>
 
-    <div class="container relative z-[2] pt-32 pb-20 sm:pt-40 text-center">
-      <span class="badge mb-7 hero-rise" style="--d:0s"><span class="dot"></span>open source · self-host · your keys, 0% markup</span>
-
-      <h1 class="font-semibold tracking-tight leading-[1.02] text-fg text-[clamp(2.2rem,9vw,2.9rem)] sm:text-5xl md:text-6xl max-w-4xl mx-auto hero-rise" style="--d:0.08s">
-        The <span class="grad-text">flight recorder</span> for AI agents
-      </h1>
-
-      <p class="mt-7 text-lg text-fg-muted max-w-3xl mx-auto leading-relaxed hero-rise" style="--d:0.16s">
-        Autonomous agents fail without crashing. Every call returns a clean 200, every token is well-formed — and the run is already three steps off course. Tracelane records the entire execution path to a tamper-evident, cryptographically signed ledger. See exactly where it drifted. Prove exactly what happened.
-      </p>
-
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center hero-rise" style="--d:0.24s">
-        <a href="#notify" class="btn-primary">Be First to Know</a>
-        <a href="https://github.com/tracelane" class="btn-secondary" rel="me noopener">Follow on GitHub →</a>
-      </div>
-      <p class="mt-7 font-mono text-xs text-fg-dim lowercase tracking-wide hero-rise" style="--d:0.30s">no credit card · apache-2.0 core · self-host anywhere</p>
-    </div>
-
-    {/* ===== HERO VIDEO STAGE =====
-         Drop your Veo 3 / launch film in:
-            /public/hero.mp4          (the video)
-            /public/hero-poster.jpg   (poster frame shown before play)
-         No code change needed — the <video> below already points at them.
-         The neon gradient shows until those files exist, so it never looks broken. */}
-    <div class="container">
-      <div class="stage-wrap hero-rise" style="--d:0.38s">
-        <div class="win-bar" aria-hidden="true">
-          <span class="win-dots"><i></i><i></i><i></i></span>
-          <span class="win-addr">tracelane — replay</span>
-        </div>
-        <div class="stage" id="hero-stage">
-          <video id="hero-video" class="stage-video" poster="/hero-poster.jpg" preload="none" playsinline controls style="display:none">
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
-          <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the tracelane story">
-            <span class="play">
-              <svg width="26" height="30" viewBox="0 0 26 30" fill="#ffffff" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z" /></svg>
-            </span>
-            <span class="stage-logo" set:html={chisel} />
-          </button>
-        </div>
+    {/* Hero video stage — drop /hero.mp4 + /hero-poster.jpg; overlay shows until then */}
+    <div class="stage-wrap reveal">
+      <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span class="addr">tracelane — replay</span></div>
+      <div class="stage" id="hero-stage">
+        <video id="hero-video" class="stage-video" poster="/hero-poster.jpg" preload="none" playsinline controls style="display:none">
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the tracelane story">
+          <span class="play" set:html={play} />
+          <span class="cap">Watch a run recorded, replayed, and verified</span>
+        </button>
       </div>
     </div>
+  </div></section>
 
-    {/* ===== Provider marquee ===== */}
-    <div class="marquee mt-20">
-      <div class="marq-track">
-        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>30+ providers</span>
-        <span class="d">◆</span><span>OpenAI</span><span class="d">◆</span><span>Anthropic</span><span class="d">◆</span><span>Google</span><span class="d">◆</span><span>Mistral</span><span class="d">◆</span><span>Llama</span><span class="d">◆</span><span>Bedrock</span><span class="d">◆</span><span>Groq</span><span class="d">◆</span><span>30+ providers</span>
+  {/* ===== Keyword pillars — the spine (re-skinned Record / Replay / Prove) ===== */}
+  <section id="pillars" style="padding:0 0 44px"><div class="wrap">
+    <div class="pillars reveal">
+      <div class="pillar"><div class="kw"><span class="dot"></span>Gateway</div><p>One endpoint in front of every model. Your keys, 0% markup, bounded overhead — every call captured in full fidelity.</p></div>
+      <div class="pillar"><div class="kw"><span class="dot"></span>Observability</div><p>Step-level traces — every prompt, tool call, latency and cost, down to the exact call that broke.</p></div>
+      <div class="pillar"><div class="kw"><span class="dot"></span>Audit</div><p>A tamper-evident, Ed25519-signed ledger. Verify the whole chain yourself, offline.</p></div>
+    </div>
+  </div></section>
+
+  {/* ===== Provider marquee ===== */}
+  <div class="marquee"><div class="wrap mrow">
+    <span>OpenAI</span><span>Anthropic</span><span>Google</span><span>Mistral</span><span>Bedrock</span><span>Groq</span><b>30+ providers</b>
+  </div></div>
+
+  {/* ===== Problem trio ===== */}
+  <section><div class="wrap center">
+    <div class="eyebrow">Why agent failures stay invisible</div>
+    <div class="stitle">A clean 200 tells you nothing.</div>
+    <div class="trio reveal">
+      <div class="tcard"><div class="tn">01</div><h4>State drift compounds</h4><p>A bad tool output at step 2 corrupts every step after it. The model keeps going, confidently, further from the goal.</p></div>
+      <div class="tcard"><div class="tn">02</div><h4>Success codes lie</h4><p>A 200 and clean tokens say nothing about whether the state is still valid three steps later. Tracelane reconstructs the causal path, not the request log.</p></div>
+      <div class="tcard"><div class="tn">03</div><h4>Tools run code</h4><p>Every tool call executes on your behalf. The ledger is the cryptographic record of exactly what ran.</p></div>
+    </div>
+  </div></section>
+
+  {/* ===== Signature verify block ===== */}
+  <section style="padding-top:0"><div class="wrap">
+    <div class="verify reveal">
+      <div class="eyebrow">Independently verifiable</div>
+      <h2>You don't trust us. You verify us.</h2>
+      <p class="vs">SHA-256 hash chain, Ed25519-signed every 100 events. Anchored batches carry a resolved Sigstore Rekor v2 inclusion proof (best-effort; universal per-run anchoring on the roadmap). Tampering means breaking the math — not editing a row.</p>
+      <div class="vterm">
+        <div><span class="p">$</span> <span class="c">tlane verify &lt;trace-id&gt;</span></div>
+        <div><span class="ok">✓</span> <span class="c">signature valid</span> <span class="p">(Ed25519, Merkle root)</span></div>
+        <div><span class="ok">✓</span> <span class="c">hash chain unbroken</span> <span class="p">(SHA-256)</span></div>
+        <div><span class="ok">✓</span> <span class="c">tamper-evident: yes</span><span class="cursor"></span></div>
       </div>
     </div>
-  </header>
-
-  {/* ===== Why agent failures stay invisible ===== */}
-  <section id="why" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Why agent failures stay invisible</h2>
-    </div>
-    <div class="mt-16 grid gap-5 md:grid-cols-3 reveal-group cards-hover">
-      <article class="glass rounded-2xl p-8">
-        <p class="text-fg-muted leading-relaxed"><span class="text-fg font-medium">State drift compounds.</span> A bad tool output at step 2 corrupts every step after it. The model keeps going, confidently, further from the goal.</p>
-      </article>
-      <article class="glass rounded-2xl p-8">
-        <p class="text-fg-muted leading-relaxed"><span class="text-fg font-medium">Success codes lie.</span> A 200 and clean tokens say nothing about whether the state is still valid three steps later. Tracelane reconstructs the causal path, not just the request log.</p>
-      </article>
-      <article class="glass rounded-2xl p-8">
-        <p class="text-fg-muted leading-relaxed"><span class="text-fg font-medium">Tools are an open execution surface.</span> Every tool call is code running on your behalf. The ledger is the cryptographic record of exactly what ran.</p>
-      </article>
-    </div>
-  </section>
-
-  {/* ===== Record / Replay / Prove ===== */}
-  <section id="what" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Everything your agent does, on the record.</h2>
-      <p class="mt-4 text-lg text-fg-muted">Three things, one Rust binary. Open core. Apache 2.0.</p>
-    </div>
-    <div class="mt-16 grid gap-5 md:grid-cols-6 md:auto-rows-fr reveal-group cards-hover">
-      <article class="glass rounded-2xl p-6 md:col-span-3 md:row-span-2 flex flex-col">
-        <div class="feat-glyph" aria-hidden="true"><span class="glyph-eq"><i></i><i></i><i></i><i></i><i></i></span></div>
-        <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">01 — record</p>
-        <h3 class="text-xl font-medium text-fg">Universal gateway</h3>
-        <p class="mt-3 text-fg-muted leading-relaxed">
-          One endpoint in front of every model. Bring your own keys, 0% markup, bounded overhead — and every call is captured in full fidelity.
-        </p>
-        <div class="sig-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      </article>
-      <article class="glass rounded-2xl p-6 md:col-span-3">
-        <div class="feat-glyph" aria-hidden="true"><svg class="glyph-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/></svg></div>
-        <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">02 — replay</p>
-        <h3 class="text-xl font-medium text-fg">Replay the failure</h3>
-        <p class="mt-3 text-fg-muted leading-relaxed">
-          Step-level trace of prompts, tool calls, latency, and cost — down to the exact call that broke, and whether you've seen it before.
-        </p>
-      </article>
-      <article class="glass rounded-2xl p-6 md:col-span-3">
-        <div class="feat-glyph" aria-hidden="true"><svg class="glyph-prove" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg></div>
-        <p class="font-mono text-xs text-pop mb-4 lowercase tracking-wider">03 — prove</p>
-        <h3 class="text-xl font-medium text-fg">Prove it</h3>
-        <p class="mt-3 text-fg-muted leading-relaxed">
-          A tamper-evident ledger — SHA-256 hash chain, Ed25519-signed Merkle root — anyone can verify offline. Logs you can't argue with.
-        </p>
-      </article>
-    </div>
-  </section>
+  </div></section>
 
   {/* ===== Migration ===== */}
-  <section id="migrate" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Migrating from a tool that got acquired or breached?</h2>
-      <p class="mt-4 text-lg text-fg-muted">Importers land with V1 — no data leaves your infrastructure during migration.</p>
+  <section id="migrate"><div class="wrap">
+    <div class="eyebrow">Migration</div>
+    <div class="stitle">Coming from a tool that got acquired or breached?</div>
+    <p class="lead" style="margin-left:0;text-align:left">Importers land with V1 — no data leaves your infrastructure during migration.</p>
+    <div class="grid2 reveal">
+      <div class="tcard"><h4>From Helicone</h4><p style="margin-top:8px">For teams on Helicone after it entered maintenance mode (Mintlify acquisition, Mar 2026). One-command import of traces, configs, prompts, and rate-limit rules — lands with V1.</p></div>
+      <div class="tcard"><h4>From LiteLLM</h4><p style="margin-top:8px">After CVE-2026-33634 (Mar 24) and CVE-2026-42208 (Apr 24). Drop-in gateway replacement; config import lands with V1. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p></div>
     </div>
-    <div class="mt-12 grid gap-6 md:grid-cols-2 reveal-group cards-hover">
-      <article class="glass rounded-2xl p-8">
-        <h3 class="text-xl font-medium text-fg">From Helicone</h3>
-        <p class="mt-2 text-sm text-fg-muted">For teams on Helicone after it entered maintenance mode (Mintlify acquisition, Mar 2026).</p>
-        <p class="mt-4 text-sm text-fg-muted">One-command import of traces, configs, prompts, and rate-limit rules — <span class="text-fg">lands with V1</span>.</p>
-      </article>
-      <article class="glass rounded-2xl p-8">
-        <h3 class="text-xl font-medium text-fg">From LiteLLM</h3>
-        <p class="mt-2 text-sm text-fg-muted">After CVE-2026-33634 (Mar 24) and CVE-2026-42208 (Apr 24).</p>
-        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement; <span class="text-fg">config import lands with V1</span>. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p>
-      </article>
-    </div>
-  </section>
+  </div></section>
 
   {/* ===== Audit ledger ===== */}
-  <section id="audit" class="container py-24 border-t border-border relative overflow-hidden">
-    <div class="glow glow-teal" style="width:520px;height:420px;right:-80px;top:40px"></div>
-    <div class="relative z-[2]">
-      <p class="font-mono text-xs text-pop mb-4 tracking-wider lowercase">the audit ledger</p>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight max-w-3xl text-fg leading-[1.05]">
-        Every run. On the record. <span class="grad-text">Provably.</span>
-      </h2>
-      <p class="mt-6 text-lg text-fg-muted max-w-2xl leading-relaxed">
-        Each event is hash-chained with SHA-256. Every 100 events, the Merkle root is signed with Ed25519. Verify the whole chain offline — tampering means breaking SHA-256 or forging a signature, not editing a row.
-      </p>
-
-      <div class="mt-16 grid gap-5 md:grid-cols-3 text-sm reveal-group cards-hover">
-        <div class="glass rounded-2xl p-6">
-          <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">eu ai act</p>
-          <p class="mt-3 text-fg-muted">Article 12 export pack — full audit trail for high-risk AI systems. Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>); the ledger ships at V1.</p>
-        </div>
-        <div class="glass rounded-2xl p-6">
-          <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">india dpdp</p>
-          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. EU data residency at V1; India residency on the roadmap, on demand. Audit-log retention configurable.</p>
-        </div>
-        <div class="glass rounded-2xl p-6">
-          <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">hipaa</p>
-          <p class="mt-3 text-fg-muted">BAA available on Business tier. PII redaction inline. Provider keys envelope-encrypted.</p>
-        </div>
-      </div>
-
-      <pre class="mt-12 glass rounded-2xl p-6 font-mono text-sm overflow-x-auto text-fg"><code><span class="text-fg-subtle"># verify any trace offline — no trust in us required</span>
-$ tlane verify &lt;trace-id&gt;
-<span class="text-verify">✓</span> signature valid (Ed25519, Merkle root)
-<span class="text-verify">✓</span> hash chain unbroken (SHA-256)
-<span class="text-verify">✓</span> tamper-evident: yes <span class="caret">▋</span></code></pre>
+  <section id="audit" style="padding-top:0"><div class="wrap">
+    <div class="eyebrow">The audit ledger</div>
+    <div class="stitle">Every run. On the record. Provably.</div>
+    <p class="lead" style="margin-left:0;text-align:left;max-width:640px">Each event is hash-chained with SHA-256. Every 100 events the Merkle root is signed with Ed25519. Verify the whole chain offline — tampering means breaking SHA-256 or forging a signature, not editing a row.</p>
+    <div class="grid3-cards reveal">
+      <div class="mini"><div class="k">eu ai act</div><p>Article 12 export pack — full audit trail for high-risk AI systems. Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" rel="noopener">details</a>); the ledger ships at V1.</p></div>
+      <div class="mini"><div class="k">india dpdp</div><p>Phase II enforcement Nov 13, 2026. EU data residency at V1; India residency on the roadmap, on demand. Audit-log retention configurable.</p></div>
+      <div class="mini"><div class="k">hipaa</div><p>BAA available on Business tier. PII redaction inline. Provider keys envelope-encrypted.</p></div>
     </div>
+  </div></section>
+
+  {/* ===== Dev / code ===== */}
+  <section style="padding-top:0"><div class="wrap dev">
+    <div>
+      <div class="eyebrow">For developers</div>
+      <h2>One line.<br>Every provider.</h2>
+      <p>Point any OpenAI-compatible client at Tracelane. Your code doesn't change.</p>
+      <a href="/docs" class="btn btn-lava">Read the docs →</a>
+      <div class="dstats">
+        <div class="dstat"><div class="n">30+</div><div class="l">providers</div></div>
+        <div class="dstat"><div class="n">0%</div><div class="l">markup</div></div>
+        <div class="dstat"><div class="n">&lt;15ms</div><div class="l">overhead*</div></div>
+      </div>
+    </div>
+    <div class="codepanel">
+      <div class="ptabs"><div class="ptab on">Python</div><div class="ptab">TypeScript</div><div class="ptab">cURL</div></div>
+      <div class="code"><span class="c"># any OpenAI client, one URL change</span>
+<span class="k">from</span> openai <span class="k">import</span> OpenAI
+
+client = <span class="f">OpenAI</span>(
+    base_url=<span class="s">"https://gateway.tracelane.dev/v1"</span>,
+    api_key=<span class="s">"tlane_..."</span>,
+)
+
+resp = client.chat.completions.<span class="f">create</span>(
+    model=<span class="s">"claude-sonnet-4-6"</span>,
+    messages=[&#123;<span class="s">"role"</span>:<span class="s">"user"</span>,<span class="s">"content"</span>:<span class="s">"ship it"</span>&#125;],
+)</div>
+    </div>
+  </div>
+  <div class="wrap footnote">*p95 overhead target, excluding provider time — measured numbers publish as the Tracelane Reliability Benchmark v1.0 at launch.</div>
   </section>
 
-  {/* ===== Pricing ===== */}
-  <section id="pricing" class="container py-24 border-t border-border">
-    <div class="reveal max-w-2xl">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Pricing.</h2>
-      <p class="mt-4 text-lg text-fg-muted">Open core. Self-host free forever. Hosted tiers start at $0.</p>
+  {/* ===== Roadmap — aspirational, no dates ===== */}
+  <section style="padding-top:0"><div class="wrap road">
+    <div class="eyebrow">What we're building next</div>
+    <div class="stitle">Imagine what you'll see.</div>
+    <p class="lead">V1 is the recorder. Next, it starts to reason with you.</p>
+    <div class="roadgrid reveal">
+      <div class="rc"><div class="ri"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h13" stroke="#ec4025" stroke-width="1.8" stroke-linecap="round"/></svg></div><h4>Ask your traces</h4><p>Query a thousand runs in plain English — and get real trace IDs back.</p></div>
+      <div class="rc"><div class="ri"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v10M8 8v5M16 6v7M5 11v2M19 10v3" stroke="#ec4025" stroke-width="1.8" stroke-linecap="round"/></svg></div><h4>Voice, on the record</h4><p>Watch voice agents think — STT to LLM to TTS, every millisecond mapped.</p></div>
+      <div class="rc"><div class="ri"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="4" rx="1" stroke="#ec4025" stroke-width="1.8"/><rect x="4" y="12" width="16" height="4" rx="1" stroke="#ec4025" stroke-width="1.8"/></svg></div><h4>Full sessions</h4><p>Replay an entire multi-turn agent journey as one continuous story.</p></div>
+      <div class="rc"><div class="ri"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="#ec4025" stroke-width="1.8"/><circle cx="16" cy="15" r="3" stroke="#ec4025" stroke-width="1.8"/></svg></div><h4>Your whole team</h4><p>Shared workspaces, roles, and a ledger that knows who did what.</p></div>
+      <div class="rc"><div class="ri"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4Z" stroke="#ec4025" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Guardrails that learn</h4><p>Catch tomorrow's failure by the shape of yesterday's, across the taxonomy.</p></div>
     </div>
+    <div class="roadline">The recorder becomes a copilot. <a href="https://github.com/tracelane" rel="me noopener">Follow the build on GitHub →</a></div>
+  </div></section>
 
-    <div class="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-3 reveal-group cards-hover">
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">OSS self-host</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$0</p>
-        <p class="mt-1 text-sm text-fg-subtle">Apache 2.0 · forever</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>Full Rust gateway · 30+ providers — 6 native adapters plus any OpenAI-compatible endpoint</li>
-          <li>ClickHouse + R2 storage</li>
-          <li>Tamper-evident audit ledger</li>
-          <li>Community Discord support</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Free hosted</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$0</p>
-        <p class="mt-1 text-sm text-fg-subtle">10K traces + 10K gateway / mo</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>Single workspace, 1 seat</li>
-          <li>7-day retention · 60 RPM</li>
-          <li>Pre-flight policy checks</li>
-          <li>No credit card · no commercial use</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Builder</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$59<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">150K traces + 150K gateway / mo · 1 seat</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>30-day retention · 600 RPM</li>
-          <li>Predictive pre-flight history (read-only)</li>
-          <li>Audit ledger + offline verify</li>
-          <li>Email support · 24h</li>
-        </ul>
-      </article>
-
-      <article class="rec-card glass border-2 rounded-2xl p-6 relative" style="border-color:var(--color-accent)">
-        <p class="absolute -top-3 left-6 px-2 bg-bg-elevated text-xs font-mono text-pop lowercase">recommended</p>
-        <h3 class="font-medium text-fg">Team</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$249<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">1M traces + 1M gateway / mo · 10 seats</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>90-day retention · +$19/seat to 25</li>
-          <li>Predictive pre-flight + tamper-evident promotion record</li>
-          <li>WorkOS SSO · 99% SLA</li>
-          <li>Slack support · 8h</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Business</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$899<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">5M traces + 5M gateway / mo · 25 seats</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>180-day retention · +$19/seat to 50</li>
-          <li>Inline ensemble guardrail · 99.9% SLA</li>
-          <li>WorkOS SSO</li>
-          <li>Dedicated Slack · 4h</li>
-        </ul>
-      </article>
-
-      <article class="glass rounded-2xl p-6">
-        <h3 class="font-medium text-fg">Enterprise</h3>
-        <p class="mt-2 font-mono text-3xl text-fg">$2,999+<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">25M+ traces · custom</p>
-        <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>365-day retention · custom seats</li>
-          <li>Region pinning (EU at V1; US / IN on the roadmap)</li>
-          <li>BYOK + CMK self-service</li>
-          <li>1h SLA · dedicated CSM</li>
-        </ul>
-      </article>
+  {/* ===== Pricing (Option B — single-user; no seats/SSO) ===== */}
+  <section id="pricing" style="padding-top:0"><div class="wrap center">
+    <div class="eyebrow">Pricing</div>
+    <div class="stitle">Priced in traces.</div>
+    <p class="lead">Self-host free forever. Hosted starts at $0. Your keys, 0% markup, capped overage.</p>
+    <div class="pgrid">
+      <div class="pc"><div class="pn">OSS self-host</div><div class="pp">$0<span class="u"> forever</span></div><div class="pq">Apache 2.0 full stack</div><ul>
+        <li><span set:html={check}></span> 30+ providers · single-node Docker Compose</li>
+        <li><span set:html={check}></span> Rule-based pre-flight (PR1/PR2/PR4/PR5)</li>
+        <li><span set:html={check}></span> Tamper-evident audit ledger</li>
+      </ul><a href="https://github.com/tracelane" rel="me noopener" class="btn btn-ghost" style="width:100%;justify-content:center">Self-host</a></div>
+      <div class="pc"><div class="pn">Free hosted</div><div class="pp">$0</div><div class="pq">10K traces + 10K gateway · 7-day</div><ul>
+        <li><span set:html={check}></span> 60 RPM · pre-flight policy checks</li>
+        <li><span set:html={check}></span> Self-verify, free · no commercial use</li>
+      </ul><a href="#notify" class="btn btn-ghost" style="width:100%;justify-content:center">Start free</a></div>
+      <div class="pc"><div class="pn">Builder</div><div class="pp">$59<span class="u">/mo</span></div><div class="pq">150K traces + 150K gateway · 30-day</div><ul>
+        <li><span set:html={check}></span> 600 RPM · predictive PR1+PR2+PR4+PR5</li>
+        <li><span set:html={check}></span> Predictive pre-flight history (read-only)</li>
+        <li><span set:html={check}></span> Audit ledger + offline verify</li>
+      </ul><a href="#notify" class="btn btn-ghost" style="width:100%;justify-content:center">Start Builder</a></div>
     </div>
-
-    <div class="mt-12 glass rounded-2xl p-6">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <div class="flex items-center gap-3 flex-wrap">
-            <h3 class="font-medium text-fg">Tamper-evident agent ledger</h3>
-            <span class="font-mono text-xs text-fg-dim lowercase tracking-wider px-2 py-0.5 border border-border-strong rounded-sm">ships at v1</span>
-          </div>
-          <p class="mt-2 text-sm text-fg-muted">
-            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, with the EU AI Act Article 12 export pack, EU data residency, and configurable audit-log retention. India DPDP Phase II alignment and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).
-          </p>
-        </div>
-        <p class="font-mono text-2xl text-fg shrink-0">+$999<span class="text-base text-fg-muted">/mo</span></p>
-      </div>
+    <div class="pgrid" style="margin-top:14px">
+      <div class="pc feat"><div class="pn" style="color:var(--lava-deep)">Team</div><div class="pp">$249<span class="u">/mo</span></div><div class="pq">1M traces + 1M gateway · 90-day</div><ul>
+        <li><span set:html={check}></span> 6K RPM · predictive PR1–PR6</li>
+        <li><span set:html={check}></span> Tamper-evident promotion record</li>
+        <li><span set:html={check}></span> Auto-rollback on cost / latency / error · 99% SLA</li>
+      </ul><a href="#notify" class="btn btn-lava" style="width:100%;justify-content:center">Start Team</a></div>
+      <div class="pc"><div class="pn">Business</div><div class="pp">$899<span class="u">/mo</span></div><div class="pq">5M traces + 5M gateway · 180-day</div><ul>
+        <li><span set:html={check}></span> 60K RPM · inline ensemble guardrail · 99.9% SLA</li>
+        <li><span set:html={check}></span> Cohort baselines when n≥30 (roadmap)</li>
+      </ul><a href="#notify" class="btn btn-ghost" style="width:100%;justify-content:center">Business</a></div>
+      <div class="pc"><div class="pn">Enterprise</div><div class="pp">$2,999<span class="u">+</span></div><div class="pq">25M+ traces · 365-day</div><ul>
+        <li><span set:html={check}></span> Dedicated tenancy · region pinning · BYOK+CMK</li>
+        <li><span set:html={check}></span> 99.95% SLA · 1h response · dedicated CSM</li>
+      </ul><a href="#notify" class="btn btn-ghost" style="width:100%;justify-content:center">Contact sales</a></div>
     </div>
-
-    <p class="mt-12 text-center text-sm text-fg-subtle">Metered in traces, not spans — one gateway call is one trace, and overage is $1.20 per 10K traces above your monthly quota. Core tiers available at launch · coming soon.</p>
-  </section>
-
-  {/* ===== Trust ===== */}
-  <section id="trust" class="container py-24 border-t border-border">
-    <div class="reveal">
-      <p class="font-mono text-xs text-pop mb-4 tracking-wider lowercase">security posture</p>
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Built for procurement reviews.</h2>
+    <div class="pgrid" style="margin-top:14px">
+      <div class="pc" style="background:var(--soft);border-color:var(--lava-soft)"><div class="pn" style="color:var(--lava-deep)">Audit SKU · add-on</div><div class="pp">+$999<span class="u">/mo</span></div><div class="pq">Tamper-evident agent ledger for EU AI Act Article 12</div><ul>
+        <li><span set:html={check}></span> SHA-256 chain + Ed25519 signing · Sigstore Rekor v2 anchoring (best-effort; universal on roadmap)</li>
+        <li><span set:html={check}></span> Article-12 export pack · EU data residency</li>
+      </ul><a href="#notify" class="btn btn-lava" style="width:100%;justify-content:center">Add the Audit SKU</a></div>
     </div>
-    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-sm reveal-group cards-hover">
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">release integrity</p>
-        <p class="mt-3 text-fg-muted">Sigstore Cosign keyless signing. SLSA Build L3 provenance. Trusted Publishing OIDC — no long-lived tokens.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">sbom</p>
-        <p class="mt-3 text-fg-muted">CycloneDX SBOM published with every release. Verifiable from GitHub release artifacts.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">vuln scanning</p>
-        <p class="mt-3 text-fg-muted">OSV-Scanner + Grype + Syft on every commit.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">pre-flight policy</p>
-        <p class="mt-3 text-fg-muted">Policy checks run inline at the gateway before the call leaves. V1: schema-violation + tool-definition-drift, fail-open, sub-50ms target. More on a published roadmap.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">transport</p>
-        <p class="mt-3 text-fg-muted">TLS 1.3 minimum. mTLS via SPIFFE/SPIRE for ingest. SSRF defense — RFC1918 + link-local denied.</p>
-      </div>
-      <div class="glass rounded-2xl p-5">
-        <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">standards</p>
-        <p class="mt-3 text-fg-muted">OTel GenAI semconv — tracking the pre-execution judgment / negative-proof proposal (<a href="https://github.com/open-telemetry/semantic-conventions/issues/3244" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">#3244</a>).</p>
-      </div>
+    <div class="pfoot">One gateway call = one trace. Overage $1.20 / 10K, 5× hard cap then 429. OSS self-host free forever.</div>
+  </div></section>
+
+  {/* ===== Trust / procurement ===== */}
+  <section id="trust" style="padding-top:0"><div class="wrap">
+    <div class="eyebrow">Security posture</div>
+    <div class="stitle">Built for procurement reviews.</div>
+    <div class="grid3-cards reveal">
+      <div class="mini"><div class="k">release integrity</div><p>Sigstore Cosign keyless signing. SLSA Build L3 provenance. Trusted Publishing OIDC — no long-lived tokens.</p></div>
+      <div class="mini"><div class="k">sbom</div><p>CycloneDX SBOM published with every release. Verifiable from GitHub release artifacts.</p></div>
+      <div class="mini"><div class="k">vuln scanning</div><p>OSV-Scanner + Grype + Syft on every commit.</p></div>
+      <div class="mini"><div class="k">pre-flight policy</div><p>Policy checks run inline at the gateway before the call leaves. V1: schema-violation + tool-definition-drift, fail-open, sub-50ms target.</p></div>
+      <div class="mini"><div class="k">transport</div><p>TLS 1.3 minimum. mTLS via SPIFFE/SPIRE for ingest. SSRF defense — RFC1918 + link-local denied.</p></div>
+      <div class="mini"><div class="k">standards</div><p>OTel GenAI semconv — tracking the pre-execution judgment / negative-proof proposal (<a href="https://github.com/open-telemetry/semantic-conventions/issues/3244" rel="noopener">#3244</a>).</p></div>
     </div>
-    <p class="mt-12 text-sm text-fg-muted">Full security posture: <a href="/security" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">/security</a></p>
-  </section>
+    <p style="margin-top:24px;font-size:14px;color:var(--muted)">Full security posture: <a href="/security" style="color:var(--lava-deep);text-decoration:underline">/security</a></p>
+  </div></section>
 
   {/* ===== FAQ ===== */}
-  <section id="faq" class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg text-center">Frequently asked.</h2>
-    <div class="mt-16 space-y-4 max-w-3xl mx-auto reveal-group text-left">
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What is Tracelane?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Tracelane is an open-source (Apache 2.0) flight recorder for AI agents: a universal Rust LLM gateway, full-fidelity OpenTelemetry observability, and a tamper-evident audit ledger. Each event is SHA-256 hash-chained and the Merkle root is Ed25519-signed every 100 events, so any trace can be verified offline.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">How is Tracelane different from Helicone, LangSmith, or Langfuse?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Tracelane unifies the gateway, observability, pre-flight policy, and a tamper-evident audit ledger in one Rust binary. Helicone, Langfuse, and LangSmith are observability-first — you bring your own gateway and your own guardrails. Tracelane is Apache 2.0 core with a published self-host path; Helicone's gateway is GPL-3.0 (corporate-procurement-hostile), Arize Phoenix is ELv2 (no SaaS resale), and LangSmith is closed-source. The audit ledger is hash-chained and Ed25519-signed — no competitor in this category offers cryptographic audit-log integrity at the trace level.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What about LangSmith Engine?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's pre-flight policy checks flag failure modes at the gateway before the call reaches the provider — sub-50ms target. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Is Tracelane really open source?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Yes. The core (Rust gateway, ingest workers, observability backend, pre-flight layer, CLI, SDKs, audit verifiers) is Apache 2.0. The <code class="font-mono text-sm">/ee</code> directory contains Tracelane Enterprise License code (paid-tier features behind entitlements). The <code class="font-mono text-sm">/spec</code> directory is CC0. Paid features are gated by the workspace_entitlements table at the application layer, not by a license-string compare.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Which providers does Tracelane support?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">At V1: 30+ providers — 6 native adapters (Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Does Tracelane support EU AI Act Article 12?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger add-on ($999/mo) ships at V1. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), the EU AI Act Article 12 export pack, and EU data residency are available at V1; the India DPDP Phase II alignment pack and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What's the latency overhead?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider time). Pre-flight policy layer targets p99 &lt;50ms on commodity CPU. These are engineering targets — measured numbers publish as the Tracelane Reliability Benchmark v1.0 at launch.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Can I self-host?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Yes. Docker Compose for development, Helm chart for production. The full ClickHouse + R2 stack runs on a single small Hetzner node. Self-host docs land with V1 — see <a href="/docs" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">/docs</a>.</p>
-      </details>
-
-      <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">When does V1 launch?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Soon — we're finishing the V1 quality gate. Drop your email above and you'll get a single message the day it's live, with the Show HN, X, LinkedIn, and Bluesky links.</p>
-      </details>
+  <section id="faq" style="padding-top:0"><div class="wrap center">
+    <div class="stitle">Frequently asked.</div>
+    <div class="faq">
+      <details><summary>What is Tracelane?<span class="x">+</span></summary><p>Tracelane is an open-source (Apache 2.0) flight recorder for AI agents: a universal Rust LLM gateway, full-fidelity OpenTelemetry observability, and a tamper-evident audit ledger. Each event is SHA-256 hash-chained and the Merkle root is Ed25519-signed every 100 events, so any trace can be verified offline.</p></details>
+      <details><summary>How is Tracelane different from Helicone, LangSmith, or Langfuse?<span class="x">+</span></summary><p>Tracelane unifies the gateway, observability, pre-flight policy, and a tamper-evident audit ledger in one Rust binary. Helicone, Langfuse, and LangSmith are observability-first — you bring your own gateway and your own guardrails. Tracelane is Apache 2.0 core with a published self-host path; Helicone's gateway is GPL-3.0, Arize Phoenix is ELv2 (no SaaS resale), and LangSmith is closed-source. The audit ledger is hash-chained and Ed25519-signed — no competitor in this category offers cryptographic audit-log integrity at the trace level.</p></details>
+      <details><summary>What about LangSmith Engine?<span class="x">+</span></summary><p>LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's pre-flight policy checks flag failure modes at the gateway before the call reaches the provider — sub-50ms target. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine">Detailed comparison →</a></p></details>
+      <details><summary>Is Tracelane really open source?<span class="x">+</span></summary><p>Yes. The core (Rust gateway, ingest workers, observability backend, pre-flight layer, CLI, SDKs, audit verifiers) is Apache 2.0. The <code>/ee</code> directory contains Tracelane Enterprise License code (paid-tier features behind entitlements). The <code>/spec</code> directory is CC0. Paid features are gated by the workspace_entitlements table at the application layer, not by a license-string compare.</p></details>
+      <details><summary>Which providers does Tracelane support?<span class="x">+</span></summary><p>At V1: 30+ providers — 6 native adapters (Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p></details>
+      <details><summary>Does Tracelane support EU AI Act Article 12?<span class="x">+</span></summary><p>The Tamper-Evident Agent Ledger add-on ($999/mo) ships at V1. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), the EU AI Act Article 12 export pack, and EU data residency are available at V1; the India DPDP Phase II alignment pack and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p></details>
+      <details><summary>What's the latency overhead?<span class="x">+</span></summary><p>Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider time). Pre-flight policy layer targets p99 &lt;50ms on commodity CPU. These are engineering targets — measured numbers publish as the Tracelane Reliability Benchmark v1.0 at launch.</p></details>
+      <details><summary>Can I self-host?<span class="x">+</span></summary><p>Yes. Docker Compose for development, Helm chart for production. The full ClickHouse + R2 stack runs on a single small Hetzner node. Self-host docs land with V1 — see <a href="/docs">/docs</a>.</p></details>
+      <details><summary>When does V1 launch?<span class="x">+</span></summary><p>Soon — we're finishing the V1 quality gate. Drop your email below and you'll get a single message the day it's live, with the Show HN, X, LinkedIn, and Bluesky links.</p></details>
     </div>
-  </section>
+  </div></section>
 
   {/* ===== Notify ===== */}
-  <section id="notify" class="container py-24 border-t border-border relative overflow-hidden">
-    <div class="glow glow-lime" style="width:480px;height:380px;left:50%;top:-120px;transform:translateX(-50%)"></div>
-    <div class="max-w-2xl mx-auto text-center relative z-[2] glass rounded-2xl p-8 sm:p-10">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Get the V1 launch email.</h2>
-      <p class="mt-4 text-lg text-fg-muted">One email the day we launch. Then nothing unless you opt into product updates. No newsletter, no marketing automation.</p>
-      <form id="notify-form" class="mt-8 flex flex-col sm:flex-row gap-3" method="POST" action="/api/notify">
-        <label for="email" class="sr-only">email address</label>
-        <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@company.com"
-          class="flex-1 rounded-md border border-border bg-bg px-4 py-3 font-mono text-sm text-fg placeholder:text-fg-dim focus:outline-none focus:border-accent" />
-        <button type="submit" class="btn-primary">Count Me In</button>
+  <section id="notify" style="padding-top:0"><div class="wrap">
+    <div class="notify reveal">
+      <div class="stitle" style="font-size:32px">Get the V1 launch email.</div>
+      <p class="lead" style="margin-top:12px">One email the day we launch. Then nothing unless you opt into product updates. No newsletter, no marketing automation.</p>
+      <form id="notify-form" class="nform" method="POST" action="/api/notify">
+        <label for="email" class="sr-only" style="position:absolute;left:-999px">email address</label>
+        <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+        <button type="submit" class="btn btn-lava">Count me in</button>
       </form>
-      <p id="notify-status" class="mt-4 text-sm text-fg-subtle min-h-[1.25rem]" aria-live="polite"></p>
+      <p id="notify-status" class="nstatus" aria-live="polite"></p>
     </div>
-  </section>
-</Base>
+  </div></section>
+
+  {/* ===== CTA ===== */}
+  <div class="cta"><div class="wrap">
+    <h2>Start with a record you can prove.</h2>
+    <p>Apache-2.0 core. Self-host or cloud. Free to 10K traces.</p>
+    <div class="hcta"><a href="#notify" class="btn btn-lava">Be first to know →</a><a href="/docs" class="btn btn-ghost">Read the docs</a></div>
+  </div></div>
+</BaseCrisp>
 
 <script is:inline>
   // hero video stage — reveal native player on click
@@ -393,57 +249,6 @@ $ tlane verify &lt;trace-id&gt;
       vid.style.display = "block";
       var p = vid.play();
       if (p && p.catch) p.catch(function () {});
-    });
-  })();
-
-  // scroll reveal — single elements (.reveal) and staggered grids (.reveal-group)
-  (function () {
-    var els = document.querySelectorAll(".reveal, .reveal-group");
-    if (!("IntersectionObserver" in window) || !els.length) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
-    els.forEach(function (el) { io.observe(el); });
-  })();
-
-  // cursor-tracked spotlight on cards
-  (function () {
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var cards = document.querySelectorAll(".cards-hover > article, .cards-hover > div");
-    cards.forEach(function (card) {
-      card.addEventListener("pointermove", function (e) {
-        var r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
-        card.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
-      });
-    });
-  })();
-
-  // notify form
-  (function () {
-    var form = document.getElementById("notify-form");
-    var status = document.getElementById("notify-status");
-    if (!form || !status) return;
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      var emailInput = document.getElementById("email");
-      var submitBtn = form.querySelector("button[type='submit']");
-      if (!emailInput || !submitBtn) return;
-      var email = emailInput.value.trim();
-      status.textContent = "Sending...";
-      submitBtn.disabled = true;
-      try {
-        var res = await fetch("/api/notify", {
-          method: "POST",
-          body: JSON.stringify({ email: email }),
-          headers: { "Content-Type": "application/json" },
-        });
-        if (res.ok) { status.textContent = "You're on the list. We'll email you the day we launch."; form.reset(); }
-        else { var data = await res.json().catch(function () { return {}; }); status.textContent = data.error || "Something went wrong. Try again."; }
-      } catch (err) { status.textContent = "Network error. Try again."; }
-      finally { submitBtn.disabled = false; }
     });
   })();
 </script>
