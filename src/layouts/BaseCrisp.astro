@@ -50,7 +50,10 @@ const jsonLd = {
   ],
 };
 
-const mark = `<svg viewBox="0 0 24 24" fill="none"><path d="M3 12 q3-6 6 0 t6 0 t6 0" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+// The official "Chisel" brand mark (same as the app + favicon + Header): two
+// brackets, a bar, and a target. Ink via currentColor; the target centre uses
+// the page bg. NEVER a generic placeholder.
+const mark = `<svg viewBox="0 0 76 76" aria-hidden="true"><path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/><path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/><rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/><circle cx="38" cy="38" r="9" fill="var(--bg)" stroke="currentColor" stroke-width="3"/><circle cx="38" cy="38" r="3.6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>`;
 ---
 
 <!doctype html>
