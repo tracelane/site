@@ -1,0 +1,650 @@
+---
+/**
+ * /demo — a self-contained autoplay product loop, recordable to /hero.mp4.
+ *
+ * Four scenes on a ~52s infinite loop:
+ *   1 · code types — one URL change routes any OpenAI client through the gateway
+ *   2 · a trace appears — the run is captured in full fidelity
+ *   3 · `tlane verify` turns green — signature + hash chain + public anchor
+ *   4 · latency splits into concentric rings — where the time goes
+ *
+ * Real data/formats only (values mirror the live product surfaces). Standalone
+ * <html> (no nav/footer) so a screen recording of the stage is clean.
+ * prefers-reduced-motion: the loop stops on the final rings frame, no motion.
+ */
+const check = `<svg viewBox="0 0 24 24" fill="none" width="15" height="15" aria-hidden="true"><path d="M5 12.5l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Tracelane — live demo</title>
+		<meta name="robots" content="noindex" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--bg: #eef2f8;
+				--ink: #161b22;
+				--ink-2: #3a4450;
+				--muted: #6b7480;
+				--subtle: #9aa4b0;
+				--border: #eaedf1;
+				--card: #ffffff;
+				--code: #0d1116;
+				--code-ink: #dfe7f0;
+				--lava: #ff5a3c;
+				--lava-deep: #ec4025;
+				--lava-soft: #ffe3dc;
+				--green: #1f9d64;
+				--font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+				--mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				height: 100%;
+			}
+			body {
+				background: radial-gradient(120% 120% at 50% 0%, #ffffff, var(--bg));
+				font-family: var(--font);
+				color: var(--ink);
+				display: grid;
+				place-items: center;
+				-webkit-font-smoothing: antialiased;
+			}
+			.wrap {
+				width: min(760px, 92vw);
+			}
+			.frame {
+				border-radius: 20px;
+				background: var(--card);
+				border: 1px solid var(--border);
+				box-shadow: 0 30px 70px -34px rgba(40, 60, 90, 0.4);
+				overflow: hidden;
+			}
+			.bar {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				padding: 12px 16px;
+				border-bottom: 1px solid var(--border);
+			}
+			.bar i {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: #e2e6ea;
+			}
+			.bar i:first-child {
+				background: var(--lava);
+			}
+			.bar .addr {
+				margin-left: 8px;
+				font-family: var(--mono);
+				font-size: 11px;
+				color: var(--subtle);
+			}
+			.bar .live {
+				margin-left: auto;
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				font-size: 11px;
+				color: var(--green);
+				font-weight: 600;
+			}
+			.bar .live b {
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: var(--green);
+				animation: pulse 1.6s ease-in-out infinite;
+			}
+			@keyframes pulse {
+				50% {
+					opacity: 0.35;
+				}
+			}
+
+			.stage {
+				position: relative;
+				height: 340px;
+			}
+			.scene {
+				position: absolute;
+				inset: 0;
+				padding: 26px 30px;
+				opacity: 0;
+				transform: translateY(8px);
+				transition: opacity 0.6s ease, transform 0.6s ease;
+				pointer-events: none;
+			}
+			.scene.active {
+				opacity: 1;
+				transform: none;
+			}
+			.eyebrow {
+				font-size: 11px;
+				font-weight: 600;
+				letter-spacing: 0.07em;
+				text-transform: uppercase;
+				color: var(--lava-deep);
+				margin-bottom: 14px;
+			}
+
+			/* Scene 1 — code */
+			.code {
+				background: var(--code);
+				border-radius: 14px;
+				padding: 20px 22px;
+				font-family: var(--mono);
+				font-size: 13px;
+				line-height: 1.85;
+				color: var(--code-ink);
+			}
+			.code .ln {
+				opacity: 0;
+			}
+			.active .code .ln {
+				animation: type 0.01s linear forwards;
+			}
+			.code .k {
+				color: #ff8a6a;
+			}
+			.code .s {
+				color: #8ee0aa;
+			}
+			.code .f {
+				color: #8ab4ff;
+			}
+			.code .c {
+				color: #5a6570;
+			}
+			.code .hl {
+				background: rgba(255, 90, 60, 0.16);
+				border-radius: 3px;
+				padding: 1px 3px;
+			}
+			@keyframes type {
+				to {
+					opacity: 1;
+				}
+			}
+			.active .code .ln:nth-child(1) {
+				animation-delay: 0.3s;
+			}
+			.active .code .ln:nth-child(2) {
+				animation-delay: 0.7s;
+			}
+			.active .code .ln:nth-child(3) {
+				animation-delay: 1.2s;
+			}
+			.active .code .ln:nth-child(4) {
+				animation-delay: 1.7s;
+			}
+			.active .code .ln:nth-child(5) {
+				animation-delay: 2.1s;
+			}
+			.active .code .ln:nth-child(6) {
+				animation-delay: 2.6s;
+			}
+			.active .code .ln:nth-child(7) {
+				animation-delay: 3.1s;
+			}
+			.active .code .ln:nth-child(8) {
+				animation-delay: 3.5s;
+			}
+			.caret {
+				display: inline-block;
+				width: 7px;
+				height: 14px;
+				background: var(--lava);
+				vertical-align: -2px;
+				animation: blink 1.05s steps(1) infinite;
+			}
+			@keyframes blink {
+				50% {
+					opacity: 0;
+				}
+			}
+
+			/* Scene 2 — trace */
+			.trace {
+				border: 1px solid var(--border);
+				border-radius: 14px;
+				overflow: hidden;
+			}
+			.trace .row {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				gap: 12px;
+				align-items: center;
+				padding: 16px 18px;
+			}
+			.trace .op {
+				font-family: var(--mono);
+				font-size: 13px;
+				color: var(--ink);
+			}
+			.trace .op .id {
+				color: var(--subtle);
+			}
+			.trace .meta {
+				margin-top: 6px;
+				font-size: 12px;
+				color: var(--muted);
+			}
+			.trace .ok {
+				font-size: 11px;
+				font-weight: 600;
+				color: var(--green);
+				background: #e2f3ea;
+				padding: 4px 10px;
+				border-radius: 6px;
+			}
+			.spanbar {
+				height: 8px;
+				background: var(--lava-soft);
+				border-top: 1px solid var(--border);
+			}
+			.spanbar > i {
+				display: block;
+				height: 100%;
+				width: 0;
+				background: var(--lava);
+			}
+			.active .spanbar > i {
+				animation: grow 1.1s cubic-bezier(0.2, 0, 0, 1) 0.5s forwards;
+			}
+			@keyframes grow {
+				to {
+					width: 78%;
+				}
+			}
+			.active .trace {
+				animation: rise 0.6s ease both;
+			}
+			@keyframes rise {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+			}
+
+			/* Scene 3 — verify terminal */
+			.term {
+				background: var(--code);
+				border-radius: 14px;
+				padding: 20px 22px;
+				font-family: var(--mono);
+				font-size: 13px;
+				line-height: 2;
+				color: var(--code-ink);
+			}
+			.term .p {
+				color: #6b7480;
+			}
+			.term .vl {
+				display: flex;
+				align-items: center;
+				gap: 9px;
+				opacity: 0;
+			}
+			.term .vl .ck {
+				color: var(--green);
+				display: inline-flex;
+			}
+			.active .term .vl {
+				animation: type 0.01s linear forwards;
+			}
+			.active .term .vl:nth-child(2) {
+				animation-delay: 0.9s;
+			}
+			.active .term .vl:nth-child(3) {
+				animation-delay: 1.6s;
+			}
+			.active .term .vl:nth-child(4) {
+				animation-delay: 2.3s;
+			}
+			.active .term .vl:nth-child(5) {
+				animation-delay: 3s;
+			}
+			.verified {
+				margin-top: 16px;
+				display: inline-flex;
+				align-items: center;
+				gap: 9px;
+				font-weight: 600;
+				color: var(--green);
+				border: 1px solid #bfe3d2;
+				background: #e9f7f0;
+				border-radius: 999px;
+				padding: 7px 15px;
+				opacity: 0;
+			}
+			.active .verified {
+				animation: pop 0.5s cubic-bezier(0.2, 0, 0, 1) 3.5s both;
+			}
+			@keyframes pop {
+				from {
+					opacity: 0;
+					transform: scale(0.9);
+				}
+				to {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+
+			/* Scene 4 — concentric rings */
+			.rings-scene {
+				display: grid;
+				grid-template-columns: auto 1fr;
+				gap: 30px;
+				align-items: center;
+			}
+			.rings {
+				position: relative;
+				width: 190px;
+				height: 190px;
+				flex: 0 0 auto;
+			}
+			.ring {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%) scale(0.6);
+				border-radius: 50%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding-top: 12px;
+				opacity: 0;
+			}
+			.r1 {
+				width: 190px;
+				height: 190px;
+				top: 0;
+				background: var(--lava-soft);
+			}
+			.r2 {
+				width: 124px;
+				height: 124px;
+				top: 33px;
+				background: #ffd0c6;
+			}
+			.r3 {
+				width: 66px;
+				height: 66px;
+				top: 62px;
+				background: var(--lava-deep);
+				justify-content: center;
+				padding-top: 0;
+			}
+			.ring .n {
+				font-family: var(--mono);
+				font-size: 15px;
+				font-weight: 600;
+			}
+			.ring .l {
+				font-size: 10px;
+				margin-top: 1px;
+			}
+			.r1 .n {
+				color: var(--lava-deep);
+			}
+			.r1 .l,
+			.r2 .l {
+				color: var(--muted);
+			}
+			.r2 .n {
+				color: #b0492f;
+			}
+			.r3 .n {
+				color: #fff;
+				font-size: 14px;
+			}
+			.r3 .l {
+				color: #ffd9d0;
+			}
+			.active .ring {
+				animation: ringin 0.7s cubic-bezier(0.2, 0, 0, 1) both;
+			}
+			.active .r1 {
+				animation-delay: 0.1s;
+			}
+			.active .r2 {
+				animation-delay: 0.4s;
+			}
+			.active .r3 {
+				animation-delay: 0.7s;
+			}
+			@keyframes ringin {
+				to {
+					opacity: 1;
+					transform: translateX(-50%) scale(1);
+				}
+			}
+			.rings-copy h3 {
+				font-size: 19px;
+				font-weight: 600;
+				letter-spacing: -0.02em;
+			}
+			.rings-copy p {
+				margin-top: 8px;
+				font-size: 13.5px;
+				color: var(--muted);
+				line-height: 1.5;
+			}
+			.rings-copy .foot {
+				margin-top: 12px;
+				font-family: var(--mono);
+				font-size: 11px;
+				color: var(--lava-deep);
+			}
+
+			/* caption bar + progress dots */
+			.capbar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 14px 18px;
+				border-top: 1px solid var(--border);
+			}
+			.cap {
+				font-size: 13px;
+				color: var(--ink-2);
+				font-weight: 500;
+			}
+			.cap b {
+				color: var(--lava-deep);
+				font-family: var(--mono);
+				font-size: 11px;
+				margin-right: 8px;
+			}
+			.dots {
+				display: inline-flex;
+				gap: 7px;
+			}
+			.dots span {
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				background: #dce1e8;
+				transition: background 0.3s, width 0.3s;
+			}
+			.dots span.on {
+				background: var(--lava);
+				width: 18px;
+				border-radius: 4px;
+			}
+			.tagline {
+				margin-top: 20px;
+				text-align: center;
+				font-size: 13px;
+				color: var(--muted);
+			}
+			.tagline a {
+				color: var(--lava-deep);
+				text-decoration: none;
+				font-weight: 600;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				* {
+					animation: none !important;
+					transition: none !important;
+				}
+				.scene {
+					opacity: 0;
+				}
+				/* Hold the final rings frame, fully drawn, no motion. */
+				.scene.s-rings {
+					opacity: 1;
+					transform: none;
+				}
+				.scene.s-rings .ring {
+					opacity: 1;
+					transform: translateX(-50%) scale(1);
+				}
+				.bar .live b {
+					animation: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="frame">
+				<div class="bar" aria-hidden="true">
+					<i></i><i></i><i></i>
+					<span class="addr">tracelane — live</span>
+					<span class="live"><b></b> recording</span>
+				</div>
+
+				<div class="stage">
+					{/* Scene 1 — code */}
+					<div class="scene s-code" data-scene>
+						<p class="eyebrow">One line. Every provider.</p>
+						<div class="code">
+							<div class="ln"><span class="c"># any OpenAI client — one URL change</span></div>
+							<div class="ln"><span class="k">from</span> openai <span class="k">import</span> OpenAI</div>
+							<div class="ln">&nbsp;</div>
+							<div class="ln">client = <span class="f">OpenAI</span>(</div>
+							<div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;base_url=<span class="s hl">"https://gateway.tracelane.dev/v1"</span>,</div>
+							<div class="ln">&nbsp;&nbsp;&nbsp;&nbsp;api_key=<span class="s">"tlane_..."</span>,</div>
+							<div class="ln">)</div>
+							<div class="ln">resp = client.chat.completions.<span class="f">create</span>(model=<span class="s">"claude-haiku-4-5"</span>)<span class="caret"></span></div>
+						</div>
+					</div>
+
+					{/* Scene 2 — trace */}
+					<div class="scene s-trace" data-scene>
+						<p class="eyebrow">Captured in full fidelity</p>
+						<div class="trace">
+							<div class="row">
+								<div>
+									<div class="op">gen_ai.chat <span class="id">655d744e</span></div>
+									<div class="meta">claude-haiku-4-5 · 1.40s · 1 span · 195 tokens · $0.0004</div>
+								</div>
+								<span class="ok">OK</span>
+							</div>
+							<div class="spanbar"><i></i></div>
+						</div>
+						<p class="meta" style="margin-top:14px;color:var(--muted);font-size:12.5px">Every prompt, tool call, latency and cost — on the record, the instant it happens.</p>
+					</div>
+
+					{/* Scene 3 — verify */}
+					<div class="scene s-verify" data-scene>
+						<p class="eyebrow">You don't trust us. You verify us.</p>
+						<div class="term">
+							<div class="vl"><span class="p">$</span> tlane verify 655d744e</div>
+							<div class="vl"><span class="ck" set:html={check}></span> signature valid <span class="p">(Ed25519, Merkle root)</span></div>
+							<div class="vl"><span class="ck" set:html={check}></span> hash chain unbroken <span class="p">(SHA-256)</span></div>
+							<div class="vl"><span class="ck" set:html={check}></span> tamper-evident: yes</div>
+						</div>
+						<span class="verified"><span set:html={check}></span> Verified — offline, no account, no network</span>
+					</div>
+
+					{/* Scene 4 — rings */}
+					<div class="scene s-rings" data-scene>
+						<p class="eyebrow">See where the time goes</p>
+						<div class="rings-scene">
+							<div class="rings">
+								<div class="ring r1"><span class="n">9.33s</span><span class="l">end-to-end</span></div>
+								<div class="ring r2"><span class="n">2.15s</span><span class="l">provider</span></div>
+								<div class="ring r3"><span class="n">444ms</span><span class="l">gateway</span></div>
+							</div>
+							<div class="rings-copy">
+								<h3>Your gateway overhead, isolated.</h3>
+								<p>The trip split into what the upstream model costs vs. what Tracelane adds — measured per span, p95.</p>
+								<div class="foot">gateway ≈ 5% of the trip</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="capbar">
+					<span class="cap" data-cap><b>01</b> Route any model through one endpoint</span>
+					<div class="dots" aria-hidden="true">
+						<span></span><span></span><span></span><span></span>
+					</div>
+				</div>
+			</div>
+			<p class="tagline">The flight recorder for AI agents · <a href="/">tracelane.dev</a></p>
+		</div>
+
+		<script is:inline>
+			(function () {
+				var scenes = Array.prototype.slice.call(
+					document.querySelectorAll("[data-scene]"),
+				);
+				var dots = document.querySelectorAll(".dots span");
+				var cap = document.querySelector("[data-cap]");
+				var CAPS = [
+					["01", "Route any model through one endpoint"],
+					["02", "The run is captured in full fidelity"],
+					["03", "Verify it yourself — offline"],
+					["04", "See exactly where the time goes"],
+				];
+				var reduce =
+					window.matchMedia &&
+					window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+				function show(i) {
+					scenes.forEach(function (s, idx) {
+						s.classList.toggle("active", idx === i);
+					});
+					dots.forEach(function (d, idx) {
+						d.classList.toggle("on", idx === i);
+					});
+					if (cap && CAPS[i]) {
+						cap.innerHTML = "<b>" + CAPS[i][0] + "</b> " + CAPS[i][1];
+					}
+				}
+
+				if (reduce) {
+					// Hold the final frame; no motion, no loop.
+					show(3);
+					return;
+				}
+				var i = 0;
+				show(0);
+				setInterval(function () {
+					i = (i + 1) % scenes.length;
+					show(i);
+				}, 13000);
+			})();
+		</script>
+	</body>
+</html>

@@ -27,26 +27,26 @@
   --radius-md: 0.625rem;
   --radius-lg: 1.25rem;
 
-  /* Fonts — display + UI/body = Figtree (Google Sans-style), data/code = JetBrains Mono (all self-hosted) */
-  --font-display: "Figtree", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-sans: "Figtree", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* Fonts — display + UI/body = Plus Jakarta Sans (crisp system, Google Fonts), data/code = JetBrains Mono */
+  --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: "JetBrainsMono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Color tokens — v2 Tinted Slate: slate canvas + navy ink (never blank white) */
-  --color-bg: #f4f6fa; /* tinted slate page */
-  --color-bg-elevated: #ffffff; /* cards sit brighter than the page */
-  --color-bg-subtle: #eef1f7; /* panel — code blocks / insets */
-  --color-fg: #141c24; /* ink — primary text */
+  /* Color tokens — crisp white system (match the homepage) */
+  --color-bg: #ffffff; /* crisp white page */
+  --color-bg-elevated: #ffffff; /* cards — separated by border on white */
+  --color-bg-subtle: #f6f8fb; /* panel — code blocks / insets */
+  --color-fg: #161b22; /* ink — primary text */
   --color-fg-muted: #4f5f6c; /* muted body */
-  --color-fg-subtle: #5c6873; /* AA-safe on slate canvas */
-  --color-fg-dim: #616d78; /* caption gray, AA-safe on slate */
-  --color-border: #e2e7ee; /* hairline */
-  --color-border-strong: #cfd7e2;
+  --color-fg-subtle: #6b7480; /* AA-safe on white */
+  --color-fg-dim: #6b7480; /* caption gray, AA-safe on white */
+  --color-border: #eaedf1; /* hairline */
+  --color-border-strong: #e2e6ea;
 
-  /* Brand signal — Lava red-orange */
-  --color-accent: #ff3621; /* lava — primary brand */
-  --color-accent-2: #e8330e; /* lava depth — hover */
-  --color-pop: #ff3621; /* eyebrows, dots, recommended */
+  /* Brand signal — Lava (warm, crisp) */
+  --color-accent: #ff5a3c; /* lava — primary brand */
+  --color-accent-2: #ec4025; /* lava depth — hover */
+  --color-pop: #ff5a3c; /* eyebrows, dots, recommended */
 
   /* Proof signal — green. ONLY for verify / valid / crypto states. */
   --color-verify: #12824e;
