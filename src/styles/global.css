@@ -1084,3 +1084,6 @@ header.site-header.scrolled {
 /* hero stage full-frame width fix (win-bar removed) */
 .stage-wrap{width:100%}
 .stage{width:100%;border-radius:16px !important}
+
+/* bigger hero demo — wider container + larger video column */
+@media(min-width:960px){.hero-container{max-width:1260px}.hero-cols{grid-template-columns:1fr 1.18fr;gap:52px}}
