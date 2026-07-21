@@ -18,31 +18,27 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       <div class="hero-grid"></div>
     </div>
 
-    <div class="container relative z-[2] pt-32 pb-20 sm:pt-40 text-center">
+    <div class="container relative z-[2] pt-28 pb-16 sm:pt-32">
+      <div class="hero-cols">
+        <div class="hero-copy">
       <span class="badge mb-7 hero-rise" style="--d:0s"><span class="dot"></span>open source · self-host · your keys, 0% markup</span>
 
-      <h1 class="font-semibold tracking-tight leading-[1.02] text-fg text-[clamp(2.2rem,9vw,2.9rem)] sm:text-5xl md:text-6xl max-w-4xl mx-auto hero-rise" style="--d:0.08s">
+      <h1 class="font-semibold tracking-tight leading-[1.02] text-fg text-[clamp(2.2rem,9vw,2.9rem)] sm:text-5xl md:text-6xl max-w-4xl hero-rise" style="--d:0.08s">
         The <span class="grad-text">flight recorder</span> for AI agents
       </h1>
 
-      <p class="mt-7 text-lg text-fg-muted max-w-3xl mx-auto leading-relaxed hero-rise" style="--d:0.16s">
+      <p class="mt-7 text-lg text-fg-muted max-w-3xl leading-relaxed hero-rise" style="--d:0.16s">
         Autonomous agents fail without crashing. Every call returns a clean 200, every token is well-formed — and the run is already three steps off course. Tracelane records the entire execution path to a tamper-evident, cryptographically signed ledger. See exactly where it drifted. Prove exactly what happened.
       </p>
 
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center hero-rise" style="--d:0.24s">
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 hero-rise" style="--d:0.24s">
         <a href="#notify" class="btn-primary">Be First to Know</a>
         <a href="https://github.com/tracelane" class="btn-secondary" rel="me noopener">Follow on GitHub →</a>
       </div>
       <p class="mt-7 font-mono text-xs text-fg-dim lowercase tracking-wide hero-rise" style="--d:0.30s">no credit card · apache-2.0 core · self-host anywhere</p>
-    </div>
+        </div>
 
-    {/* ===== HERO VIDEO STAGE =====
-         Drop your Veo 3 / launch film in:
-            /public/hero.mp4          (the video)
-            /public/hero-poster.jpg   (poster frame shown before play)
-         No code change needed — the <video> below already points at them.
-         The neon gradient shows until those files exist, so it never looks broken. */}
-    <div class="container">
+      {/* Replay stage — right column of the asymmetric hero */}
       <div class="stage-wrap hero-rise" style="--d:0.38s">
         <div class="win-bar" aria-hidden="true">
           <span class="win-dots"><i></i><i></i><i></i></span>
@@ -59,6 +55,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
             <span class="stage-logo" set:html={chisel} />
           </button>
         </div>
+      </div>
       </div>
     </div>
 

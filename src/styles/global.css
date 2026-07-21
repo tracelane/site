@@ -1008,3 +1008,68 @@ header.site-header.scrolled {
     scroll-behavior: auto;
   }
 }
+
+
+/* =====================================================================
+   PREMIUM ENHANCEMENT LAYER (looks-only, content untouched, minimal palette)
+   Elevates glass + one subtle lava glow + refined type/asymmetric hero.
+   ===================================================================== */
+.hero-cols{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media(min-width:960px){.hero-cols{grid-template-columns:1.08fr .92fr;gap:40px}}
+.hero-copy{text-align:left}
+
+/* one soft lava glow behind the hero — subtle, premium (re-enables the flat aurora) */
+.hero-aurora{
+  display:block !important;
+  inset:-26% -18% auto -6% !important;
+  height:840px !important;
+  background:radial-gradient(44% 52% at 74% 14%, color-mix(in srgb,var(--color-accent) 15%, transparent), transparent 70%) !important;
+  filter:blur(24px);opacity:.85;
+}
+:root[data-theme="dark"] .hero-aurora,.dark .hero-aurora{opacity:.6}
+.hero-grid{opacity:.4}
+
+/* the ONE gradient accent — lava only */
+.grad-text{
+  background:linear-gradient(96deg,var(--color-accent),var(--color-accent-2)) !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;color:transparent !important;
+}
+
+/* richer frosted glass — hairline highlight, soft depth, hover lift */
+.glass{
+  background:color-mix(in srgb,var(--color-bg-elevated) 60%, transparent) !important;
+  border:1px solid color-mix(in srgb,var(--color-fg) 8%, transparent) !important;
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 55%,transparent),0 18px 44px -34px color-mix(in srgb,var(--color-fg) 42%,transparent);
+  transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,border-color .22s;
+}
+.cards-hover .glass:hover{
+  transform:translateY(-4px);
+  border-color:color-mix(in srgb,var(--color-accent) 24%, transparent) !important;
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 65%,transparent),0 34px 70px -40px color-mix(in srgb,var(--color-fg) 48%,transparent);
+}
+
+/* glassier badge */
+.badge{background:color-mix(in srgb,var(--color-bg-elevated) 52%,transparent) !important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* buttons — a whisper of depth (still the single lava accent) */
+.btn-primary{box-shadow:0 8px 22px -10px color-mix(in srgb,var(--color-accent) 68%,transparent),inset 0 1px 0 color-mix(in srgb,#fff 28%,transparent);transition:transform .16s,box-shadow .2s,background .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 13px 30px -10px color-mix(in srgb,var(--color-accent) 76%,transparent)}
+.btn-secondary{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .16s,border-color .2s}
+.btn-secondary:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--color-accent) 40%,transparent)}
+
+/* replay stage — glass + a soft lava glow so the empty window reads premium */
+.stage{border:1px solid color-mix(in srgb,var(--color-fg) 9%,transparent) !important;box-shadow:0 44px 96px -54px color-mix(in srgb,var(--color-fg) 62%,transparent)}
+.stage-wrap{position:relative}
+.stage-wrap::before{content:"";position:absolute;inset:-7% -6% -13% -6%;z-index:-1;background:radial-gradient(58% 60% at 60% 18%,color-mix(in srgb,var(--color-accent) 14%,transparent),transparent 70%);filter:blur(30px);opacity:.7}
+
+
+/* Plus Jakarta Sans — self-hosted, match the app font (one font everywhere) */
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/plus-jakarta-sans-400.woff2') format('woff2');}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/plus-jakarta-sans-600.woff2') format('woff2');}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/plus-jakarta-sans-800.woff2') format('woff2');}
+
+
+
+:root{--font-display:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;--font-sans:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;}
