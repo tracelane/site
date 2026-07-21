@@ -40,19 +40,12 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
 
       {/* Replay stage — right column of the asymmetric hero */}
       <div class="stage-wrap hero-rise" style="--d:0.38s">
-        <div class="win-bar" aria-hidden="true">
-          <span class="win-dots"><i></i><i></i><i></i></span>
-          <span class="win-addr">tracelane — replay</span>
-        </div>
         <div class="stage" id="hero-stage">
-          <video id="hero-video" class="stage-video" poster="/hero-poster.jpg" preload="none" playsinline controls style="display:none">
+          <video id="hero-video" class="stage-video" poster="/hero-poster.jpg" autoplay muted loop playsinline preload="metadata">
             <source src="/hero.mp4" type="video/mp4" />
           </video>
-          <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the tracelane story">
-            <span class="play">
-              <svg width="26" height="30" viewBox="0 0 26 30" fill="#ffffff" aria-hidden="true"><path d="M0 0 L26 15 L0 30 Z" /></svg>
-            </span>
-            <span class="stage-logo" set:html={chisel} />
+          <button class="stage-unmute" id="hero-unmute" type="button" aria-label="Unmute demo narration">
+            <span id="hero-unmute-ic" aria-hidden="true">🔇</span><span>Sound</span>
           </button>
         </div>
       </div>
@@ -382,14 +375,15 @@ $ tlane verify &lt;trace-id&gt;
 <script is:inline>
   // hero video stage — reveal native player on click
   (function () {
-    var btn = document.getElementById("hero-play");
+    var btn = document.getElementById("hero-unmute");
     var vid = document.getElementById("hero-video");
+    var ic = document.getElementById("hero-unmute-ic");
     if (!btn || !vid) return;
     btn.addEventListener("click", function () {
-      btn.style.display = "none";
-      vid.style.display = "block";
-      var p = vid.play();
-      if (p && p.catch) p.catch(function () {});
+      vid.muted = !vid.muted;
+      if (!vid.muted) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); }
+      btn.classList.toggle("on", !vid.muted);
+      if (ic) ic.textContent = vid.muted ? "\uD83D\uDD07" : "\uD83D\uDD0A";
     });
   })();
 

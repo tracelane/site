@@ -1065,7 +1065,6 @@ header.site-header.scrolled {
 .stage-wrap::before{content:"";position:absolute;inset:-7% -6% -13% -6%;z-index:-1;background:radial-gradient(58% 60% at 60% 18%,color-mix(in srgb,var(--color-accent) 14%,transparent),transparent 70%);filter:blur(30px);opacity:.7}
 
 
-/* Plus Jakarta Sans — self-hosted, match the app font (one font everywhere) */
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/plus-jakarta-sans-400.woff2') format('woff2');}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/plus-jakarta-sans-600.woff2') format('woff2');}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/plus-jakarta-sans-800.woff2') format('woff2');}
@@ -1073,3 +1072,15 @@ header.site-header.scrolled {
 
 
 :root{--font-display:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;--font-sans:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;}
+
+/* hero demo — unmute button */
+.stage-unmute{position:absolute;z-index:4;bottom:12px;right:12px;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(18,24,34,.6);color:#fff;font-family:var(--font-mono),monospace;font-size:12px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:.16s}
+.stage-unmute:hover{background:rgba(18,24,34,.82)}
+.stage-unmute.on{border-color:var(--color-accent)}
+
+/* hero stage full-frame (no win-bar; the demo video is self-framed) */
+.stage{border-radius:16px !important}
+
+/* hero stage full-frame width fix (win-bar removed) */
+.stage-wrap{width:100%}
+.stage{width:100%;border-radius:16px !important}
