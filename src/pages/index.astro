@@ -32,7 +32,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row gap-4 hero-rise" style="--d:0.24s">
-        <a href="#notify" class="btn-primary">Be First to Know</a>
+        <a href="https://app.tracelane.dev/sign-in" class="btn-primary">Start Free</a>
         <a href="https://github.com/tracelane" class="btn-secondary" rel="me noopener">Follow on GitHub →</a>
       </div>
       <p class="mt-7 font-mono text-xs text-fg-dim lowercase tracking-wide hero-rise" style="--d:0.30s">no credit card · apache-2.0 core · self-host anywhere</p>
@@ -41,7 +41,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       {/* Replay stage — right column of the asymmetric hero */}
       <div class="stage-wrap hero-rise" style="--d:0.38s">
         <div class="stage" id="hero-stage">
-          <video id="hero-video" class="stage-video" poster="/hero-tour-v3-poster.jpg" playsinline preload="metadata">
+          <video id="hero-video" class="stage-video" poster="/hero-tour-v3-poster.jpg" playsinline preload="none">
             <source src="/hero-tour-v3.mp4" type="video/mp4" />
           </video>
           <button class="stage-overlay" id="hero-play" type="button" aria-label="Play the Tracelane tour with sound">
@@ -121,18 +121,18 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
   <section id="migrate" class="container py-24 border-t border-border">
     <div class="reveal max-w-2xl">
       <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Migrating from a tool that got acquired or breached?</h2>
-      <p class="mt-4 text-lg text-fg-muted">Importers land with V1 — no data leaves your infrastructure during migration.</p>
+      <p class="mt-4 text-lg text-fg-muted">Migration is forward re-instrumentation: we rewrite your config and SDK wiring to point at Tracelane. No data leaves your infrastructure, and your history stays where it is.</p>
     </div>
     <div class="mt-12 grid gap-6 md:grid-cols-2 reveal-group cards-hover">
       <article class="glass rounded-2xl p-8">
         <h3 class="text-xl font-medium text-fg">From Helicone</h3>
         <p class="mt-2 text-sm text-fg-muted">For teams on Helicone after it entered maintenance mode (Mintlify acquisition, Mar 2026).</p>
-        <p class="mt-4 text-sm text-fg-muted">One-command import of traces, configs, prompts, and rate-limit rules — <span class="text-fg">lands with V1</span>.</p>
+        <p class="mt-4 text-sm text-fg-muted"><span class="text-fg">tlane migrate helicone</span> rewrites your <span class="text-fg">HELICONE_*</span> env vars, Helicone base URLs, and custom headers to their Tracelane equivalents across your source tree — printed as a diff, dry-run by default. New runs land in Tracelane the moment you apply it; historical traces stay in Helicone.</p>
       </article>
       <article class="glass rounded-2xl p-8">
         <h3 class="text-xl font-medium text-fg">From LiteLLM</h3>
         <p class="mt-2 text-sm text-fg-muted">After CVE-2026-33634 (Mar 24) and CVE-2026-42208 (Apr 24).</p>
-        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement; <span class="text-fg">config import lands with V1</span>. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p>
+        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement; <span class="text-fg">tlane import-litellm</span> reads your <span class="text-fg">litellm_config.yaml</span> and emits the equivalent Tracelane config. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p>
       </article>
     </div>
   </section>
@@ -156,7 +156,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
         </div>
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">india dpdp</p>
-          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. EU data residency at V1; India residency on the roadmap, on demand. Audit-log retention configurable.</p>
+          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. EU data residency; India residency on the roadmap, on demand. The audit ledger has no expiry clock — it is kept for the life of the ledger.</p>
         </div>
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">hipaa</p>
@@ -195,10 +195,10 @@ $ tlane verify &lt;trace-id&gt;
       <article class="glass rounded-2xl p-6">
         <h3 class="font-medium text-fg">Free hosted</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$0</p>
-        <p class="mt-1 text-sm text-fg-subtle">10K traces + 10K gateway / mo</p>
+        <p class="mt-1 text-sm text-fg-subtle">10K traces / mo</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
           <li>Single workspace, 1 seat</li>
-          <li>7-day retention · 60 RPM</li>
+          <li>7 days of queryable history · 60 RPM</li>
           <li>Pre-flight policy checks</li>
           <li>No credit card · no commercial use</li>
         </ul>
@@ -207,9 +207,9 @@ $ tlane verify &lt;trace-id&gt;
       <article class="glass rounded-2xl p-6">
         <h3 class="font-medium text-fg">Builder</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$59<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">150K traces + 150K gateway / mo · 1 seat</p>
+        <p class="mt-1 text-sm text-fg-subtle">150K traces / mo · 1 seat</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>30-day retention · 600 RPM</li>
+          <li>30 days of queryable history · 600 RPM</li>
           <li>Predictive pre-flight history (read-only)</li>
           <li>Audit ledger + offline verify</li>
           <li>Email support · 24h</li>
@@ -220,9 +220,9 @@ $ tlane verify &lt;trace-id&gt;
         <p class="absolute -top-3 left-6 px-2 bg-bg-elevated text-xs font-mono text-pop lowercase">recommended</p>
         <h3 class="font-medium text-fg">Team</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$249<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">1M traces + 1M gateway / mo · 10 seats</p>
+        <p class="mt-1 text-sm text-fg-subtle">1M traces / mo · 10 seats</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>90-day retention · +$19/seat to 25</li>
+          <li>90 days of queryable history</li>
           <li>Predictive pre-flight + tamper-evident promotion record</li>
           <li>WorkOS SSO · 99% SLA</li>
           <li>Slack support · 8h</li>
@@ -232,10 +232,10 @@ $ tlane verify &lt;trace-id&gt;
       <article class="glass rounded-2xl p-6">
         <h3 class="font-medium text-fg">Business</h3>
         <p class="mt-2 font-mono text-3xl text-fg">$899<span class="text-base text-fg-muted">/mo</span></p>
-        <p class="mt-1 text-sm text-fg-subtle">5M traces + 5M gateway / mo · 25 seats</p>
+        <p class="mt-1 text-sm text-fg-subtle">5M traces / mo · 25 seats</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>180-day retention · +$19/seat to 50</li>
-          <li>Inline ensemble guardrail · 99.9% SLA</li>
+          <li>180 days of queryable history</li>
+          <li>Inline heuristic guardrails (ML ensemble on the roadmap) · 99.9% SLA</li>
           <li>WorkOS SSO</li>
           <li>Dedicated Slack · 4h</li>
         </ul>
@@ -246,8 +246,8 @@ $ tlane verify &lt;trace-id&gt;
         <p class="mt-2 font-mono text-3xl text-fg">$2,999+<span class="text-base text-fg-muted">/mo</span></p>
         <p class="mt-1 text-sm text-fg-subtle">25M+ traces · custom</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>365-day retention · custom seats</li>
-          <li>Region pinning (EU at V1; US / IN on the roadmap)</li>
+          <li>365 days of queryable history · custom seats</li>
+          <li>Region pinning (EU; US / IN on the roadmap)</li>
           <li>BYOK + CMK self-service</li>
           <li>1h SLA · dedicated CSM</li>
         </ul>
@@ -259,17 +259,16 @@ $ tlane verify &lt;trace-id&gt;
         <div>
           <div class="flex items-center gap-3 flex-wrap">
             <h3 class="font-medium text-fg">Tamper-evident agent ledger</h3>
-            <span class="font-mono text-xs text-fg-dim lowercase tracking-wider px-2 py-0.5 border border-border-strong rounded-sm">ships at v1</span>
-          </div>
+                      </div>
           <p class="mt-2 text-sm text-fg-muted">
-            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, with the EU AI Act Article 12 export pack, EU data residency, and configurable audit-log retention. India DPDP Phase II alignment and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).
+            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, with the EU AI Act Article 12 export pack, EU data residency, and an audit ledger kept for its full lifetime (no expiry clock). India DPDP Phase II alignment and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).
           </p>
         </div>
         <p class="font-mono text-2xl text-fg shrink-0">+$999<span class="text-base text-fg-muted">/mo</span></p>
       </div>
     </div>
 
-    <p class="mt-12 text-center text-sm text-fg-subtle">Metered in traces, not spans — one gateway call is one trace, and overage is $1.20 per 10K traces above your monthly quota. Core tiers available at launch · coming soon.</p>
+    <p class="mt-12 text-center text-sm text-fg-subtle">Metered in traces, not spans — one gateway call is one trace, and overage is $1.20 per 10K traces above your monthly quota. Need more seats than your plan includes? <a href="mailto:support@tracelane.dev?subject=Additional%20seats" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Talk to us</a>.</p>
   </section>
 
   {/* ===== Trust ===== */}
@@ -343,7 +342,7 @@ $ tlane verify &lt;trace-id&gt;
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What's the latency overhead?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider time). Pre-flight policy layer targets p99 &lt;50ms on commodity CPU. These are engineering targets — measured numbers publish as the Tracelane Reliability Benchmark v1.0 at launch.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider time). Pre-flight policy layer targets p99 &lt;50ms on commodity CPU. These are engineering targets — measured numbers publish as the Tracelane Reliability Benchmark v1.0 after launch.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
@@ -362,13 +361,13 @@ $ tlane verify &lt;trace-id&gt;
   <section id="notify" class="container py-24 border-t border-border relative overflow-hidden">
     <div class="glow glow-lime" style="width:480px;height:380px;left:50%;top:-120px;transform:translateX(-50%)"></div>
     <div class="max-w-2xl mx-auto text-center relative z-[2] glass rounded-2xl p-8 sm:p-10">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Get the V1 launch email.</h2>
-      <p class="mt-4 text-lg text-fg-muted">One email the day we launch. Then nothing unless you opt into product updates. No newsletter, no marketing automation.</p>
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">Get product updates.</h2>
+      <p class="mt-4 text-lg text-fg-muted">Occasional email when something ships that changes how you use Tracelane. No newsletter, no marketing automation, unsubscribe in one click.</p>
       <form id="notify-form" class="mt-8 flex flex-col sm:flex-row gap-3" method="POST" action="/api/notify">
         <label for="email" class="sr-only">email address</label>
         <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@company.com"
           class="flex-1 rounded-md border border-border bg-bg px-4 py-3 font-mono text-sm text-fg placeholder:text-fg-dim focus:outline-none focus:border-accent" />
-        <button type="submit" class="btn-primary">Count Me In</button>
+        <button type="submit" class="btn-primary">Keep Me Posted</button>
       </form>
       <p id="notify-status" class="mt-4 text-sm text-fg-subtle min-h-[1.25rem]" aria-live="polite"></p>
     </div>

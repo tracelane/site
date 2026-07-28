@@ -148,7 +148,12 @@ export default {
       return handleNotify(request, env);
     }
 
-    // Static assets
+    // Static assets. Guarded: if the ASSETS binding is ever missing, an
+    // unguarded call turns every asset-miss path into a Worker exception
+    // (CF 1101) rather than a 404.
+    if (!env.ASSETS) {
+      return new Response("Not found", { status: 404 });
+    }
     return env.ASSETS.fetch(request);
   },
 };
