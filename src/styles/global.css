@@ -45,11 +45,11 @@
 
   /* Brand signal — Lava, dual-tone. Mirrors packages/ui tokens.css so the site
      and app.tracelane.dev read as one product:
-       fill  #ff8566  soft coral — every FILL (buttons, bars, glows)
+       fill  #ff5f46  lava — every FILL (buttons, bars, glows)
        deep  #c8300f  deep lava  — every TEXT/NUMBER + thin line (5.4:1 on white)
      Do not use the fill tone for text: it fails AA on white. */
-  --color-accent: #ff8566; /* lava fill — soft coral */
-  --color-accent-2: #e86a48; /* lava fill, hover — one step deeper */
+  --color-accent: #ff5f46; /* lava fill — Databricks' softer lava */
+  --color-accent-2: #ff3621; /* lava fill, hover — Databricks primary */
   --color-accent-ink: #c8300f; /* lava deep — TEXT ONLY */
   --color-pop: #c8300f; /* eyebrows, dots, recommended — text, so deep tone */
 
