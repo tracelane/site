@@ -17,14 +17,14 @@
     "astro": "5.18.1"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.0",
-    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.3",
     "@cloudflare/workers-types": "^4.20260520.1",
-    "@tailwindcss/vite": "^4.0.0",
-    "prettier": "^3.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-tailwindcss": "^0.6.0",
-    "tailwindcss": "^4.0.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.5.0"
   },
   "engines": {
