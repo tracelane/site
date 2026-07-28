@@ -152,7 +152,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       <div class="mt-16 grid gap-5 md:grid-cols-3 text-sm reveal-group cards-hover">
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">eu ai act</p>
-          <p class="mt-3 text-fg-muted">Article 12 export pack — full audit trail for high-risk AI systems. Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>); the ledger ships at V1.</p>
+          <p class="mt-3 text-fg-muted">Article 12 export pack — full audit trail for high-risk AI systems. Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>); the ledger is available today.</p>
         </div>
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">india dpdp</p>
@@ -292,7 +292,7 @@ $ tlane verify &lt;trace-id&gt;
       </div>
       <div class="glass rounded-2xl p-5">
         <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">pre-flight policy</p>
-        <p class="mt-3 text-fg-muted">Policy checks run inline at the gateway before the call leaves. V1: schema-violation + tool-definition-drift, fail-open, sub-50ms target. More on a published roadmap.</p>
+        <p class="mt-3 text-fg-muted">Policy checks run inline at the gateway before the call leaves. Today: schema-violation + tool-definition-drift, fail-open. More on a published roadmap.</p>
       </div>
       <div class="glass rounded-2xl p-5">
         <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">transport</p>
@@ -322,7 +322,7 @@ $ tlane verify &lt;trace-id&gt;
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What about LangSmith Engine?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's pre-flight policy checks flag failure modes at the gateway before the call reaches the provider — sub-50ms target. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
+        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them. Tracelane's pre-flight policy checks flag failure modes at the gateway before the call reaches the provider —. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
@@ -332,27 +332,27 @@ $ tlane verify &lt;trace-id&gt;
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Which providers does Tracelane support?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">At V1: 30+ providers — 6 native adapters (Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">30+ providers today — 6 native adapters (Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Does Tracelane support EU AI Act Article 12?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger add-on ($999/mo) ships at V1. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), the EU AI Act Article 12 export pack, and EU data residency are available at V1; the India DPDP Phase II alignment pack and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger is a $999/mo add-on, available on any plan. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), the EU AI Act Article 12 export pack, and EU data residency are available today; the India DPDP Phase II alignment pack and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What's the latency overhead?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider time). Pre-flight policy layer targets p99 &lt;50ms on commodity CPU. These are engineering targets — measured numbers publish as the Tracelane Reliability Benchmark v1.0 after launch.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">Gateway overhead targets p50 &lt;5ms, p95 &lt;15ms, p99 &lt;25ms (excluding provider time). Pre-flight policy layer targets p99 &lt;50ms on commodity CPU. These are engineering targets — measured numbers will publish as the Tracelane Reliability Benchmark v1.0.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Can I self-host?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Yes. Docker Compose for development, Helm chart for production. The full ClickHouse + R2 stack runs on a single small Hetzner node. Self-host docs land with V1 — see <a href="/docs" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">/docs</a>.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">Yes. Docker Compose for development, Helm chart for production. The full ClickHouse + R2 stack runs on a single small Hetzner node. Self-host docs are in progress — see <a href="/docs" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">/docs</a>.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
-        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">When does V1 launch?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Soon — we're finishing the V1 quality gate. Drop your email above and you'll get a single message the day it's live, with the Show HN, X, LinkedIn, and Bluesky links.</p>
+        <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Is Tracelane available now?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
+        <p class="mt-4 text-fg-muted leading-relaxed">Yes — V1 is live. Start free at <a href="https://app.tracelane.dev/sign-in" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">app.tracelane.dev</a>, or self-host the Apache 2.0 core. Sign up for product updates above if you want to hear when something ships.</p>
       </details>
     </div>
   </section>
