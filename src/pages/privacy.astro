@@ -78,14 +78,11 @@ import Base from "../layouts/Base.astro";
     <p class="mt-4 text-fg-muted leading-relaxed">
       Email <code class="font-mono text-fg">support@tracelane.dev</code> and we will purge your tenant across all three stores — hot traces, the R2 cold copy, and account metadata. We action requests within 7 days. GDPR data-subject requests and India DPDP rights requests get the same treatment. The same address removes your email from the website updates list.
     </p>
-    <p class="mt-4 text-fg-muted leading-relaxed">
-      {/* TODO — needs counsel. Do not draft from scratch; pull from a reviewed GDPR + India DPDP template:
-           (a) the enumerated data-subject rights — access, rectification, erasure, portability, objection, restriction;
-           (b) the lawful basis for each processing purpose (contract / legitimate interest / consent);
-           (c) the supervisory-authority complaint route, and the DPDP Consent Manager position;
-           (d) whether a Data Protection Officer is required at current scale, and the international-transfer
-               basis for WorkOS and Polar as US-domiciled sub-processors (SCCs). */}
-    </p>
+    {/* TODO — needs counsel. Not rendered: an empty paragraph under a real heading is worse
+         than omitting it. Pull from a reviewed GDPR + India DPDP template — enumerated
+         data-subject rights, lawful basis per purpose, supervisory-authority complaint
+         route, DPDP Consent Manager position, whether a DPO is required at this scale, and
+         the international-transfer basis (SCCs) for WorkOS and Polar as US sub-processors. */}
 
     <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Changes</h2>
     <p class="mt-4 text-fg-muted leading-relaxed">
