@@ -43,10 +43,15 @@
   --color-border: #e2e7ee; /* hairline */
   --color-border-strong: #cfd7e2;
 
-  /* Brand signal — Lava red-orange */
-  --color-accent: #ff3621; /* lava — primary brand */
-  --color-accent-2: #e8330e; /* lava depth — hover */
-  --color-pop: #ff3621; /* eyebrows, dots, recommended */
+  /* Brand signal — Lava, dual-tone. Mirrors packages/ui tokens.css so the site
+     and app.tracelane.dev read as one product:
+       fill  #ff8566  soft coral — every FILL (buttons, bars, glows)
+       deep  #c8300f  deep lava  — every TEXT/NUMBER + thin line (5.4:1 on white)
+     Do not use the fill tone for text: it fails AA on white. */
+  --color-accent: #ff8566; /* lava fill — soft coral */
+  --color-accent-2: #e86a48; /* lava fill, hover — one step deeper */
+  --color-accent-ink: #c8300f; /* lava deep — TEXT ONLY */
+  --color-pop: #c8300f; /* eyebrows, dots, recommended — text, so deep tone */
 
   /* Proof signal — green. ONLY for verify / valid / crypto states. */
   --color-verify: #149861;
@@ -157,7 +162,7 @@ h3 {
 .btn-primary:hover {
   background: var(--color-accent-2);
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px -14px rgba(255, 54, 33, 0.7);
+  box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 .btn-primary:disabled {
   opacity: 0.5;
@@ -185,7 +190,7 @@ h3 {
 }
 .btn-secondary:hover {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 /* ---- Bits ---- */
@@ -211,7 +216,7 @@ h3 {
 }
 
 .grad-text {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 @keyframes grad-shimmer {
   to {
@@ -404,7 +409,7 @@ h3 {
   letter-spacing: 0.02em;
 }
 .marq-track .d {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 @keyframes marq {
   to {
@@ -809,7 +814,7 @@ header.site-header.scrolled {
 .glyph-replay {
   width: 22px;
   height: 22px;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   animation: spin-slow 3.2s linear infinite;
 }
 @keyframes spin-slow {
