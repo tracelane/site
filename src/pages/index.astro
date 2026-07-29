@@ -435,7 +435,7 @@ $ tlane verify &lt;trace-id&gt;
           body: JSON.stringify({ email: email }),
           headers: { "Content-Type": "application/json" },
         });
-        if (res.ok) { status.textContent = "You're on the list. We'll email you the day we launch."; form.reset(); }
+        if (res.ok) { status.textContent = "You're on the list. We'll email you when something ships."; form.reset(); }
         else { var data = await res.json().catch(function () { return {}; }); status.textContent = data.error || "Something went wrong. Try again."; }
       } catch (err) { status.textContent = "Network error. Try again."; }
       finally { submitBtn.disabled = false; }
