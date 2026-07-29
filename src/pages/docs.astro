@@ -1,34 +1,48 @@
 ---
+// /docs is a signpost to the live documentation at docs.tracelane.dev.
+// Kept as a page (rather than deleted) so existing links, bookmarks, and
+// indexed results keep resolving instead of 404ing. Header/Footer link
+// straight to docs.tracelane.dev, so this path is only hit by older refs.
 import Base from "../layouts/Base.astro";
+
+const DOCS_URL = "https://docs.tracelane.dev";
 ---
 
-<Base title="Docs · Tracelane" description="Full documentation is in progress. The source and README are on GitHub today.">
+<Base
+  title="Docs · Tracelane"
+  description="Tracelane documentation — gateway setup, SDK quickstarts, the audit ledger protocol, agent-tool safety guardrails, and self-hosting."
+  canonical={DOCS_URL}
+>
   <section class="container-prose py-24">
     <p class="font-mono text-xs text-fg-dim mb-4 tracking-wider lowercase">docs</p>
-    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Docs are in progress.</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Docs are live.</h1>
     <p class="mt-6 text-lg text-fg-muted leading-relaxed">
-      Full docs are being written and will land at
-      <code class="font-mono text-fg">docs.tracelane.dev</code>. In the meantime the source and README live on
-      <a href="https://github.com/tracelane" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">github.com/tracelane</a>.
+      The full documentation is at
+      <a href={DOCS_URL} class="text-fg underline decoration-fg-subtle hover:decoration-fg transition-colors">docs.tracelane.dev</a>
+      — gateway setup, SDK quickstarts, the audit-ledger protocol, and self-hosting.
     </p>
+
+    <div class="mt-10">
+      <a href={DOCS_URL} class="inline-flex items-center gap-2 rounded-md bg-fg px-5 py-2.5 font-medium text-bg transition-opacity hover:opacity-90">Open the docs →</a>
+    </div>
 
     <div class="mt-16 space-y-8">
       <article>
-        <p class="font-mono text-xs text-pop lowercase tracking-wider">what the docs will cover</p>
+        <p class="font-mono text-xs text-pop lowercase tracking-wider">start here</p>
         <ul class="mt-4 space-y-2 text-fg-muted">
-          <li>— Gateway: install, configure 30+ LLM providers, traffic shaping, failover</li>
-          <li>— Tracing: OTel GenAI semantics, SDK quickstarts, replay workflow</li>
-          <li>— Audit ledger: SHA-256 hash chain + Ed25519-signed Merkle root, offline verify</li>
-          <li>— Pre-flight policy: schema-violation + tool-definition-drift checks at the gateway</li>
-          <li>— CLI: <code class="font-mono text-fg">tlane verify</code> (audit-chain verification); <code class="font-mono text-fg">tlane import-helicone</code> and <code class="font-mono text-fg">tlane import-litellm</code> </li>
-          <li>— Self-host: Docker Compose for dev, Helm chart for prod, single-node Hetzner reference</li>
+          <li>— <a href={`${DOCS_URL}/quickstart`} class="underline decoration-fg-subtle hover:decoration-fg">Quickstart</a> — your first trace in 60 seconds, two env vars, no SDK swap</li>
+          <li>— <a href={`${DOCS_URL}/providers`} class="underline decoration-fg-subtle hover:decoration-fg">Providers</a> — 30+ LLM providers behind one OpenAI-compatible API, BYOK</li>
+          <li>— <a href={`${DOCS_URL}/audit-ledger`} class="underline decoration-fg-subtle hover:decoration-fg">Audit ledger</a> — SHA-256 hash chain + Ed25519 signing, independently verifiable</li>
+          <li>— <a href={`${DOCS_URL}/predictive-guardrails`} class="underline decoration-fg-subtle hover:decoration-fg">Agent-tool safety</a> — MCP tool-definition-drift + schema validation at the gateway</li>
+          <li>— <a href={`${DOCS_URL}/self-hosting`} class="underline decoration-fg-subtle hover:decoration-fg">Self-hosting</a> — Docker Compose for dev and prod</li>
+          <li>— <a href={`${DOCS_URL}/cli`} class="underline decoration-fg-subtle hover:decoration-fg">CLI</a> — <code class="font-mono text-fg">tlane verify</code>, <code class="font-mono text-fg">tlane import-helicone</code>, <code class="font-mono text-fg">tlane import-litellm</code></li>
         </ul>
       </article>
     </div>
 
     <p class="mt-16 text-sm text-fg-subtle">
-      Get product updates —
-      <a href="/#notify" class="underline decoration-fg-subtle hover:decoration-fg">notify list</a>.
+      Source and issues on
+      <a href="https://github.com/tracelane/tracelane" class="underline decoration-fg-subtle hover:decoration-fg" rel="noopener">github.com/tracelane/tracelane</a>.
     </p>
   </section>
 </Base>
