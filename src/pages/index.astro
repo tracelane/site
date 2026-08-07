@@ -130,7 +130,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
       <article class="glass rounded-2xl p-8">
         <h3 class="text-xl font-medium text-fg">From LiteLLM</h3>
         <p class="mt-2 text-sm text-fg-muted">After CVE-2026-33634 (Mar 24) and CVE-2026-42208 (Apr 24).</p>
-        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement; <span class="text-fg">tlane import-litellm</span> reads your <span class="text-fg">litellm_config.yaml</span> and emits the equivalent Tracelane config. Sigstore-signed releases, SLSA Build L3 provenance, Trusted Publishing OIDC — no long-lived tokens.</p>
+        <p class="mt-4 text-sm text-fg-muted">Drop-in gateway replacement; <span class="text-fg">tlane import-litellm</span> reads your <span class="text-fg">litellm_config.yaml</span> and emits the equivalent Tracelane config. Sigstore-signed releases, attested build provenance, Trusted Publishing OIDC — no long-lived registry tokens.</p>
       </article>
     </div>
   </section>
@@ -154,7 +154,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
         </div>
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">india dpdp</p>
-          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. EU data residency; India residency on the roadmap, on demand. The audit ledger has no expiry clock — it is kept for the life of the ledger.</p>
+          <p class="mt-3 text-fg-muted">Phase II enforcement Nov 13, 2026. Tracelane enforces no per-tenant storage region today; region pinning is on the roadmap. The audit ledger has no expiry clock — it is kept for the life of the ledger.</p>
         </div>
         <div class="glass rounded-2xl p-6">
           <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">hipaa</p>
@@ -183,7 +183,7 @@ $ tlane verify &lt;trace-id&gt;
         <p class="mt-2 font-mono text-3xl text-fg">$0</p>
         <p class="mt-1 text-sm text-fg-subtle">Apache 2.0 · forever</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
-          <li>Full Rust gateway · 30+ providers — 6 native adapters plus any OpenAI-compatible endpoint</li>
+          <li>Full Rust gateway · 30+ providers — 7 native adapters plus any OpenAI-compatible endpoint</li>
           <li>ClickHouse + R2 storage</li>
           <li>Tamper-evident audit ledger</li>
           <li>Community Discord support</li>
@@ -208,7 +208,7 @@ $ tlane verify &lt;trace-id&gt;
         <p class="mt-1 text-sm text-fg-subtle">150K traces / mo · 1 seat</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
           <li>30 days of queryable history · 600 RPM</li>
-          <li>Predictive pre-flight history (read-only)</li>
+          <li>Guardrail verdict history (read-only)</li>
           <li>Audit ledger + offline verify</li>
           <li>Email support · 24h</li>
         </ul>
@@ -221,7 +221,7 @@ $ tlane verify &lt;trace-id&gt;
         <p class="mt-1 text-sm text-fg-subtle">1M traces / mo · 10 seats</p>
         <ul class="mt-6 space-y-2 text-sm text-fg-muted">
           <li>90 days of queryable history</li>
-          <li>Predictive pre-flight + tamper-evident promotion record</li>
+          <li>Pre-flight guardrail rails + tamper-evident promotion record</li>
           <li>WorkOS SSO · 99% SLA</li>
           <li>Slack support · 8h</li>
         </ul>
@@ -259,7 +259,7 @@ $ tlane verify &lt;trace-id&gt;
             <h3 class="font-medium text-fg">Tamper-evident agent ledger</h3>
                       </div>
           <p class="mt-2 text-sm text-fg-muted">
-            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, with the EU AI Act Article 12 export pack, EU data residency, and an audit ledger kept for its full lifetime (no expiry clock). India DPDP Phase II alignment and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).
+            $999/mo add-on. SHA-256 hash chain + Ed25519-signed Merkle root, an Article 12 documentation pack, and an audit ledger kept for its full lifetime (no expiry clock). Tracelane enforces no per-tenant storage region today, signs no BAA, and makes no regulatory-conformance claim — the assessment remains yours. EU AI Act Annex III enforcement provisionally deferred to Dec 2, 2027 (Digital Omnibus political agreement, May 7, 2026; pending formal adoption — <a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>).
           </p>
         </div>
         <p class="font-mono text-2xl text-fg shrink-0">+$999<span class="text-base text-fg-muted">/mo</span></p>
@@ -278,7 +278,7 @@ $ tlane verify &lt;trace-id&gt;
     <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-sm reveal-group cards-hover">
       <div class="glass rounded-2xl p-5">
         <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">release integrity</p>
-        <p class="mt-3 text-fg-muted">Sigstore Cosign keyless signing. SLSA Build L3 provenance. Trusted Publishing OIDC — no long-lived tokens.</p>
+        <p class="mt-3 text-fg-muted">Sigstore Cosign keyless signing. Attested build provenance and a CycloneDX SBOM. Trusted Publishing OIDC — no long-lived registry tokens.</p>
       </div>
       <div class="glass rounded-2xl p-5">
         <p class="font-mono text-xs text-fg-dim lowercase tracking-wider">sbom</p>
@@ -325,17 +325,17 @@ $ tlane verify &lt;trace-id&gt;
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Is Tracelane really open source?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Yes. The core (Rust gateway, ingest workers, observability backend, pre-flight layer, CLI, SDKs, audit verifiers) is Apache 2.0. The <code class="font-mono text-sm">/ee</code> directory contains Tracelane Enterprise License code (paid-tier features behind entitlements). The <code class="font-mono text-sm">/spec</code> directory is CC0. Paid features are gated by the workspace_entitlements table at the application layer, not by a license-string compare.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">Yes. The core (Rust gateway, ingest workers, observability backend, pre-flight layer, CLI, SDKs, audit verifiers) is Apache 2.0. The <code class="font-mono text-sm">/spec</code> directory is CC0. Paid features are gated by the workspace_entitlements table at the application layer, not by a license-string compare.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Which providers does Tracelane support?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">30+ providers today — 6 native adapters (Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">30+ providers today — 7 native adapters (Anthropic, OpenAI, Google Gemini, Google Vertex, AWS Bedrock, Azure OpenAI, Cohere) plus any OpenAI-compatible endpoint, including Together, Fireworks, Groq, OpenRouter, DeepSeek, xAI, and Mistral. One canonical wire format across all of them.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">Does Tracelane support EU AI Act Article 12?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger is a $999/mo add-on, available on any plan. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), the EU AI Act Article 12 export pack, and EU data residency are available today; the India DPDP Phase II alignment pack and the HIPAA BAA are on the roadmap (BAA on the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">The Tamper-Evident Agent Ledger is a $999/mo add-on, available on any plan. The audit ledger (SHA-256 hash chain, Ed25519-signed Merkle root), and an Article 12 documentation pack are available today. Tracelane enforces no per-tenant storage region, signs no BAA, and makes no regulatory-conformance claim (the Business tier; India residency on demand). EU AI Act Annex III obligations were originally scheduled for Aug 2, 2026; the Digital Omnibus political agreement (May 7, 2026) provisionally deferred enforcement to Dec 2, 2027, pending formal adoption (<a href="https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules" class="underline decoration-fg-subtle hover:decoration-fg transition-colors" rel="noopener">details</a>). The ledger ships now so regulated buyers can build audit history before binding enforcement.</p>
       </details>
 
       <details class="glass rounded-2xl px-6 py-5 group">

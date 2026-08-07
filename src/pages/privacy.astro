@@ -70,12 +70,12 @@ import Base from "../layouts/Base.astro";
       Your plan's retention number is a <span class="text-fg">floor of queryable history</span>, not an expiry clock. Today data may be retained up to 365 days regardless of plan; the per-tier numbers are what each plan is guaranteed as automated per-tier trimming rolls out. We do not auto-expire your data below your tier, and longer-than-your-plan retention is never a shortcut around erasure.
     </p>
     <p class="mt-4 text-fg-muted leading-relaxed">
-      The cold copy in R2 carries no automatic expiry — it is removed on request. The tamper-evident audit ledger is retained for the life of the ledger by design: a record you can selectively delete is not a tamper-evident record.
+      The tamper-evident audit ledger is retained for the life of the ledger by design: a record you can selectively delete is not a tamper-evident record.
     </p>
 
     <h2 class="mt-16 text-2xl font-semibold tracking-tight text-fg">Deletion and your rights</h2>
     <p class="mt-4 text-fg-muted leading-relaxed">
-      Email <code class="font-mono text-fg">support@tracelane.dev</code> and we will purge your tenant across all three stores — hot traces, the R2 cold copy, and account metadata. We action requests within 7 days. GDPR data-subject requests and India DPDP rights requests get the same treatment. The same address removes your email from the website updates list.
+      Email <code class="font-mono text-fg">support@tracelane.dev</code> and we will remove your tenant's trace data and account metadata. Deletion is handled manually by our team today — there is no self-serve erasure endpoint, and the append-only audit ledger is retained as described above. GDPR data-subject requests and India DPDP rights requests are handled through the same address, as is removal from the website updates list.
     </p>
     {/* TODO — needs counsel. Not rendered: an empty paragraph under a real heading is worse
          than omitting it. Pull from a reviewed GDPR + India DPDP template — enumerated
