@@ -37,9 +37,9 @@
   --color-bg-elevated: #ffffff; /* cards sit brighter than the page */
   --color-bg-subtle: #eef1f7; /* panel — code blocks / insets */
   --color-fg: #141c24; /* ink — primary text */
-  --color-fg-muted: #4f5f6c; /* muted body */
-  --color-fg-subtle: #5c6873; /* AA-safe on slate canvas */
-  --color-fg-dim: #616d78; /* caption gray, AA-safe on slate */
+  --color-fg-muted: #141c24; /* was #4f5f6c — flattened to ink: all body text black */
+  --color-fg-subtle: #141c24; /* was #5c6873 — flattened to ink: no grey secondary text */
+  --color-fg-dim: #141c24; /* was #616d78 — flattened to ink: captions/eyebrows black too */
   --color-border: #e2e7ee; /* hairline */
   --color-border-strong: #cfd7e2;
 
