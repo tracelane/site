@@ -3,8 +3,8 @@
 /* ============================================================
    tracelane — light theme, v2 Tinted Slate + Lava palette
    Tinted-slate canvas, navy ink, a single LAVA red-orange brand signal,
-   and GREEN for "verify / proof" states. Figtree
-   (display + body), JetBrains Mono for data/code (all self-hosted).
+   and GREEN reserved for "verify / valid / proof" states. Source Serif 4
+   display, Inter body, JetBrains Mono for data/code (all self-hosted).
    Only the palette + font tokens changed here — layout/content/motion of
    the existing pages are unchanged. Token NAMES are unchanged, so every
    page (security, privacy, terms, 404, changelog, vs/*) re-skins too.
@@ -27,9 +27,9 @@
   --radius-md: 0.625rem;
   --radius-lg: 1.25rem;
 
-  /* Fonts — display + UI/body = Figtree (Google Sans-style), data/code = JetBrains Mono (all self-hosted) */
-  --font-display: "Figtree", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-sans: "Figtree", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* Fonts — display = Source Serif 4, UI/body = Inter, data/code = JetBrains Mono (all self-hosted) */
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: "JetBrainsMono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* Color tokens — v2 Tinted Slate: slate canvas + navy ink (never blank white) */
@@ -37,19 +37,24 @@
   --color-bg-elevated: #ffffff; /* cards sit brighter than the page */
   --color-bg-subtle: #eef1f7; /* panel — code blocks / insets */
   --color-fg: #141c24; /* ink — primary text */
-  --color-fg-muted: #4f5f6c; /* muted body */
-  --color-fg-subtle: #5c6873; /* AA-safe on slate canvas */
-  --color-fg-dim: #616d78; /* caption gray, AA-safe on slate */
+  --color-fg-muted: #141c24; /* was #4f5f6c — flattened to ink: all body text black */
+  --color-fg-subtle: #141c24; /* was #5c6873 — flattened to ink: no grey secondary text */
+  --color-fg-dim: #141c24; /* was #616d78 — flattened to ink: captions/eyebrows black too */
   --color-border: #e2e7ee; /* hairline */
   --color-border-strong: #cfd7e2;
 
-  /* Brand signal — Lava red-orange */
-  --color-accent: #ff3621; /* lava — primary brand */
-  --color-accent-2: #e8330e; /* lava depth — hover */
-  --color-pop: #ff3621; /* eyebrows, dots, recommended */
+  /* Brand signal — Lava, dual-tone. Mirrors packages/ui tokens.css so the site
+     and app.tracelane.dev read as one product:
+       fill  #ff5f46  lava — every FILL (buttons, bars, glows)
+       deep  #c8300f  deep lava  — every TEXT/NUMBER + thin line (5.4:1 on white)
+     Do not use the fill tone for text: it fails AA on white. */
+  --color-accent: #ff5f46; /* lava fill — Databricks' softer lava */
+  --color-accent-2: #ff3621; /* lava fill, hover — Databricks primary */
+  --color-accent-ink: #c8300f; /* lava deep — TEXT ONLY */
+  --color-pop: #c8300f; /* eyebrows, dots, recommended — text, so deep tone */
 
   /* Proof signal — green. ONLY for verify / valid / crypto states. */
-  --color-verify: #12824e;
+  --color-verify: #149861;
 
   /* Card surface — flat white on slate */
   --glass-bg: #ffffff;
@@ -59,9 +64,16 @@
 
 /* ---- Fonts ---- */
 @font-face {
-  font-family: "Figtree";
-  src: url("/fonts/figtree-var-latin.woff2") format("woff2");
-  font-weight: 300 900;
+  font-family: "Source Serif 4";
+  src: url("/fonts/source-serif-4-var-latin.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-var-latin.woff2") format("woff2");
+  font-weight: 100 900;
   font-display: swap;
   font-style: normal;
 }
@@ -150,7 +162,7 @@ h3 {
 .btn-primary:hover {
   background: var(--color-accent-2);
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--color-accent) 55%, transparent);
+  box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 .btn-primary:disabled {
   opacity: 0.5;
@@ -178,7 +190,7 @@ h3 {
 }
 .btn-secondary:hover {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 /* ---- Bits ---- */
@@ -204,7 +216,7 @@ h3 {
 }
 
 .grad-text {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 @keyframes grad-shimmer {
   to {
@@ -388,6 +400,7 @@ h3 {
 .marq-track {
   display: inline-flex;
   gap: 2.5rem;
+  animation: marq 26s linear infinite;
 }
 .marq-track span {
   font-family: var(--font-mono);
@@ -396,7 +409,7 @@ h3 {
   letter-spacing: 0.02em;
 }
 .marq-track .d {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 @keyframes marq {
   to {
@@ -655,8 +668,8 @@ header.site-header.scrolled {
   z-index: 0;
   border-radius: inherit;
   pointer-events: none;
-  box-shadow: 0 0 28px -4px color-mix(in srgb, var(--color-accent) 34%, transparent);
-  opacity: 0.55;
+  box-shadow: 0 0 34px -2px color-mix(in srgb, var(--color-accent) 45%, transparent);
+  animation: rec-pulse 3.6s ease-in-out infinite;
 }
 @keyframes rec-pulse {
   0%,
@@ -678,6 +691,7 @@ header.site-header.scrolled {
 .caret {
   display: inline-block;
   color: var(--color-verify);
+  animation: blink 1.1s steps(1) infinite;
 }
 @keyframes blink {
   50% {
@@ -764,6 +778,7 @@ header.site-header.scrolled {
   border-radius: 2px;
   background: var(--color-accent);
   box-shadow: 0 0 8px color-mix(in srgb, var(--color-accent) 60%, transparent);
+  animation: eq 1.1s ease-in-out infinite;
 }
 .glyph-eq i:nth-child(1) {
   height: 40%;
@@ -799,7 +814,8 @@ header.site-header.scrolled {
 .glyph-replay {
   width: 22px;
   height: 22px;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
+  animation: spin-slow 3.2s linear infinite;
 }
 @keyframes spin-slow {
   to {
@@ -828,6 +844,7 @@ header.site-header.scrolled {
 }
 .feat-glyph:has(.glyph-prove) {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-verify) 22%, transparent);
+  animation: prove-halo 3.4s ease-in-out infinite;
 }
 @keyframes prove-halo {
   0%,
@@ -996,3 +1013,82 @@ header.site-header.scrolled {
     scroll-behavior: auto;
   }
 }
+
+
+/* =====================================================================
+   PREMIUM ENHANCEMENT LAYER (looks-only, content untouched, minimal palette)
+   Elevates glass + one subtle lava glow + refined type/asymmetric hero.
+   ===================================================================== */
+.hero-cols{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media(min-width:960px){.hero-cols{grid-template-columns:1.08fr .92fr;gap:40px}}
+.hero-copy{text-align:left}
+
+/* one soft lava glow behind the hero — subtle, premium (re-enables the flat aurora) */
+.hero-aurora{
+  display:block !important;
+  inset:-26% -18% auto -6% !important;
+  height:840px !important;
+  background:radial-gradient(44% 52% at 74% 14%, color-mix(in srgb,var(--color-accent) 15%, transparent), transparent 70%) !important;
+  filter:blur(24px);opacity:.85;
+}
+:root[data-theme="dark"] .hero-aurora,.dark .hero-aurora{opacity:.6}
+.hero-grid{opacity:.4}
+
+/* the ONE gradient accent — lava only */
+.grad-text{
+  background:linear-gradient(96deg,var(--color-accent),var(--color-accent-2)) !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;color:transparent !important;
+}
+
+/* richer frosted glass — hairline highlight, soft depth, hover lift */
+.glass{
+  background:color-mix(in srgb,var(--color-bg-elevated) 60%, transparent) !important;
+  border:1px solid color-mix(in srgb,var(--color-fg) 8%, transparent) !important;
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 55%,transparent),0 18px 44px -34px color-mix(in srgb,var(--color-fg) 42%,transparent);
+  transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,border-color .22s;
+}
+.cards-hover .glass:hover{
+  transform:translateY(-4px);
+  border-color:color-mix(in srgb,var(--color-accent) 24%, transparent) !important;
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 65%,transparent),0 34px 70px -40px color-mix(in srgb,var(--color-fg) 48%,transparent);
+}
+
+/* glassier badge */
+.badge{background:color-mix(in srgb,var(--color-bg-elevated) 52%,transparent) !important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* buttons — a whisper of depth (still the single lava accent) */
+.btn-primary{box-shadow:0 8px 22px -10px color-mix(in srgb,var(--color-accent) 68%,transparent),inset 0 1px 0 color-mix(in srgb,#fff 28%,transparent);transition:transform .16s,box-shadow .2s,background .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 13px 30px -10px color-mix(in srgb,var(--color-accent) 76%,transparent)}
+.btn-secondary{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .16s,border-color .2s}
+.btn-secondary:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--color-accent) 40%,transparent)}
+
+/* replay stage — glass + a soft lava glow so the empty window reads premium */
+.stage{border:1px solid color-mix(in srgb,var(--color-fg) 9%,transparent) !important;box-shadow:0 44px 96px -54px color-mix(in srgb,var(--color-fg) 62%,transparent)}
+.stage-wrap{position:relative}
+.stage-wrap::before{content:"";position:absolute;inset:-7% -6% -13% -6%;z-index:-1;background:radial-gradient(58% 60% at 60% 18%,color-mix(in srgb,var(--color-accent) 14%,transparent),transparent 70%);filter:blur(30px);opacity:.7}
+
+
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/plus-jakarta-sans-400.woff2') format('woff2');}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/plus-jakarta-sans-600.woff2') format('woff2');}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/plus-jakarta-sans-800.woff2') format('woff2');}
+
+
+
+:root{--font-display:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;--font-sans:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;}
+
+/* hero demo — unmute button */
+.stage-unmute{position:absolute;z-index:4;bottom:12px;right:12px;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(18,24,34,.6);color:#fff;font-family:var(--font-mono),monospace;font-size:12px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:.16s}
+.stage-unmute:hover{background:rgba(18,24,34,.82)}
+.stage-unmute.on{border-color:var(--color-accent)}
+
+/* hero stage full-frame (no win-bar; the demo video is self-framed) */
+.stage{border-radius:16px !important}
+
+/* hero stage full-frame width fix (win-bar removed) */
+.stage-wrap{width:100%}
+.stage{width:100%;border-radius:16px !important}
+
+/* bigger hero demo — wider container + larger video column */
+@media(min-width:960px){.hero-container{max-width:1260px}.hero-cols{grid-template-columns:1fr 1.18fr;gap:52px}}
