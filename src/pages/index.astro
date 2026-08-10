@@ -119,7 +119,7 @@ import Base from "../layouts/Base.astro";
     <div class="mt-12 grid gap-5 md:grid-cols-2 reveal-group cards-hover">
       <article class="glass p-8">
         <h3 class="text-xl text-fg">From Helicone</h3>
-        <p class="mt-4 text-sm text-fg-muted leading-relaxed"><span class="text-fg">tlane migrate helicone</span> rewrites your <span class="text-fg">HELICONE_*</span> env vars, base URLs and custom headers across your source tree — printed as a diff, dry-run by default. New runs land in Tracelane the moment you apply it; historical traces stay in Helicone.</p>
+        <p class="mt-4 text-sm text-fg-muted leading-relaxed"><span class="text-fg">tlane migrate helicone</span> rewrites your <span class="text-fg">HELICONE_*</span> env vars, base URLs and custom headers to their Tracelane equivalents across your source tree — printed as a diff, dry-run by default. New runs land in Tracelane the moment you apply it; historical traces stay in Helicone.</p>
       </article>
       <article class="glass p-8">
         <h3 class="text-xl text-fg">From LiteLLM</h3>
@@ -305,12 +305,12 @@ $ tlane verify &lt;trace-id&gt;
 
       <details class="glass px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">How is Tracelane different from Helicone, LangSmith, or Langfuse?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">Tracelane unifies the gateway, observability, pre-flight policy and a tamper-evident audit ledger in one Rust binary. Helicone, Langfuse and LangSmith are observability-first — you bring your own gateway and guardrails. Licensing: Tracelane is Apache 2.0 core with a published self-host path; Helicone's gateway is GPL-3.0 (corporate-procurement-hostile), Arize Phoenix is ELv2 (no SaaS resale), LangSmith is closed-source. No competitor in this category offers cryptographic audit-log integrity at the trace level.</p>
+        <p class="mt-4 text-fg-muted leading-relaxed">Tracelane unifies the gateway, observability, pre-flight policy and a tamper-evident audit ledger in one Rust binary. Helicone, Langfuse and LangSmith are observability-first — you bring your own gateway and guardrails. Licensing: Tracelane is Apache 2.0 core with a published self-host path; Helicone's gateway is GPL-3.0 (corporate-procurement-hostile), Arize Phoenix is ELv2 (no SaaS resale), LangSmith is closed-source. The audit ledger is hash-chained and Ed25519-signed — no competitor in this category offers cryptographic audit-log integrity at the trace level.</p>
       </details>
 
       <details class="glass px-6 py-5 group">
         <summary class="cursor-pointer font-medium text-lg flex items-center justify-between text-fg">What about LangSmith Engine?<span class="text-fg-dim group-open:rotate-45 transition-transform">+</span></summary>
-        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them; Tracelane's pre-flight policy checks flag failure modes at the gateway. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
+        <p class="mt-4 text-fg-muted leading-relaxed">LangSmith Engine (May 13, 2026) clusters production failures after they happen and drafts pull requests to fix them; Tracelane's pre-flight policy checks flag failure modes at the gateway. Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per LangChain's terms of service; Tracelane is neutral OTel ingest with 0% BYOK markup across 30+ providers. Different layer of the agent reliability stack. <a href="/vs/langsmith-engine" class="underline decoration-fg-subtle hover:decoration-fg transition-colors">Detailed comparison →</a></p>
       </details>
 
       <details class="glass px-6 py-5 group">
