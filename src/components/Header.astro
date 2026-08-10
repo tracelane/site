@@ -8,14 +8,14 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
 </svg>`;
 ---
 
-<header class="site-header border-b border-border sticky top-0 z-50" style="background:color-mix(in srgb, var(--color-bg) 80%, transparent);backdrop-filter:blur(16px)">
-  <div class="w-full px-5 sm:px-8 flex h-[4.25rem] items-center justify-between">
+<header class="site-header sticky top-0 z-50">
+  <div class="panel-rail flex h-[4.75rem] items-center justify-between">
     <a href="/" class="flex items-center gap-2.5 text-fg" aria-label="tracelane home">
       <span set:html={chisel} />
       <span class="font-semibold text-lg tracking-tight lowercase" style="font-family:var(--font-display)">tracelane</span>
     </a>
     <nav aria-label="Primary" class="flex items-center gap-3 sm:gap-5">
-      <ul class="flex items-center gap-4 sm:gap-6 text-sm text-fg-muted">
+      <ul class="flex items-center gap-4 sm:gap-6 text-sm text-fg-subtle">
         <li class="hidden sm:list-item"><a href="/#what" class="hover:text-fg transition-colors">What</a></li>
         <li class="hidden sm:list-item"><a href="/#audit" class="hover:text-fg transition-colors">Audit Ledger</a></li>
         <li class="hidden md:list-item"><a href="/#pricing" class="hover:text-fg transition-colors">Pricing</a></li>
@@ -23,7 +23,7 @@ const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="tru
         <li class="hidden sm:list-item"><a href="https://docs.tracelane.dev" class="hover:text-fg transition-colors" rel="noopener">Docs</a></li>
         <li class="hidden sm:list-item"><a href="https://github.com/tracelane" class="hover:text-fg transition-colors" rel="me noopener">GitHub</a></li>
       </ul>
-      <a href="https://app.tracelane.dev/sign-in" class="btn-primary inline-flex whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.8125rem">Start Free</a>
+      <a href="https://app.tracelane.dev/sign-in" class="btn-secondary inline-flex whitespace-nowrap" style="padding:0.55rem 1.15rem;font-size:0.8125rem">Start Free</a>
     </nav>
   </div>
 </header>
