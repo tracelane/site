@@ -25,11 +25,13 @@
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 2.25rem;
-  --text-3xl: 3rem;
-  --text-4xl: 4rem;
-  --text-5xl: 5rem;
+  /* Hierarchy: the hero h1 (clamped up to 4.5rem) must out-rank every
+     section h2, which tops out at --text-4xl. */
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.75rem;
 
   /* Radius — the reference runs large and soft */
   --radius-sm: 0.75rem;
@@ -45,27 +47,29 @@
   /* ---- Neutrals ---- */
   --color-bg: #ffffff; /* canvas + header */
   --color-bg-elevated: #ffffff; /* the light full-bleed bands */
-  --color-bg-subtle: #f3f1ee; /* the alternating warm band */
+  --color-bg-subtle: #f4f6f7; /* the alternating band — light, barely cool */
   --color-fg: #1d2a2e; /* deep teal-charcoal ink */
-  --color-fg-muted: #33474c; /* body copy — 9.4:1 on warm white */
+  --color-fg-muted: #33474c; /* body copy — 9.4:1 on white */
   --color-fg-subtle: #404d4f; /* the reference's nav tone — 8:1 */
   --color-fg-dim: #5b6a6d; /* labels only — 5.2:1 */
-  --color-border: #d3cec9;
-  --color-border-strong: #bdb7b1;
+  --color-border: #e6eaec;
+  --color-border-strong: #cfd7d9;
 
-  /* ---- Gradient stops ---- */
-  --color-sage: #99bcc4;
-  --color-cream: #d9d7d5;
-  --color-apricot: #f8e4d2;
+  /* ---- Gradient stops — the reference wash with ~30% white mixed in,
+       so the band reads light and airy rather than dusty. ---- */
+  --color-sage: #b6cfd5;
+  --color-cream: #e6e3e0;
+  --color-apricot: #fbebe0;
 
-  /* ---- Accent — the deep end of the reference's apricot ---- */
-  --color-accent: #d9825a; /* terracotta FILL */
-  --color-accent-2: #c26b45; /* hover */
-  --color-accent-ink: #9e4a25; /* TEXT ONLY — 5.6:1 on warm white */
-  --color-pop: #9e4a25;
-  --color-lemon: #fdf051; /* single bright highlight */
+  /* ---- Accent — brightened off the muddy terracotta ---- */
+  --color-accent: #e4724a; /* FILL */
+  --color-accent-2: #cf5a33; /* hover */
+  --color-accent-ink: #c0492a; /* TEXT ONLY — 4.9:1 on white */
+  --color-pop: #c0492a;
 
-  /* ---- Proof signal — green. ONLY verify / valid / crypto states. ---- */
+  /* ---- Proof signal — green. ONLY verify / valid / crypto states.
+       This is the ONLY colour outside ink + gradient + the one accent,
+       and it is kept because the semantic is locked, not for decoration. ---- */
   --color-verify: #147d5c; /* deepened to sit with the sage family */
   --color-verify-on-dark: #4fd1a0; /* the same signal, legible on the teal panel */
 
@@ -177,11 +181,19 @@ h1 {
   max-width: 1560px;
   margin-inline: auto;
 }
+/* A horizontal sage -> neutral -> apricot wash, lifted by a white veil from
+   the top. Matches the reference's airy band; no heavy radial hot-spots. */
 .panel-soft {
   background:
-    radial-gradient(120% 130% at 0% 0%, var(--color-sage) 0%, transparent 55%),
-    radial-gradient(120% 130% at 100% 10%, var(--color-apricot) 0%, transparent 58%),
-    linear-gradient(120deg, #cfd9da 0%, var(--color-cream) 48%, #f2e2d4 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 52%),
+    linear-gradient(
+      100deg,
+      var(--color-sage) 0%,
+      #cfdbdd 22%,
+      var(--color-cream) 50%,
+      #f6e8dd 78%,
+      var(--color-apricot) 100%
+    );
 }
 /* The gradient is rationed to the opening and closing panels; the middle of
    the page alternates warm white against this quieter inset tone. */
@@ -365,8 +377,10 @@ footer .border-border {
   letter-spacing: 0.01em;
   padding: 0.45rem 0.95rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--color-fg) 18%, transparent);
-  background: color-mix(in srgb, #ffffff 45%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px) saturate(170%);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
   color: var(--color-fg-subtle);
 }
 .badge .dot {
@@ -402,14 +416,16 @@ footer .border-border {
     border-color 0.18s ease,
     box-shadow 0.18s ease;
 }
-/* Cards invert against their band so one never sits white-on-white */
+/* Cards invert against their band so one never sits white-on-white.
+   Both tones are neutral — the colour on this page comes from the
+   gradient bands, not from the cards. */
 .panel .glass {
-  background: #f6f4f1;
-  border-color: #e8e4df;
+  background: #f7f9fa;
+  border-color: #e6eaec;
 }
 .panel-subtle .glass {
   background: #ffffff;
-  border-color: #e2ddd7;
+  border-color: #e1e7e9;
 }
 /* On the soft gradient and the dark panel, cards are translucent inlays */
 .panel-soft .glass,
@@ -454,8 +470,10 @@ footer .border-border {
   margin: 0;
   padding: 8px;
   border-radius: 24px;
-  background: color-mix(in srgb, #ffffff 55%, transparent);
-  border: 1px solid color-mix(in srgb, #ffffff 65%, transparent);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.62);
   box-shadow: 0 30px 70px -46px rgba(29, 42, 46, 0.55);
 }
 .stage {
@@ -510,8 +528,10 @@ footer .border-border {
   z-index: 4;
   padding: 0.85rem 1.05rem;
   border-radius: 16px;
-  background: color-mix(in srgb, #ffffff 88%, transparent);
-  border: 1px solid color-mix(in srgb, #ffffff 90%, transparent);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow: 0 22px 46px -30px rgba(29, 42, 46, 0.65);
   text-align: left;
   max-width: 178px;
@@ -569,16 +589,32 @@ footer .border-border {
   }
 }
 
-/* ---- Header — floats on the taupe canvas ---- */
+/* ---- Header — spans the FULL top bar, liquid glass over whatever scrolls
+   beneath it. Glass is used only on chrome and small floating chips, never
+   on content cards (legibility + paint cost). ---- */
+.site-bar {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: clamp(1.25rem, 2.5vw, 2.75rem);
+}
 header.site-header {
-  background: var(--color-bg) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom: none !important;
-  transition: box-shadow 0.25s ease;
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 header.site-header.scrolled {
-  box-shadow: 0 1px 0 0 color-mix(in srgb, var(--color-fg) 10%, transparent);
+  background: rgba(255, 255, 255, 0.72) !important;
+  box-shadow: 0 6px 24px -18px rgba(29, 42, 46, 0.5);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  header.site-header {
+    background: rgba(255, 255, 255, 0.94) !important;
+  }
 }
 header nav ul a {
   position: relative;
@@ -710,15 +746,7 @@ header nav ul a:hover::after {
   background: var(--color-bg-subtle);
   margin-bottom: 1.25rem;
 }
-#what .reveal-group > article:nth-child(1) .feat-glyph {
-  background: color-mix(in srgb, var(--color-apricot) 85%, #ffffff);
-}
-#what .reveal-group > article:nth-child(2) .feat-glyph {
-  background: color-mix(in srgb, var(--color-sage) 45%, #ffffff);
-}
-#what .reveal-group > article:nth-child(3) .feat-glyph {
-  background: color-mix(in srgb, var(--color-verify) 16%, #ffffff);
-}
+/* Minimal palette: one neutral chip for all three, not three tints. */
 
 .glyph-eq {
   display: flex;
@@ -765,7 +793,7 @@ header nav ul a:hover::after {
 .glyph-replay {
   width: 22px;
   height: 22px;
-  color: #2f5b63;
+  color: var(--color-fg);
   animation: spin-slow 3.2s linear infinite;
 }
 @keyframes spin-slow {
