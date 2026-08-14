@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title"><title>Tracelane mark</title><path fill="currentColor" d="M16 18h84L82 36H34v18h48L64 72H34v38L16 92V18Zm72 24h24L94 60H78v34L58 112V60h30V42Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 76" width="76" height="76">
+  <rect width="76" height="76" rx="16" fill="#141c24"/>
+  <g transform="translate(38 38) scale(1.12) translate(-38 -38)">
+    <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="#ffffff"/>
+    <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="#ffffff"/>
+    <rect x="20" y="36.4" width="36" height="3.2" fill="#ffffff"/>
+    <circle cx="38" cy="38" r="9" fill="#141c24" stroke="#ffffff" stroke-width="3"/>
+    <circle cx="38" cy="38" r="3.6" fill="none" stroke="#ffffff" stroke-width="2.6"/>
+  </g>
+</svg>

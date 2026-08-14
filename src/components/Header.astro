@@ -1,49 +1,29 @@
 ---
-const chisel = `<svg viewBox="0 0 128 128" width="28" height="28" aria-hidden="true" class="logo-mark"><path fill="currentColor" d="M16 18h84L82 36H34v18h48L64 72H34v38L16 92V18Zm72 24h24L94 60H78v34L58 112V60h30V42Z"/></svg>`;
+const chisel = `<svg viewBox="0 0 76 76" width="26" height="26" aria-hidden="true" class="logo-mark">
+  <path d="M30 14 L14 14 L14 62 L30 62 L30 56 L20 56 L20 20 L30 20 Z" fill="currentColor"/>
+  <path d="M46 14 L62 14 L62 62 L46 62 L46 56 L56 56 L56 20 L46 20 Z" fill="currentColor"/>
+  <rect x="20" y="36.4" width="36" height="3.2" fill="currentColor"/>
+  <circle cx="38" cy="38" r="9" fill="var(--color-bg)" stroke="currentColor" stroke-width="3"/>
+  <circle cx="38" cy="38" r="3.6" fill="none" stroke="currentColor" stroke-width="2.6"/>
+</svg>`;
 ---
 
-<header
-  class="site-header border-border sticky top-0 z-50 border-b"
-  style="background:color-mix(in srgb, var(--color-bg) 80%, transparent);backdrop-filter:blur(16px)"
->
-  <div class="flex h-[4.25rem] w-full items-center justify-between px-5 sm:px-8">
-    <a href="/" class="text-fg flex items-center gap-2.5" aria-label="tracelane home">
+<header class="site-header border-b border-border sticky top-0 z-50" style="background:color-mix(in srgb, var(--color-bg) 80%, transparent);backdrop-filter:blur(16px)">
+  <div class="w-full px-5 sm:px-8 flex h-[4.25rem] items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 text-fg" aria-label="tracelane home">
       <span set:html={chisel} />
-      <span
-        class="text-lg font-semibold tracking-tight lowercase"
-        style="font-family:var(--font-display)">tracelane</span
-      >
+      <span class="font-semibold text-lg tracking-tight lowercase" style="font-family:var(--font-display)">tracelane</span>
     </a>
     <nav aria-label="Primary" class="flex items-center gap-3 sm:gap-5">
-      <ul class="text-fg-muted flex items-center gap-4 text-sm sm:gap-6">
-        <li class="hidden sm:list-item">
-          <a href="/#what" class="hover:text-fg transition-colors">What</a>
-        </li>
-        <li class="hidden sm:list-item">
-          <a href="/#audit" class="hover:text-fg transition-colors">Audit Ledger</a>
-        </li>
-        <li class="hidden md:list-item">
-          <a href="/#pricing" class="hover:text-fg transition-colors">Pricing</a>
-        </li>
-        <li class="hidden md:list-item">
-          <a href="/security" class="hover:text-fg transition-colors">Security</a>
-        </li>
-        <li class="hidden sm:list-item">
-          <a href="/docs" class="hover:text-fg transition-colors">Docs</a>
-        </li>
-        <li class="hidden sm:list-item">
-          <a
-            href="https://github.com/tracelane"
-            class="hover:text-fg transition-colors"
-            rel="me noopener">GitHub</a
-          >
-        </li>
+      <ul class="flex items-center gap-4 sm:gap-6 text-sm text-fg-muted">
+        <li class="hidden sm:list-item"><a href="/#what" class="hover:text-fg transition-colors">What</a></li>
+        <li class="hidden sm:list-item"><a href="/#audit" class="hover:text-fg transition-colors">Audit Ledger</a></li>
+        <li class="hidden md:list-item"><a href="/#pricing" class="hover:text-fg transition-colors">Pricing</a></li>
+        <li class="hidden md:list-item"><a href="/security" class="hover:text-fg transition-colors">Security</a></li>
+        <li class="hidden sm:list-item"><a href="/docs" class="hover:text-fg transition-colors">Docs</a></li>
+        <li class="hidden sm:list-item"><a href="https://github.com/tracelane" class="hover:text-fg transition-colors" rel="me noopener">GitHub</a></li>
       </ul>
-      <a
-        href="/#notify"
-        class="btn-primary inline-flex whitespace-nowrap"
-        style="padding:0.5rem 1rem;font-size:0.8125rem">Be First to Know</a
-      >
+      <a href="/#notify" class="btn-primary inline-flex whitespace-nowrap" style="padding:0.5rem 1rem;font-size:0.8125rem">Be First to Know</a>
     </nav>
   </div>
 </header>
