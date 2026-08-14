@@ -12,7 +12,7 @@ import Base from "../../layouts/Base.astro";
         Flag failures pre-flight, or <span class="grad-text">cluster them after.</span>
       </h1>
       <p class="mt-8 text-lg sm:text-xl text-fg-muted max-w-3xl leading-relaxed">
-        LangSmith Engine (May 13, 2026) clusters production failures after they happen, files pull requests, and bills against the LangSmith plan. Tracelane flags failure classes inline at the gateway, sub-50ms target, before the call reaches the provider. Different layer. Different commercial posture.
+        LangSmith Engine (May 13, 2026) clusters production failures after they happen, files pull requests, and bills against the LangSmith plan. Tracelane flags failure classes inline at the gateway, before the call reaches the provider. Different layer. Different commercial posture.
       </p>
     </div>
   </section>
@@ -22,8 +22,8 @@ import Base from "../../layouts/Base.astro";
     <p class="font-mono text-xs text-pop mb-4 tracking-wider lowercase">tl;dr</p>
     <ul class="space-y-3 text-fg-muted max-w-3xl leading-relaxed">
       <li>— LangSmith Engine is reactive: triage after failure has shipped.</li>
-      <li>— Tracelane is pre-flight: flag the failure class inline at the gateway, sub-50ms target.</li>
-      <li>— Engine is locked to the LangSmith trace surface and LangChain-managed inference keys per ToS. Tracelane is neutral OTel ingest with BYOK 0% markup across 30+ providers.</li>
+      <li>— Tracelane is pre-flight: flag the failure class inline at the gateway.</li>
+      <li>— Tracelane is neutral OTel ingest with BYOK 0% markup across 30+ providers.</li>
       <li>— Engine adds value on top of an existing LangSmith deployment. Tracelane replaces LiteLLM + Helicone/Langfuse + a custom guardrail layer with one Rust binary.</li>
       <li>— Both are useful. They sit at different layers of the agent reliability stack.</li>
     </ul>
@@ -46,12 +46,12 @@ import Base from "../../layouts/Base.astro";
         <tbody class="text-fg-muted">
           <tr class="border-b border-border">
             <td class="py-4 pr-6 text-fg">Failure handling timing</td>
-            <td class="py-4 pr-6">Pre-flight inline at gateway, sub-50ms target</td>
+            <td class="py-4 pr-6">Pre-flight inline at gateway</td>
             <td class="py-4">Post-failure clustering, async triage</td>
           </tr>
           <tr class="border-b border-border">
             <td class="py-4 pr-6 text-fg">LLM provider lock-in</td>
-            <td class="py-4 pr-6">None — 30+ providers, BYOK 0% markup</td>
+            <td class="py-4 pr-6">30+ providers, BYOK 0% markup</td>
             <td class="py-4">LangChain-managed inference keys per ToS</td>
           </tr>
           <tr class="border-b border-border">
@@ -75,8 +75,8 @@ import Base from "../../layouts/Base.astro";
             <td class="py-4">Application-layer trace storage; no cryptographic chain</td>
           </tr>
           <tr class="border-b border-border">
-            <td class="py-4 pr-6 text-fg">EU AI Act Article 12 export pack</td>
-            <td class="py-4 pr-6">$999/mo add-on, available at V1</td>
+            <td class="py-4 pr-6 text-fg">Article 12 documentation pack</td>
+            <td class="py-4 pr-6">$999/mo add-on, available today</td>
             <td class="py-4">Not in launch announcement</td>
           </tr>
           <tr class="border-b border-border">
@@ -104,7 +104,7 @@ import Base from "../../layouts/Base.astro";
           <li>— You want failures flagged pre-flight, not just triaged after</li>
           <li>— You need BYOK 0% markup across multiple providers</li>
           <li>— You need neutral OTel ingest, not a proprietary trace surface</li>
-          <li>— You need a tamper-evident audit ledger for EU AI Act / DPDP / HIPAA</li>
+          <li>— You need a tamper-evident audit ledger you can hand to a third party</li>
           <li>— You want Apache 2.0 core with a self-host path</li>
           <li>— You don't already run LangSmith and don't want to adopt it just to get Engine</li>
         </ul>
@@ -128,10 +128,10 @@ import Base from "../../layouts/Base.astro";
 
   {/* ===== CTA ===== */}
   <section class="container py-24 border-t border-border">
-    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Tracelane V1 — coming soon.</h2>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-fg">Tracelane V1 is live.</h2>
     <p class="mt-4 text-lg text-fg-muted max-w-2xl">Open core. Apache 2.0. Self-host or use the free hosted tier.</p>
     <div class="mt-8 flex flex-col sm:flex-row gap-4">
-      <a href="/#notify" class="btn-primary">Be First to Know</a>
+      <a href="https://app.tracelane.dev/sign-in" class="btn-primary">Start Free</a>
       <a href="/" class="btn-secondary">Back to Home →</a>
     </div>
   </section>

@@ -7,6 +7,11 @@ main = "functions/api/notify.ts"
 
 [assets]
 directory = "./dist"
+# Required for `env.ASSETS` to exist in the Worker. Without it the binding is
+# undefined and every asset-miss path throws (CF 1101) instead of 404ing.
+# `not_found_handling` is deliberately NOT set: it would make the asset handler
+# answer misses itself, and POST /api/notify is an asset miss.
+binding = "ASSETS"
 
 # D1 binding for /api/notify
 [[d1_databases]]
