@@ -50,7 +50,7 @@ const jsonLd = {
   ],
 };
 
-const mark = `<svg viewBox="0 0 24 24" fill="none"><path d="M3 12 q3-6 6 0 t6 0 t6 0" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+const mark = `<svg viewBox="0 0 128 128" aria-hidden="true"><path fill="currentColor" d="M16 18h84L82 36H34v18h48L64 72H34v38L16 92V18Zm72 24h24L94 60H78v34L58 112V60h30V42Z"/></svg>`;
 ---
 
 <!doctype html>
@@ -82,11 +82,19 @@ const mark = `<svg viewBox="0 0 24 24" fill="none"><path d="M3 12 q3-6 6 0 t6 0 
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/figtree-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/jetbrains-mono-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
     />
 
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
@@ -97,7 +105,9 @@ const mark = `<svg viewBox="0 0 24 24" fill="none"><path d="M3 12 q3-6 6 0 t6 0 
 
     <header>
       <div class="wrap nav">
-        <a href="/" class="brand"><span class="mk" set:html={mark} />tracelane</a>
+        <a href="/" class="brand" aria-label="tracelane home"
+          ><span class="mk" set:html={mark} /><span>tracelane</span></a
+        >
         <nav class="nlinks">
           <a href="#pillars">Gateway</a>
           <a href="#pillars">Observability</a>
@@ -120,16 +130,22 @@ const mark = `<svg viewBox="0 0 24 24" fill="none"><path d="M3 12 q3-6 6 0 t6 0 
       <div class="wrap">
         <div class="fg">
           <div class="fbrand">
-            <a href="/" class="brand"><span class="mk" set:html={mark} />tracelane</a>
+            <a href="/" class="brand" aria-label="tracelane home"
+              ><span class="mk" set:html={mark} /><span>tracelane</span></a
+            >
             <p>The flight recorder for AI agents. Open source, Apache 2.0.</p>
           </div>
           <div class="fcol">
             <h5>Product</h5>
-            <a href="#pillars">Gateway</a><a href="#pillars">Observability</a><a href="#audit">Audit</a><a href="#pricing">Pricing</a>
+            <a href="#pillars">Gateway</a><a href="#pillars">Observability</a><a href="#audit"
+              >Audit</a
+            ><a href="#pricing">Pricing</a>
           </div>
           <div class="fcol">
             <h5>Developers</h5>
-            <a href="/docs">Docs</a><a href="https://github.com/tracelane" rel="me noopener">GitHub</a><a href="/security">Security</a><a href="/changelog">Changelog</a>
+            <a href="/docs">Docs</a><a href="https://github.com/tracelane" rel="me noopener"
+              >GitHub</a
+            ><a href="/security">Security</a><a href="/changelog">Changelog</a>
           </div>
           <div class="fcol">
             <h5>Legal</h5>
@@ -156,9 +172,16 @@ const mark = `<svg viewBox="0 0 24 24" fill="none"><path d="M3 12 q3-6 6 0 t6 0 
           ticking = false;
         }
         update();
-        window.addEventListener("scroll", function () {
-          if (!ticking) { ticking = true; requestAnimationFrame(update); }
-        }, { passive: true });
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (!ticking) {
+              ticking = true;
+              requestAnimationFrame(update);
+            }
+          },
+          { passive: true }
+        );
         window.addEventListener("resize", update, { passive: true });
       })();
 
@@ -166,12 +189,20 @@ const mark = `<svg viewBox="0 0 24 24" fill="none"><path d="M3 12 q3-6 6 0 t6 0 
       (function () {
         var els = document.querySelectorAll(".reveal");
         if (!("IntersectionObserver" in window) || !els.length) return;
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-        els.forEach(function (el) { io.observe(el); });
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        els.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>
   </body>
