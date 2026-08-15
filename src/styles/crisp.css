@@ -21,10 +21,14 @@
   --subtle: #8a8a8a;
   --line: #e7e7e3;
   --line-2: #d0d0ca;
-  --brand: #071a7a;
-  --brand-2: #0d2bb0;
-  --brand-soft: #f2f4ff;
-  --verify: #12824e;
+  --brand: #35463f;
+  --brand-2: #1f2925;
+  --brand-soft: #f4f1eb;
+  --accent-warm: #b97855;
+  --accent-clay: #d6a06f;
+  --accent-sage: #6d8169;
+  --accent-sky: #a9bdc6;
+  --verify: #2d7a55;
   --shadow: 0 28px 90px rgba(0, 0, 0, 0.07);
   --font: Figtree, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --mono: JetBrainsMono, "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -46,7 +50,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 16% 0%, rgba(7, 26, 122, 0.055), transparent 34rem),
+    radial-gradient(circle at 16% 0%, rgba(53, 70, 63, 0.055), transparent 34rem),
     linear-gradient(180deg, #ffffff 0, #fbfbfa 46rem, #ffffff 100%);
 }
 a {
@@ -170,7 +174,7 @@ header {
 .btn-lava:hover,
 .btn-dark:hover {
   background: var(--brand);
-  box-shadow: 0 14px 36px rgba(7, 26, 122, 0.18);
+  box-shadow: 0 14px 36px rgba(53, 70, 63, 0.18);
 }
 .btn-ghost {
   background: rgba(255, 255, 255, 0.55);
@@ -193,7 +197,7 @@ header {
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.075) 1px, transparent 1px),
     linear-gradient(rgba(0, 0, 0, 0.055) 1px, transparent 1px),
-    radial-gradient(circle at 70% 15%, rgba(7, 26, 122, 0.1), transparent 30rem);
+    radial-gradient(circle at 70% 15%, rgba(53, 70, 63, 0.1), transparent 30rem);
   background-size:
     80px 80px,
     80px 80px,
@@ -299,7 +303,7 @@ h1 {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 50% 20%, rgba(7, 26, 122, 0.38), transparent 24rem),
+    radial-gradient(circle at 50% 20%, rgba(53, 70, 63, 0.38), transparent 24rem),
     linear-gradient(180deg, #111111, #050505);
   cursor: pointer;
 }
@@ -869,6 +873,55 @@ footer {
   }
 }
 
+/* Premium gradient surfaces for every recurring card / box component. */
+.pillar,
+.tcard,
+.mini,
+.pc,
+.rc,
+.faq details,
+.notify,
+.codepanel,
+.stage-wrap,
+.verify {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    radial-gradient(circle at 18% 0%, rgba(214, 160, 111, 0.18), transparent 34%),
+    radial-gradient(circle at 92% 12%, rgba(169, 189, 198, 0.24), transparent 36%),
+    radial-gradient(circle at 80% 100%, rgba(109, 129, 105, 0.16), transparent 34%);
+  background-blend-mode: normal, multiply, normal, normal;
+}
+.pillar:nth-child(2n),
+.mini:nth-child(2n),
+.pc:nth-child(2n),
+.faq details:nth-child(2n) {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(250, 250, 248, 0.76)),
+    radial-gradient(circle at 10% 12%, rgba(169, 189, 198, 0.26), transparent 34%),
+    radial-gradient(circle at 92% 88%, rgba(185, 120, 85, 0.14), transparent 38%);
+}
+.pillar:nth-child(3n),
+.mini:nth-child(3n),
+.pc:nth-child(3n),
+.faq details:nth-child(3n) {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(250, 249, 246, 0.72)),
+    radial-gradient(circle at 18% 85%, rgba(109, 129, 105, 0.2), transparent 38%),
+    radial-gradient(circle at 86% 16%, rgba(214, 160, 111, 0.18), transparent 36%);
+}
+.notify {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(250, 249, 246, 0.78)),
+    radial-gradient(circle at 16% 15%, rgba(214, 160, 111, 0.22), transparent 30%),
+    radial-gradient(circle at 84% 20%, rgba(169, 189, 198, 0.26), transparent 34%),
+    radial-gradient(circle at 62% 100%, rgba(109, 129, 105, 0.18), transparent 34%);
+}
+.codepanel,
+.verify,
+.stage-wrap {
+  background: #050505;
+}
+
 /* Soft editorial gradient panels, inspired by the supplied reference treatment. */
 .trio .tcard,
 .grid2 .tcard,
@@ -895,7 +948,7 @@ footer {
     linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
     radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.62), transparent 26%),
-    radial-gradient(circle at 18% 95%, rgba(7, 26, 122, 0.44), transparent 42%),
+    radial-gradient(circle at 18% 95%, rgba(53, 70, 63, 0.44), transparent 42%),
     radial-gradient(circle at 76% 78%, rgba(22, 96, 68, 0.46), transparent 38%),
     linear-gradient(135deg, #eeeae3, #b8c8d8 48%, #101010);
   background-size:
@@ -946,7 +999,7 @@ footer {
       rgba(255, 255, 255, 0.2) 0 1px,
       transparent 1px 12px
     ),
-    radial-gradient(circle at 24% 78%, rgba(7, 26, 122, 0.56), transparent 40%),
+    radial-gradient(circle at 24% 78%, rgba(53, 70, 63, 0.56), transparent 40%),
     radial-gradient(circle at 76% 74%, rgba(95, 95, 95, 0.54), transparent 38%),
     linear-gradient(145deg, #e2e2dd, #a9b7c8 50%, #111111);
 }
@@ -955,7 +1008,7 @@ footer {
     linear-gradient(90deg, rgba(255, 255, 255, 0.13) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     radial-gradient(circle at 74% 28%, rgba(255, 255, 255, 0.58), transparent 30%),
-    radial-gradient(circle at 30% 76%, rgba(7, 26, 122, 0.58), transparent 42%),
+    radial-gradient(circle at 30% 76%, rgba(53, 70, 63, 0.58), transparent 42%),
     linear-gradient(145deg, #d8d6cf, #7787a7 54%, #050505);
 }
 
