@@ -1,3 +1,26 @@
+> # ⚠️ RETIRED — this repository is no longer the source of the Tracelane website.
+>
+> **Superseded on 2026-08-17 by [`tracelane/tracelane`](https://github.com/tracelane/tracelane),
+> where the site now lives at `apps/site`.**
+>
+> The marketing site was folded into the main monorepo so that the site, the dashboard
+> (`apps/web`), the documentation (`apps/docs`) and the gateway (`crates/`) share one
+> commit history, one dependency graph and one CI pipeline. Keeping the site in a separate
+> repository meant a copy could drift from the product it described — and it did.
+>
+> **What this means**
+>
+> * **Nothing here is deployed.** `https://tracelane.dev` is built and released from
+>   `apps/site` in the monorepo.
+> * This repository is **archived and read-only**. It is kept, not deleted, so existing
+>   links and the site's history stay resolvable.
+> * **Do not open pull requests here.** Contribute at
+>   [`tracelane/tracelane`](https://github.com/tracelane/tracelane) instead.
+>
+> Everything below this line is the historical README, preserved as it was.
+
+---
+
 # tracelane-site
 
 Marketing site for Tracelane — **predictive reliability for AI agents**.
